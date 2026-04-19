@@ -1,717 +1,720 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tudo no Precinho 🔥 Grupo de Ofertas no WhatsApp</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --green: #25D366;
-    --green-dark: #1da851;
-    --green-glow: rgba(37,211,102,0.35);
-    --yellow: #FFD600;
-    --orange: #FF6B00;
-    --red: #FF3B3B;
-    --bg: #0d1117;
-    --surface: #161b22;
-    --border: #21262d;
-    --text: #f0f6fc;
-    --muted: #8b949e;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Grupo de ofertas do Mercado Livre no WhatsApp. Descontos reais, atualizado todo dia, 100% grátis." />
+  <title>Tudo no Precinho — Ofertas do Mercado Livre no WhatsApp</title>
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1540738174070489');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Nunito', sans-serif;
-    overflow-x: hidden;
-  }
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  /* ─── NOISE OVERLAY ─── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.5;
-  }
+  <style>
+    :root {
+      --cor-primaria: #FF4D17;     /* laranja oferta */
+      --cor-secundaria: #FFC700;   /* amarelo destaque */
+      --cor-whatsapp: #25D366;
+      --cor-whatsapp-escuro: #128C7E;
+      --cor-fundo: #0B0B0B;
+      --cor-fundo-claro: #F7F3EE;
+      --cor-texto: #1A1A1A;
+      --cor-texto-claro: #FFFFFF;
+      --cor-cinza: #6B6B6B;
+    }
 
-  /* ─── BLOBS ─── */
-  .blob1, .blob2, .blob3 {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(120px);
-    pointer-events: none;
-    z-index: 0;
-  }
-  .blob1 { width: 600px; height: 600px; background: rgba(37,211,102,0.07); top: -200px; left: -200px; }
-  .blob2 { width: 500px; height: 500px; background: rgba(255,107,0,0.06); bottom: -150px; right: -150px; }
-  .blob3 { width: 400px; height: 400px; background: rgba(255,214,0,0.05); top: 40%; left: 50%; transform: translateX(-50%); }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  /* ─── MARQUEE ─── */
-  .marquee-wrap {
-    background: var(--yellow);
-    overflow: hidden;
-    padding: 8px 0;
-    position: relative;
-    z-index: 10;
-  }
-  .marquee-track {
-    display: flex;
-    gap: 40px;
-    white-space: nowrap;
-    animation: marquee 20s linear infinite;
-  }
-  .marquee-track span {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 15px;
-    letter-spacing: 0.1em;
-    color: #000;
-    flex-shrink: 0;
-  }
-  @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
+    html { scroll-behavior: smooth; }
 
-  /* ─── CONTAINER ─── */
-  .container {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 0 20px;
-    position: relative;
-    z-index: 2;
-  }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cor-fundo-claro);
+      color: var(--cor-texto);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
 
-  /* ─── HERO ─── */
-  .hero {
-    text-align: center;
-    padding: 64px 20px 48px;
-    position: relative;
-  }
+    .container {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
 
-  .badge-top {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(37,211,102,0.12);
-    border: 1px solid rgba(37,211,102,0.3);
-    border-radius: 100px;
-    padding: 7px 18px;
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--green);
-    margin-bottom: 28px;
-    animation: fadeInDown 0.6s ease both;
-  }
-  .badge-top .dot-pulse {
-    width: 8px; height: 8px;
-    background: var(--green);
-    border-radius: 50%;
-    animation: pulse 1.5s ease infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(0.8); }
-  }
+    /* BARRA DE URGÊNCIA */
+    .topbar {
+      background: var(--cor-fundo);
+      color: var(--cor-texto-claro);
+      padding: 10px 0;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 600;
+      overflow: hidden;
+      position: relative;
+    }
+    .topbar-content {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .topbar .dot {
+      width: 8px; height: 8px;
+      background: #FF3B3B;
+      border-radius: 50%;
+      display: inline-block;
+      animation: blink 1s ease-in-out infinite;
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
 
-  .hero-emoji {
-    font-size: 72px;
-    line-height: 1;
-    margin-bottom: 20px;
-    animation: bounceIn 0.7s cubic-bezier(.36,.07,.19,.97) both 0.1s;
-    display: block;
-  }
-  @keyframes bounceIn {
-    0% { transform: scale(0.3); opacity: 0; }
-    60% { transform: scale(1.1); }
-    100% { transform: scale(1); opacity: 1; }
-  }
+    /* HERO */
+    .hero {
+      background: var(--cor-primaria);
+      color: var(--cor-texto-claro);
+      padding: 32px 0 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 20% 30%, rgba(255,199,0,0.15) 0, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.08) 0, transparent 40%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; }
 
-  h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(56px, 12vw, 96px);
-    letter-spacing: 0.02em;
-    line-height: 0.95;
-    animation: fadeInUp 0.6s ease both 0.15s;
-  }
-  h1 .line1 { color: var(--text); display: block; }
-  h1 .line2 {
-    color: var(--green);
-    display: block;
-    text-shadow: 0 0 40px var(--green-glow), 0 0 80px var(--green-glow);
-  }
+    .logo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--cor-fundo);
+      color: var(--cor-texto-claro);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .logo-badge .pulse {
+      width: 8px; height: 8px;
+      background: var(--cor-whatsapp);
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+      animation: ring 1.5s ease-out infinite;
+    }
+    @keyframes ring {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+      100% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+    }
 
-  .hero-sub {
-    font-size: 18px;
-    color: var(--muted);
-    max-width: 480px;
-    margin: 20px auto 0;
-    line-height: 1.6;
-    font-weight: 600;
-    animation: fadeInUp 0.6s ease both 0.25s;
-  }
-  .hero-sub strong { color: var(--text); }
+    h1 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(34px, 9vw, 48px);
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+    }
+    h1 .destaque {
+      background: var(--cor-secundaria);
+      color: var(--cor-texto);
+      padding: 2px 10px;
+      display: inline-block;
+      transform: rotate(-1deg);
+    }
 
-  /* ─── STATS STRIP ─── */
-  .stats-strip {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin: 36px auto;
-    animation: fadeInUp 0.6s ease both 0.35s;
-  }
-  .stat-pill {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 14px 22px;
-    text-align: center;
-    min-width: 120px;
-  }
-  .stat-pill .num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 32px;
-    color: var(--yellow);
-    line-height: 1;
-    display: block;
-  }
-  .stat-pill .lbl {
-    font-size: 11px;
-    color: var(--muted);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-    margin-top: 4px;
-    display: block;
-  }
+    .hero-sub {
+      font-size: 17px;
+      font-weight: 500;
+      line-height: 1.4;
+      margin-bottom: 24px;
+      opacity: 0.95;
+    }
 
-  /* ─── CTA BUTTON ─── */
-  .cta-wrap {
-    margin: 8px auto 0;
-    text-align: center;
-    animation: fadeInUp 0.6s ease both 0.4s;
-  }
-  .btn-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    background: var(--green);
-    color: #000;
-    font-family: 'Nunito', sans-serif;
-    font-size: 20px;
-    font-weight: 900;
-    padding: 18px 42px;
-    border-radius: 100px;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 0 40px var(--green-glow), 0 8px 32px rgba(37,211,102,0.3);
-  }
-  .btn-cta::before {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%;
-    width: 60%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
-    transition: left 0.5s;
-  }
-  .btn-cta:hover::before { left: 140%; }
-  .btn-cta:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 0 60px var(--green-glow), 0 12px 40px rgba(37,211,102,0.4);
-  }
-  .btn-cta:active { transform: scale(0.98); }
-  .btn-cta .wpp-icon {
-    width: 28px; height: 28px;
-    flex-shrink: 0;
-  }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .stat {
+      background: rgba(0,0,0,0.25);
+      backdrop-filter: blur(4px);
+      border-radius: 12px;
+      padding: 12px 8px;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 22px;
+      display: block;
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      opacity: 0.9;
+      margin-top: 4px;
+      display: block;
+    }
 
-  .cta-note {
-    font-size: 13px;
-    color: var(--muted);
-    margin-top: 12px;
-    font-weight: 600;
-  }
-  .cta-note span { color: var(--green); }
+    /* BOTÃO WHATSAPP */
+    .btn-whatsapp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      background: var(--cor-whatsapp);
+      color: #fff;
+      text-decoration: none;
+      padding: 18px 20px;
+      border-radius: 14px;
+      font-size: 17px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      box-shadow: 0 8px 0 var(--cor-whatsapp-escuro), 0 12px 24px rgba(37,211,102,0.35);
+      transition: all 0.15s ease;
+      position: relative;
+    }
+    .btn-whatsapp:active {
+      transform: translateY(4px);
+      box-shadow: 0 4px 0 var(--cor-whatsapp-escuro), 0 6px 12px rgba(37,211,102,0.35);
+    }
+    .btn-whatsapp:hover {
+      background: #1FB955;
+    }
+    .btn-whatsapp svg { width: 22px; height: 22px; flex-shrink: 0; }
 
-  /* ─── DIVIDER ─── */
-  .divider {
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--green), var(--yellow));
-    border-radius: 10px;
-    margin: 0 auto 40px;
-  }
+    .btn-sub {
+      text-align: center;
+      font-size: 12px;
+      margin-top: 10px;
+      opacity: 0.9;
+    }
+    .btn-sub .check { color: var(--cor-secundaria); font-weight: 700; }
 
-  /* ─── FEATURES ─── */
-  .section {
-    padding: 60px 20px;
-    position: relative;
-    z-index: 2;
-  }
-  .section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 42px;
-    text-align: center;
-    margin-bottom: 8px;
-    letter-spacing: 0.03em;
-  }
-  .section-sub {
-    text-align: center;
-    color: var(--muted);
-    font-size: 15px;
-    font-weight: 600;
-    margin-bottom: 40px;
-  }
+    /* SEÇÕES */
+    section { padding: 40px 0; }
 
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 16px;
-  }
-  .feature-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 28px 24px;
-    transition: border-color 0.2s, transform 0.2s;
-  }
-  .feature-card:hover {
-    border-color: var(--green);
-    transform: translateY(-4px);
-  }
-  .feature-emoji { font-size: 36px; margin-bottom: 14px; display: block; }
-  .feature-title { font-size: 17px; font-weight: 800; margin-bottom: 8px; }
-  .feature-desc { font-size: 14px; color: var(--muted); line-height: 1.6; font-weight: 600; }
+    .section-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 28px;
+      line-height: 1;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+    .section-sub {
+      font-size: 15px;
+      color: var(--cor-cinza);
+      margin-bottom: 24px;
+    }
 
-  /* ─── OFFERS PREVIEW ─── */
-  .offers-section {
-    background: var(--surface);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 60px 20px;
-    position: relative;
-    z-index: 2;
-  }
-  .offers-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 14px;
-    margin-top: 36px;
-  }
-  .offer-card {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 18px;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.2s;
-  }
-  .offer-card:hover { border-color: rgba(255,214,0,0.5); }
-  .offer-badge {
-    position: absolute;
-    top: 12px; right: 12px;
-    background: var(--red);
-    color: #fff;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 16px;
-    padding: 2px 10px;
-    border-radius: 100px;
-  }
-  .offer-platform {
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--muted);
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .offer-platform .dot-plat { width: 6px; height: 6px; border-radius: 50%; }
-  .offer-name {
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 1.4;
-    margin-bottom: 12px;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  .offer-prices { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
-  .offer-old { font-size: 13px; color: var(--muted); text-decoration: line-through; font-weight: 700; }
-  .offer-new { font-family: 'Bebas Neue', sans-serif; font-size: 26px; color: var(--green); }
+    /* COMO FUNCIONA */
+    .como-funciona {
+      background: #fff;
+    }
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 18px;
+      background: var(--cor-fundo-claro);
+      border-radius: 14px;
+      border: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .step:hover { border-color: var(--cor-primaria); }
+    .step-num {
+      flex-shrink: 0;
+      width: 40px; height: 40px;
+      background: var(--cor-primaria);
+      color: #fff;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+    .step h3 {
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+    .step p {
+      font-size: 14px;
+      color: var(--cor-cinza);
+      line-height: 1.4;
+    }
 
-  /* ─── SOCIAL PROOF ─── */
-  .proof-section { padding: 60px 20px; position: relative; z-index: 2; }
-  .proof-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
-  .proof-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 22px 20px;
-  }
-  .proof-stars { color: var(--yellow); font-size: 16px; margin-bottom: 10px; }
-  .proof-text { font-size: 14px; line-height: 1.6; color: var(--muted); font-weight: 600; margin-bottom: 14px; }
-  .proof-text strong { color: var(--text); }
-  .proof-name { font-size: 13px; font-weight: 800; color: var(--green); }
+    /* PROVA - PRINTS DO GRUPO */
+    .prova {
+      background: var(--cor-fundo);
+      color: var(--cor-texto-claro);
+    }
+    .prova .section-sub { color: #AAA; }
 
-  /* ─── FINAL CTA ─── */
-  .final-cta {
-    text-align: center;
-    padding: 80px 20px;
-    position: relative;
-    z-index: 2;
-  }
-  .final-cta h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(40px, 8vw, 72px);
-    letter-spacing: 0.03em;
-    margin-bottom: 16px;
-  }
-  .final-cta h2 span { color: var(--green); }
-  .final-cta p { color: var(--muted); font-size: 16px; font-weight: 600; max-width: 420px; margin: 0 auto 36px; }
+    .prints {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .print-card {
+      background: #1A1A1A;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #555;
+      font-size: 12px;
+      text-align: center;
+      padding: 12px;
+      border: 1px dashed #333;
+    }
+    .print-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
-  /* ─── FOOTER ─── */
-  footer {
-    text-align: center;
-    padding: 24px;
-    font-size: 12px;
-    color: var(--muted);
-    border-top: 1px solid var(--border);
-    position: relative;
-    z-index: 2;
-    font-weight: 600;
-  }
+    .disclaimer {
+      font-size: 12px;
+      color: #888;
+      text-align: center;
+      margin-top: 16px;
+      line-height: 1.4;
+    }
 
-  /* ─── ANIMS ─── */
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+    /* POR QUE ENTRAR */
+    .beneficios {
+      background: var(--cor-fundo-claro);
+    }
+    .beneficios-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .beneficio {
+      background: #fff;
+      padding: 18px;
+      border-radius: 14px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .beneficio-icon {
+      flex-shrink: 0;
+      width: 44px; height: 44px;
+      background: var(--cor-primaria);
+      color: #fff;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+    .beneficio h3 {
+      font-size: 15px;
+      font-weight: 800;
+      margin-bottom: 3px;
+    }
+    .beneficio p {
+      font-size: 13px;
+      color: var(--cor-cinza);
+      line-height: 1.4;
+    }
 
-  /* ─── SCROLL REVEAL ─── */
-  .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.6s ease, transform 0.6s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
+    /* FAQ rápido — remove objeções */
+    .objecoes {
+      background: #fff;
+    }
+    .objecao {
+      border-bottom: 1px solid #EEE;
+      padding: 16px 0;
+    }
+    .objecao:last-child { border-bottom: none; }
+    .objecao-q {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .objecao-q::before {
+      content: "?";
+      width: 22px; height: 22px;
+      background: var(--cor-fundo);
+      color: var(--cor-secundaria);
+      font-family: 'Archivo Black', sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+    .objecao-a {
+      font-size: 14px;
+      color: var(--cor-cinza);
+      line-height: 1.5;
+      padding-left: 30px;
+    }
 
-  /* ─── FLOATING CTA (mobile) ─── */
-  .floating-cta {
-    display: none;
-    position: fixed;
-    bottom: 20px; left: 50%; transform: translateX(-50%);
-    z-index: 100;
-    width: calc(100% - 32px);
-    max-width: 400px;
-  }
-  .floating-cta a {
-    display: flex; align-items: center; justify-content: center;
-    gap: 10px;
-    background: var(--green);
-    color: #000;
-    font-weight: 900;
-    font-size: 17px;
-    padding: 16px;
-    border-radius: 100px;
-    text-decoration: none;
-    box-shadow: 0 8px 32px rgba(37,211,102,0.5);
-  }
+    /* CTA FINAL */
+    .cta-final {
+      background: var(--cor-primaria);
+      color: #fff;
+      text-align: center;
+      padding: 48px 0;
+    }
+    .cta-final h2 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 32px;
+      line-height: 1;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
+    }
+    .cta-final p {
+      font-size: 15px;
+      margin-bottom: 24px;
+      opacity: 0.95;
+    }
 
-  @media (max-width: 600px) {
-    .floating-cta { display: block; }
-    .stats-strip { gap: 8px; }
-    .stat-pill { min-width: 100px; padding: 12px 16px; }
-  }
-</style>
+    /* BOTÃO FLUTUANTE */
+    .btn-float {
+      position: fixed;
+      bottom: 16px;
+      left: 16px;
+      right: 16px;
+      background: var(--cor-whatsapp);
+      color: #fff;
+      text-decoration: none;
+      padding: 16px;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 16px;
+      text-transform: uppercase;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+      z-index: 100;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .btn-float svg { width: 20px; height: 20px; }
+    .btn-float.visible { display: flex; }
+
+    /* RODAPÉ */
+    footer {
+      background: var(--cor-fundo);
+      color: #888;
+      text-align: center;
+      font-size: 12px;
+      padding: 28px 20px 100px;
+      line-height: 1.6;
+    }
+
+    /* Desktop tweaks */
+    @media (min-width: 768px) {
+      .container { max-width: 680px; }
+      .beneficios-grid { grid-template-columns: 1fr 1fr; }
+      .prints { grid-template-columns: repeat(4, 1fr); }
+      h1 { font-size: 56px; }
+      .section-title { font-size: 36px; }
+      .cta-final h2 { font-size: 44px; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="blob1"></div>
-<div class="blob2"></div>
-<div class="blob3"></div>
-
-<!-- MARQUEE -->
-<div class="marquee-wrap">
-  <div class="marquee-track">
-    <span>🔥 OFERTA DO DIA</span><span>•</span>
-    <span>💸 ATÉ 90% OFF</span><span>•</span>
-    <span>🛒 MERCADO LIVRE</span><span>•</span>
-    <span>✅ 100% GRATUITO</span><span>•</span>
-    <span>⚡ ATUALIZADO TODO DIA</span><span>•</span>
-    <span>🚫 SEM SPAM</span><span>•</span>
-    <span>🔥 OFERTA DO DIA</span><span>•</span>
-    <span>💸 ATÉ 90% OFF</span><span>•</span>
-    <span>🛒 MERCADO LIVRE</span><span>•</span>
-    <span>✅ 100% GRATUITO</span><span>•</span>
-    <span>⚡ ATUALIZADO TODO DIA</span><span>•</span>
-    <span>🚫 SEM SPAM</span><span>•</span>
-    <span>🔥 OFERTA DO DIA</span><span>•</span>
-    <span>💸 ATÉ 90% OFF</span><span>•</span>
-    <span>🛒 MERCADO LIVRE</span><span>•</span>
-    <span>✅ 100% GRATUITO</span><span>•</span>
-    <span>⚡ ATUALIZADO TODO DIA</span><span>•</span>
-    <span>🚫 SEM SPAM</span><span>•</span>
+  <!-- TOPBAR DE URGÊNCIA -->
+  <div class="topbar">
+    <div class="topbar-content">
+      <span class="dot"></span>
+      <span>GRUPO ATIVO · NOVAS OFERTAS SENDO POSTADAS AGORA</span>
+    </div>
   </div>
-</div>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="container">
-    <div class="badge-top">
-      <span class="dot-pulse"></span>
-      Grupo ativo agora no WhatsApp
-    </div>
-    <span class="hero-emoji">🛒</span>
-    <h1>
-      <span class="line1">TUDO NO</span>
-      <span class="line2">PRECINHO</span>
-    </h1>
-    <p class="hero-sub">
-      As melhores ofertas do <strong>Mercado Livre</strong> todo dia direto no seu WhatsApp.<br>
-      Promoções reais, atualizadas toda hora — de graça!
-    </p>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container hero-content">
+      <div class="logo-badge">
+        <span class="pulse"></span>
+        <span>Tudo no Precinho</span>
+      </div>
 
-    <div class="stats-strip">
-      <div class="stat-pill">
-        <span class="num">100%</span>
-        <span class="lbl">Gratuito</span>
-      </div>
-      <div class="stat-pill">
-        <span class="num">24H</span>
-        <span class="lbl">Ofertas todo dia</span>
-      </div>
-      <div class="stat-pill">
-        <span class="num">ML</span>
-        <span class="lbl">Mercado Livre</span>
-      </div>
-      <div class="stat-pill">
-        <span class="num">0</span>
-        <span class="lbl">Spam</span>
-      </div>
-    </div>
+      <h1>
+        As Melhores<br>
+        Ofertas do<br>
+        <span class="destaque">Mercado Livre</span><br>
+        No Seu ZapZap.
+      </h1>
 
-    <div class="cta-wrap">
-      <a href="https://chat.whatsapp.com/LZICZxMWrLIAHEdFze6mjO?mode=hqctswi" class="btn-cta" target="_blank" rel="noopener">
-        <svg class="wpp-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      <p class="hero-sub">
+        Entra no grupo do WhatsApp e recebe as promoções do dia direto no celular. De graça, sem papo, sem spam.
+      </p>
+
+      <div class="stats">
+        <div class="stat">
+          <span class="stat-num">30+</span>
+          <span class="stat-label">ofertas/dia</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">R$0</span>
+          <span class="stat-label">pra entrar</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">24h</span>
+          <span class="stat-label">rodando</span>
+        </div>
+      </div>
+
+      <a href="https://chat.whatsapp.com/LZICZxMWrLIAHEdFze6mjO?mode=hqctswi"
+         class="btn-whatsapp"
+         data-cta="hero"
+         onclick="trackWhatsAppClick('hero')">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
         </svg>
-        ENTRAR NO GRUPO AGORA
+        Quero entrar no grupo
       </a>
-      <p class="cta-note">✅ Gratuito · <span>Sem spam</span> · Saia quando quiser</p>
+      <p class="btn-sub">
+        <span class="check">✓</span> grátis · <span class="check">✓</span> sem spam · <span class="check">✓</span> sai quando quiser
+      </p>
     </div>
-  </div>
-</section>
+  </header>
 
-<!-- FEATURES -->
-<section class="section">
-  <div class="container">
-    <h2 class="section-title reveal">Por que entrar?</h2>
-    <p class="section-sub reveal">Tudo que você precisa para economizar de verdade</p>
-    <div class="divider reveal"></div>
+  <!-- COMO FUNCIONA -->
+  <section class="como-funciona">
+    <div class="container">
+      <h2 class="section-title">Como funciona?</h2>
+      <p class="section-sub">Simples pra caramba:</p>
 
-    <div class="features-grid">
-      <div class="feature-card reveal">
-        <span class="feature-emoji">🔥</span>
-        <div class="feature-title">Ofertas Quentinhas</div>
-        <div class="feature-desc">Receba as melhores promoções assim que aparecerem, antes de esgotar.</div>
-      </div>
-      <div class="feature-card reveal">
-        <span class="feature-emoji">🤖</span>
-        <div class="feature-title">Curadoria Automática</div>
-        <div class="feature-desc">Robô vasculha o Mercado Livre inteiro pra trazer só o que realmente vale a pena comprar.</div>
-      </div>
-      <div class="feature-card reveal">
-        <span class="feature-emoji">💰</span>
-        <div class="feature-title">Descontos Reais</div>
-        <div class="feature-desc">Nada de frescura. Apenas produtos com desconto verdadeiro, verificado.</div>
-      </div>
-      <div class="feature-card reveal">
-        <span class="feature-emoji">📱</span>
-        <div class="feature-title">Direto no WhatsApp</div>
-        <div class="feature-desc">Sem app pra baixar, sem site pra acessar. Chega no seu celular, você compra.</div>
-      </div>
-      <div class="feature-card reveal">
-        <span class="feature-emoji">🚫</span>
-        <div class="feature-title">Zero Spam</div>
-        <div class="feature-desc">Só oferta. Sem corrente, sem propaganda, sem papo. Respeito ao seu tempo.</div>
-      </div>
-      <div class="feature-card reveal">
-        <span class="feature-emoji">🎁</span>
-        <div class="feature-title">100% Gratuito</div>
-        <div class="feature-desc">O grupo é de graça, sempre foi e sempre vai ser. Entra e economiza.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- OFERTAS EXEMPLO -->
-<section class="offers-section">
-  <div class="container">
-    <h2 class="section-title reveal">Ofertas de Hoje 🔥</h2>
-    <p class="section-sub reveal">Exemplos do que rolou hoje no grupo</p>
-
-    <div class="offers-grid">
-      <div class="offer-card reveal">
-        <div class="offer-badge">-72%</div>
-        <div class="offer-platform">
-          <span class="dot-plat" style="background:#f90;"></span> Mercado Livre
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div>
+            <h3>Entra no grupo</h3>
+            <p>Clica no botão e toca em "Entrar no grupo" no WhatsApp. Leva 5 segundos.</p>
+          </div>
         </div>
-        <div class="offer-name">Fone Bluetooth TWS sem fio com estojo de carregamento</div>
-        <div class="offer-prices">
-          <span class="offer-old">R$139</span>
-          <span class="offer-new">R$39</span>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div>
+            <h3>Recebe as ofertas</h3>
+            <p>Nosso robô varre o Mercado Livre o dia todo e posta só o que tem desconto de verdade.</p>
+          </div>
         </div>
-      </div>
-      <div class="offer-card reveal">
-        <div class="offer-badge">-65%</div>
-        <div class="offer-platform">
-          <span class="dot-plat" style="background:#f90;"></span> Mercado Livre
-        </div>
-        <div class="offer-name">Kit 3 Camisetas Básicas 100% Algodão fio 30.1</div>
-        <div class="offer-prices">
-          <span class="offer-old">R$89</span>
-          <span class="offer-new">R$31</span>
-        </div>
-      </div>
-      <div class="offer-card reveal">
-        <div class="offer-badge">-55%</div>
-        <div class="offer-platform">
-          <span class="dot-plat" style="background:#f90;"></span> Mercado Livre
-        </div>
-        <div class="offer-name">Caixa de Som Portátil Bluetooth à Prova d'Água</div>
-        <div class="offer-prices">
-          <span class="offer-old">R$219</span>
-          <span class="offer-new">R$99</span>
-        </div>
-      </div>
-      <div class="offer-card reveal">
-        <div class="offer-badge">-80%</div>
-        <div class="offer-platform">
-          <span class="dot-plat" style="background:#f90;"></span> Mercado Livre
-        </div>
-        <div class="offer-name">Suporte Veicular Magnético para Celular com Braço Articulado</div>
-        <div class="offer-prices">
-          <span class="offer-old">R$49</span>
-          <span class="offer-new">R$9</span>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div>
+            <h3>Compra se quiser</h3>
+            <p>Gostou? Clica no link da oferta, compra no Mercado Livre e pronto. Gostou ainda mais? Compartilha.</p>
+          </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <div style="text-align:center; margin-top:36px;" class="reveal">
-      <a href="https://chat.whatsapp.com/LZICZxMWrLIAHEdFze6mjO?mode=hqctswi" class="btn-cta" target="_blank" rel="noopener" style="font-size:17px; padding:15px 36px;">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        VER ESSAS E MAIS OFERTAS
+  <!-- PROVA -->
+  <section class="prova">
+    <div class="container">
+      <h2 class="section-title">Ofertas de verdade</h2>
+      <p class="section-sub">Prints do que rolou no grupo esta semana:</p>
+
+      <div class="prints">
+        <!-- TROCAR ESTES 4 PLACEHOLDERS PELOS SEUS PRINTS REAIS -->
+        <div class="print-card">
+          <span>Print 1<br>(coloque aqui)</span>
+        </div>
+        <div class="print-card">
+          <span>Print 2<br>(coloque aqui)</span>
+        </div>
+        <div class="print-card">
+          <span>Print 3<br>(coloque aqui)</span>
+        </div>
+        <div class="print-card">
+          <span>Print 4<br>(coloque aqui)</span>
+        </div>
+      </div>
+
+      <p class="disclaimer">
+        Ofertas reais postadas pelo bot no grupo. Preços e estoques mudam a qualquer momento no Mercado Livre.
+      </p>
+    </div>
+  </section>
+
+  <!-- POR QUE ENTRAR -->
+  <section class="beneficios">
+    <div class="container">
+      <h2 class="section-title">Por que entrar?</h2>
+      <p class="section-sub">O básico que o grupo entrega:</p>
+
+      <div class="beneficios-grid">
+        <div class="beneficio">
+          <div class="beneficio-icon">🤖</div>
+          <div>
+            <h3>Bot automático</h3>
+            <p>Robô vasculha o Mercado Livre 24h por dia. Você só abre o WhatsApp e vê a oferta.</p>
+          </div>
+        </div>
+        <div class="beneficio">
+          <div class="beneficio-icon">⚡</div>
+          <div>
+            <h3>Oferta fresca</h3>
+            <p>Postado em minutos depois do desconto aparecer. Chega antes de esgotar.</p>
+          </div>
+        </div>
+        <div class="beneficio">
+          <div class="beneficio-icon">🚫</div>
+          <div>
+            <h3>Zero papo furado</h3>
+            <p>Grupo travado: só o bot posta. Ninguém te manda corrente, bom-dia ou link estranho.</p>
+          </div>
+        </div>
+        <div class="beneficio">
+          <div class="beneficio-icon">🎁</div>
+          <div>
+            <h3>Grátis de verdade</h3>
+            <p>Sem pegadinha, sem taxa, sem pedir dado seu. Entrou, recebeu oferta.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OBJEÇÕES -->
+  <section class="objecoes">
+    <div class="container">
+      <h2 class="section-title">Antes de entrar...</h2>
+      <p class="section-sub">As dúvidas mais comuns:</p>
+
+      <div>
+        <div class="objecao">
+          <div class="objecao-q">Isso é pago?</div>
+          <div class="objecao-a">Não. O grupo é 100% gratuito e sempre vai ser. A gente ganha comissão do Mercado Livre só se você comprar — e isso não muda o preço pra você.</div>
+        </div>
+        <div class="objecao">
+          <div class="objecao-q">Vou receber spam?</div>
+          <div class="objecao-a">Não. Só o bot posta no grupo. Você não recebe DM nossa, nem corrente, nem "bom dia família".</div>
+        </div>
+        <div class="objecao">
+          <div class="objecao-q">As ofertas são de verdade?</div>
+          <div class="objecao-a">Sim. O bot pega as ofertas oficiais do Mercado Livre. Os preços que aparecem são os mesmos do site — sem inflar o "de" pra fingir desconto.</div>
+        </div>
+        <div class="objecao">
+          <div class="objecao-q">E se eu não gostar?</div>
+          <div class="objecao-a">Sai do grupo. Dois cliques no WhatsApp e acabou. Sem constrangimento.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final">
+    <div class="container">
+      <h2>Bora economizar?</h2>
+      <p>Entrou agora, já começa a receber oferta hoje.</p>
+
+      <a href="https://chat.whatsapp.com/LZICZxMWrLIAHEdFze6mjO?mode=hqctswi"
+         class="btn-whatsapp"
+         data-cta="final"
+         onclick="trackWhatsAppClick('final')">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+        Entrar agora — é grátis
       </a>
+      <p class="btn-sub">
+        <span class="check">✓</span> leva 5 segundos <span class="check">✓</span> saia quando quiser
+      </p>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- SOCIAL PROOF -->
-<section class="proof-section">
-  <div class="container">
-    <h2 class="section-title reveal">O que dizem os membros</h2>
-    <p class="section-sub reveal">Quem já está no grupo não para de economizar</p>
-    <div class="divider reveal"></div>
-
-    <div class="proof-grid">
-      <div class="proof-card reveal">
-        <div class="proof-stars">★★★★★</div>
-        <div class="proof-text">"Entrei ontem e já <strong>economizei R$120</strong> num fone que tava na minha lista há meses. Grupo imprescindível!"</div>
-        <div class="proof-name">— Mariana S.</div>
-      </div>
-      <div class="proof-card reveal">
-        <div class="proof-stars">★★★★★</div>
-        <div class="proof-text">"Sem spam, <strong>só oferta boa</strong>. Já comprei 4 coisas esse mês com desconto absurdo. Indico pra todo mundo."</div>
-        <div class="proof-name">— Rodrigo T.</div>
-      </div>
-      <div class="proof-card reveal">
-        <div class="proof-stars">★★★★★</div>
-        <div class="proof-text">"Pensei que seria mais um grupo chato. Me surpreendi. <strong>Qualidade altíssima</strong> nas ofertas, todo dia tem coisa boa."</div>
-        <div class="proof-name">— Fernanda L.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section class="final-cta">
-  <div class="container">
-    <h2 class="reveal">PRONTO PRA <span>ECONOMIZAR</span>?</h2>
-    <p class="reveal">Entra no grupo agora, é gratuito e você começa a receber ofertas imediatamente.</p>
-    <div class="cta-wrap reveal">
-      <a href="https://chat.whatsapp.com/LZICZxMWrLIAHEdFze6mjO?mode=hqctswi" class="btn-cta" target="_blank" rel="noopener">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        QUERO ENTRAR AGORA — É GRÁTIS
-      </a>
-      <p class="cta-note">🔒 Privacidade garantida · <span>Sem cobranças</span> · Saia quando quiser</p>
-    </div>
-  </div>
-</section>
-
-<footer>
-  © 2025 Tudo no Precinho · Grupo de ofertas no WhatsApp · Todos os preços sujeitos a alteração sem aviso prévio.
-</footer>
-
-<!-- FLOATING CTA MOBILE -->
-<div class="floating-cta">
-  <a href="https://chat.whatsapp.com/LZICZxMWrLIAHEdFze6mjO?mode=hqctswi" target="_blank" rel="noopener">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    ENTRAR NO GRUPO — GRÁTIS
+  <!-- BOTÃO FLUTUANTE -->
+  <a href="https://chat.whatsapp.com/LZICZxMWrLIAHEdFze6mjO?mode=hqctswi"
+     class="btn-float"
+     id="btnFloat"
+     data-cta="flutuante"
+     onclick="trackWhatsAppClick('flutuante')">
+    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    </svg>
+    Entrar no grupo agora
   </a>
-</div>
 
-<script>
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 60);
-        observer.unobserve(e.target);
+  <footer>
+    © 2025 Tudo no Precinho · Grupo de ofertas do Mercado Livre no WhatsApp.<br>
+    Preços sujeitos a alteração. Podemos receber comissão de afiliado sem custo adicional pra você.
+  </footer>
+
+  <script>
+    // RASTREAMENTO DE CONVERSÃO — Evento Lead quando o usuário clica no WhatsApp
+    function trackWhatsAppClick(origem) {
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'Lead', {
+          content_name: 'WhatsApp Group Join',
+          content_category: 'Offers Group',
+          source_button: origem
+        });
+      }
+      // Não bloqueia a navegação — o link continua funcionando normalmente
+      return true;
+    }
+
+    // Mostra botão flutuante depois de rolar 400px
+    const btnFloat = document.getElementById('btnFloat');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        btnFloat.classList.add('visible');
+      } else {
+        btnFloat.classList.remove('visible');
       }
     });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => observer.observe(el));
-
-  // Track CTA clicks (Google Analytics placeholder)
-  document.querySelectorAll('.btn-cta, .floating-cta a').forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (typeof gtag !== 'undefined') gtag('event', 'click_entrar_grupo', { event_category: 'CTA' });
-      if (typeof fbq !== 'undefined') fbq('track', 'Lead');
-    });
-  });
-</script>
-
-<!-- PIXEL META (substitua pelo seu ID) -->
-<!-- <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', 'SEU_PIXEL_ID_AQUI');
-  fbq('track', 'PageView');
-</script> -->
+  </script>
 
 </body>
 </html>
