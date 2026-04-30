@@ -2,8 +2,13 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0; url=https://chat.whatsapp.com/LZICZxMWrLIAHEdFze6mjO?mode=hqctswi">
-<title>Abrindo grupo no WhatsApp...</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Tudo no Precinho — Abrindo grupo no WhatsApp</title>
+<meta name="description" content="Grupo gratuito de ofertas selecionadas do Mercado Livre direto no WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
 <!-- Pixel do Meta -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -16,17 +21,450 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1540738174070489');
 fbq('track', 'PageView');
-fbq('track', 'Lead');
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
 /></noscript>
-<script>
-  window.location.replace("https://chat.whatsapp.com/LZICZxMWrLIAHEdFze6mjO?mode=hqctswi");
-</script>
+
+<style>
+  :root {
+    --bg:#0a0a0f;
+    --surface:#13131a;
+    --surface2:#1c1c25;
+    --border:#2a2a38;
+    --accent:#00ff88;
+    --accent-glow:rgba(0,255,136,.25);
+    --danger:#ef4444;
+    --text:#f0f0f5;
+    --muted:#8a8a9a;
+    --whatsapp:#25d366;
+    --mono:'Space Mono',monospace;
+    --sans:'Syne',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+  html,body{overscroll-behavior:none;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    min-height:100vh;
+    min-height:100dvh;
+    display:flex;
+    flex-direction:column;
+    overflow-x:hidden;
+    position:relative;
+  }
+  body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0,255,136,.08) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 50% 100%, rgba(37,211,102,.06) 0%, transparent 60%);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  .container{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    max-width:480px;
+    width:100%;
+    margin:0 auto;
+    padding:18px 18px 22px;
+    position:relative;
+    z-index:1;
+  }
+
+  .top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:14px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .brand-logo{
+    width:36px;
+    height:36px;
+    border-radius:10px;
+    background:linear-gradient(135deg, var(--accent) 0%, #00cc6a 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+    box-shadow:0 0 20px var(--accent-glow);
+  }
+  .brand-text{
+    display:flex;
+    flex-direction:column;
+    line-height:1.1;
+  }
+  .brand-name{
+    font-weight:800;
+    font-size:14px;
+    letter-spacing:-0.01em;
+  }
+  .brand-tag{
+    font-family:var(--mono);
+    font-size:9px;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+  }
+  .live-badge{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    background:rgba(0,255,136,.08);
+    border:1px solid rgba(0,255,136,.2);
+    padding:5px 9px;
+    border-radius:100px;
+    font-family:var(--mono);
+    font-size:9px;
+    color:var(--accent);
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+  }
+  .dot{
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:var(--accent);
+    animation:pulse 1.5s infinite;
+  }
+  @keyframes pulse{
+    0%,100%{opacity:1;transform:scale(1);}
+    50%{opacity:.4;transform:scale(.85);}
+  }
+
+  .countdown-card{
+    background:linear-gradient(135deg, rgba(37,211,102,.12) 0%, rgba(0,255,136,.08) 100%);
+    border:1px solid rgba(37,211,102,.3);
+    border-radius:16px;
+    padding:18px 16px;
+    text-align:center;
+    margin-bottom:14px;
+    position:relative;
+    overflow:hidden;
+    animation:fadeUp .5s ease-out;
+  }
+  .countdown-card::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at 50% 0%, rgba(37,211,102,.15) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .countdown-label{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    margin-bottom:6px;
+  }
+  .countdown-text{
+    font-size:18px;
+    font-weight:700;
+    line-height:1.2;
+    margin-bottom:4px;
+    letter-spacing:-0.01em;
+  }
+  .countdown-text .num{
+    color:var(--accent);
+    font-size:32px;
+    font-family:var(--mono);
+    font-weight:700;
+    display:inline-block;
+    min-width:30px;
+    text-align:center;
+  }
+  .countdown-text .num.tick{
+    animation:tickAnim .4s ease-out;
+  }
+  @keyframes tickAnim{
+    0%{transform:scale(1.4);opacity:0;}
+    50%{transform:scale(1.15);opacity:1;}
+    100%{transform:scale(1);opacity:1;}
+  }
+  .countdown-sub{
+    font-family:var(--mono);
+    font-size:10px;
+    color:var(--muted);
+    margin-top:4px;
+  }
+
+  .headline{
+    margin-bottom:12px;
+    text-align:center;
+    animation:fadeUp .6s ease-out .05s backwards;
+  }
+  .headline h1{
+    font-size:18px;
+    font-weight:700;
+    line-height:1.25;
+    letter-spacing:-0.01em;
+    color:var(--muted);
+  }
+  .headline h1 em{
+    font-style:normal;
+    color:var(--text);
+  }
+
+  .offers{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin-bottom:14px;
+    animation:fadeUp .7s ease-out .1s backwards;
+  }
+  .offer{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:12px;
+    overflow:hidden;
+    position:relative;
+  }
+  .offer-img{
+    width:100%;
+    aspect-ratio:1;
+    background:#000;
+    object-fit:cover;
+    display:block;
+  }
+  .offer-discount{
+    position:absolute;
+    top:6px;
+    left:6px;
+    background:var(--danger);
+    color:#fff;
+    padding:3px 7px;
+    border-radius:6px;
+    font-family:var(--mono);
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:-0.02em;
+  }
+  .offer-info{padding:7px 9px 9px;}
+  .offer-old{
+    font-family:var(--mono);
+    font-size:10px;
+    color:var(--muted);
+    text-decoration:line-through;
+    line-height:1;
+    margin-bottom:2px;
+  }
+  .offer-price{
+    font-family:var(--mono);
+    font-size:14px;
+    font-weight:700;
+    color:var(--accent);
+    line-height:1;
+  }
+
+  .flex-grow{flex:1;min-height:8px;}
+
+  .cta-block{animation:fadeUp .8s ease-out .2s backwards;}
+  .skip-text{
+    text-align:center;
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--muted);
+    margin-bottom:8px;
+  }
+  .cta-button{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    width:100%;
+    background:var(--whatsapp);
+    color:#fff;
+    border:none;
+    border-radius:14px;
+    padding:16px 20px;
+    font-family:var(--sans);
+    font-size:16px;
+    font-weight:800;
+    letter-spacing:-0.01em;
+    text-decoration:none;
+    cursor:pointer;
+    box-shadow:
+      0 8px 24px rgba(37,211,102,.35),
+      0 0 0 1px rgba(255,255,255,.1) inset;
+    transition:transform .15s, box-shadow .15s;
+    position:relative;
+    overflow:hidden;
+  }
+  .cta-button::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(120deg, transparent 30%, rgba(255,255,255,.15) 50%, transparent 70%);
+    transform:translateX(-100%);
+    animation:shine 2.5s infinite;
+  }
+  @keyframes shine{
+    0%{transform:translateX(-100%);}
+    50%,100%{transform:translateX(100%);}
+  }
+  .cta-button:active{transform:scale(.98);}
+  .cta-icon{font-size:20px;}
+
+  .footer{
+    margin-top:12px;
+    padding-top:10px;
+    border-top:1px solid var(--border);
+    font-family:var(--mono);
+    font-size:9px;
+    color:var(--muted);
+    text-align:center;
+    line-height:1.5;
+  }
+
+  @keyframes fadeUp{
+    from{opacity:0;transform:translateY(12px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+
+  @media (min-width:520px){
+    .countdown-text{font-size:20px;}
+    .countdown-text .num{font-size:36px;}
+  }
+</style>
 </head>
-<body style="font-family:sans-serif;text-align:center;padding:40px;">
-<p>Abrindo o grupo no WhatsApp...</p>
-<p>Se não abrir automaticamente, <a href="https://chat.whatsapp.com/LZICZxMWrLIAHEdFze6mjO?mode=hqctswi">clica aqui</a>.</p>
+<body>
+<div class="container">
+
+  <div class="top">
+    <div class="brand">
+      <div class="brand-logo">🛒</div>
+      <div class="brand-text">
+        <div class="brand-name">Tudo no Precinho</div>
+        <div class="brand-tag">ofertas · mercado livre</div>
+      </div>
+    </div>
+    <div class="live-badge">
+      <span class="dot"></span>
+      <span>Ao vivo</span>
+    </div>
+  </div>
+
+  <div class="countdown-card">
+    <div class="countdown-label">Aguarde um instante</div>
+    <div class="countdown-text">
+      Abrindo o grupo em <span class="num" id="countdown">5</span>
+    </div>
+    <div class="countdown-sub" id="redirecting" style="display:none;">redirecionando...</div>
+  </div>
+
+  <div class="headline">
+    <h1>Você vai entrar no grupo de <em>ofertas reais</em> do Mercado Livre.</h1>
+  </div>
+
+  <div class="offers">
+    <div class="offer">
+      <img class="offer-img" src="https://tudotudonoprecinho.github.io/tudo-no-precinho/imgs/oferta_fritadeira_crop.png" alt="Fritadeira" loading="eager">
+      <div class="offer-discount">-65%</div>
+      <div class="offer-info">
+        <div class="offer-old">R$ 749</div>
+        <div class="offer-price">R$ 260</div>
+      </div>
+    </div>
+    <div class="offer">
+      <img class="offer-img" src="https://tudotudonoprecinho.github.io/tudo-no-precinho/imgs/oferta_organizador_crop.png" alt="Organizador" loading="eager">
+      <div class="offer-discount">-46%</div>
+      <div class="offer-info">
+        <div class="offer-old">R$ 51,90</div>
+        <div class="offer-price">R$ 28,13</div>
+      </div>
+    </div>
+    <div class="offer">
+      <img class="offer-img" src="https://tudotudonoprecinho.github.io/tudo-no-precinho/imgs/oferta_cooktop_crop.png" alt="Cooktop" loading="eager">
+      <div class="offer-discount">-36%</div>
+      <div class="offer-info">
+        <div class="offer-old">R$ 464</div>
+        <div class="offer-price">R$ 295</div>
+      </div>
+    </div>
+    <div class="offer">
+      <img class="offer-img" src="https://tudotudonoprecinho.github.io/tudo-no-precinho/imgs/oferta_cadeira_crop.png" alt="Cadeira" loading="eager">
+      <div class="offer-discount">-32%</div>
+      <div class="offer-info">
+        <div class="offer-old">R$ 526</div>
+        <div class="offer-price">R$ 357</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex-grow"></div>
+
+  <div class="cta-block">
+    <div class="skip-text">Não quer esperar?</div>
+    <a class="cta-button" href="https://chat.whatsapp.com/LZICZxMWrLIAHEdFze6mjO?mode=hqctswi" id="cta">
+      <span class="cta-icon">💬</span>
+      <span>Entrar agora no grupo</span>
+    </a>
+  </div>
+
+  <div class="footer">
+    © Tudo no Precinho · Podemos receber comissão de afiliado<br>sem nenhum custo extra pra você.
+  </div>
+
+</div>
+
+<script>
+  const WHATSAPP_URL = "https://chat.whatsapp.com/LZICZxMWrLIAHEdFze6mjO?mode=hqctswi";
+  const COUNTDOWN_FROM = 5;
+
+  const countEl = document.getElementById('countdown');
+  const redirectingEl = document.getElementById('redirecting');
+  const ctaEl = document.getElementById('cta');
+
+  let count = COUNTDOWN_FROM;
+  let redirected = false;
+
+  function trackLead() {
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'Lead');
+    }
+  }
+
+  function doRedirect() {
+    if (redirected) return;
+    redirected = true;
+    trackLead();
+    window.location.href = WHATSAPP_URL;
+  }
+
+  ctaEl.addEventListener('click', function(e) {
+    if (!redirected) {
+      redirected = true;
+      trackLead();
+    }
+  });
+
+  const tick = setInterval(function() {
+    count -= 1;
+    if (count <= 0) {
+      clearInterval(tick);
+      countEl.textContent = '0';
+      redirectingEl.style.display = 'block';
+      doRedirect();
+    } else {
+      countEl.textContent = count;
+      countEl.classList.remove('tick');
+      void countEl.offsetWidth;
+      countEl.classList.add('tick');
+    }
+  }, 1000);
+</script>
+
 </body>
 </html>
