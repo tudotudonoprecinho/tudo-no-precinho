@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Grupo de WhatsApp com ofertas selecionadas do Mercado Livre. Entra grátis, recebe as melhores promoções direto no celular." />
-<title>Tudo no Precinho — Ofertas selecionadas do Mercado Livre no WhatsApp</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Tudo no Precinho — Entre no grupo</title>
+<meta name="description" content="As melhores ofertas do dia direto no seu WhatsApp. Grátis, sem spam.">
+<link rel="icon" href="imgs/logo.jpg">
 
-<!-- Meta Pixel Code -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Pixel do Meta -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -22,885 +27,430 @@ fbq('track', 'PageView');
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
 /></noscript>
-<!-- End Meta Pixel Code -->
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
 
 <style>
   :root {
-    /* Brand — puxadas da logo */
-    --marinho: #0A3896;
-    --marinho-dark: #061E5C;
-    --laranja: #FF7A1A;
-    --laranja-dark: #E55F00;
-    --creme: #FFF7EB;
-    --creme-2: #FBEEDA;
-    --verde-zap: #25D366;
-    --verde-zap-dark: #128C7E;
-    --preto: #0B0F1A;
-    --cinza: #64748B;
-    --branco: #FFFFFF;
+    --bg: #FFF8EC;
+    --bg-accent: #FFE9C4;
+    --ink: #1A1410;
+    --orange: #F28C1F;
+    --orange-dark: #D9711A;
+    --orange-deep: #B8540C;
+    --whatsapp: #25D366;
+    --whatsapp-dark: #1FAD52;
+    --muted: #8A7D6F;
+    --line: rgba(26,20,16,.08);
+    --display: 'Bricolage Grotesque', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+  html,body{overscroll-behavior:none;}
 
-  body {
-    font-family: 'DM Sans', system-ui, sans-serif;
-    background: var(--creme);
-    color: var(--preto);
-    line-height: 1.55;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  .container { max-width: 560px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
-
-  /* ========== FAIXA TOPO ========== */
-  .topbar {
-    background: var(--preto);
-    color: #fff;
-    padding: 9px 0;
-    text-align: center;
-    font-size: 12px;
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--display);
     font-weight: 500;
-    letter-spacing: 0.02em;
-  }
-  .topbar b { color: var(--laranja); font-weight: 700; }
-  .topbar .dot {
-    display: inline-block;
-    width: 7px; height: 7px;
-    background: #FF3B3B;
-    border-radius: 50%;
-    margin-right: 6px;
-    vertical-align: middle;
-    animation: blink 1.2s ease-in-out infinite;
-  }
-  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
-
-  /* ========== HERO ========== */
-  .hero {
-    background: var(--marinho);
-    color: #fff;
-    padding: 30px 0 50px;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow-x: hidden;
     position: relative;
-    overflow: hidden;
-  }
-  /* Padrão de tags espalhadas no fundo */
-  .hero::before {
-    content: "";
-    position: absolute; inset: 0;
-    background-image:
-      radial-gradient(circle at 85% 20%, rgba(255,122,26,0.3) 0, transparent 35%),
-      radial-gradient(circle at 15% 80%, rgba(255,122,26,0.15) 0, transparent 40%);
-    pointer-events: none;
-  }
-  /* Tag decoração */
-  .hero::after {
-    content: "%";
-    position: absolute;
-    top: 40px; right: -30px;
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 240px;
-    font-weight: 800;
-    color: rgba(255,255,255,0.05);
-    line-height: 1;
-    pointer-events: none;
-    letter-spacing: -0.05em;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.4;
   }
 
-  .logo-bloco {
+  /* Textura de fundo grão */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 15% 15%, rgba(242,140,31,.12) 0%, transparent 50%),
+      radial-gradient(circle at 85% 85%, rgba(37,211,102,.06) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: .03;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    flex: 1;
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+    padding: 28px 22px 24px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Top bar — barra de status do "grupo ativo" */
+  .status-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 7px 14px;
+    background: rgba(37,211,102,.1);
+    border: 1px solid rgba(37,211,102,.25);
+    border-radius: 100px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: #1A8F45;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    align-self: center;
+    animation: fadeIn .5s ease-out;
+  }
+  .pulse-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--whatsapp);
+    box-shadow: 0 0 0 0 rgba(37,211,102,.5);
+    animation: pulse 1.8s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(37,211,102,.6); }
+    70% { box-shadow: 0 0 0 8px rgba(37,211,102,0); }
+    100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+  }
+
+  /* Hero — logo + nome */
+  .hero {
+    text-align: center;
+    margin-bottom: 36px;
+    animation: fadeUp .6s ease-out .05s backwards;
+  }
+
+  .logo-wrap {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 18px;
+  }
+
+  .logo {
+    width: 124px;
+    height: 124px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--ink);
+    background: var(--bg);
+    box-shadow:
+      0 0 0 6px var(--bg),
+      0 0 0 8px var(--orange),
+      8px 8px 0 8px var(--ink);
+    display: block;
+  }
+
+  .logo-wrap::before {
+    content: '';
+    position: absolute;
+    top: -14px;
+    right: -14px;
+    width: 38px;
+    height: 38px;
+    background: var(--orange);
+    border-radius: 50%;
+    border: 3px solid var(--ink);
+    z-index: 1;
+  }
+
+  .logo-wrap::after {
+    content: '%';
+    position: absolute;
+    top: -10px;
+    right: -8px;
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--ink);
+    z-index: 2;
+    line-height: 1;
+  }
+
+  .brand-name {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 6px;
+    color: var(--ink);
+  }
+  .brand-name em {
+    font-style: italic;
+    font-weight: 800;
+    color: var(--orange-deep);
+    position: relative;
+  }
+  .brand-name em::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 2px;
+    height: 6px;
+    background: var(--orange);
+    z-index: -1;
+    opacity: .35;
+  }
+
+  .brand-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-top: 4px;
+  }
+
+  /* Headline curta */
+  .headline {
+    text-align: center;
+    margin-bottom: 32px;
+    animation: fadeUp .7s ease-out .15s backwards;
+  }
+  .headline p {
+    font-size: 16px;
+    color: var(--ink);
+    line-height: 1.45;
+    max-width: 320px;
+    margin: 0 auto;
+    font-weight: 500;
+  }
+  .headline p strong {
+    font-weight: 800;
+  }
+
+  /* Botões — estilo principal */
+  .btn-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 28px;
+    animation: fadeUp .8s ease-out .25s backwards;
+  }
+
+  .btn {
     display: flex;
     align-items: center;
     gap: 14px;
-    margin-bottom: 28px;
-  }
-  .logo-bloco img {
-    width: 64px; height: 64px;
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
-    object-fit: cover;
-  }
-  .logo-bloco .nome {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 18px;
+    width: 100%;
+    padding: 18px 18px;
+    border: 2.5px solid var(--ink);
+    background: #fff;
+    color: var(--ink);
+    text-decoration: none;
+    border-radius: 18px;
+    font-family: var(--display);
+    font-size: 16px;
     font-weight: 700;
-    line-height: 1.1;
     letter-spacing: -0.01em;
+    line-height: 1.2;
+    cursor: pointer;
+    transition: transform .15s ease, box-shadow .15s ease;
+    box-shadow: 4px 4px 0 0 var(--ink);
+    position: relative;
+    overflow: hidden;
   }
-  .logo-bloco .sub {
-    font-size: 11px;
-    opacity: 0.75;
-    letter-spacing: 0.08em;
+  .btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 0 var(--ink);
+  }
+  .btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 0 var(--ink);
+  }
+
+  .btn-icon {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+  }
+
+  .btn-text {
+    flex: 1;
+    text-align: left;
+  }
+  .btn-text small {
+    display: block;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--muted);
     text-transform: uppercase;
+    letter-spacing: 0.08em;
     margin-top: 2px;
   }
 
-  h1 {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: clamp(36px, 9.5vw, 52px);
-    line-height: 0.95;
-    letter-spacing: -0.035em;
-    font-weight: 700;
-    margin-bottom: 20px;
-  }
-  h1 .marca-laranja {
-    color: var(--laranja);
-    display: inline-block;
-    position: relative;
-  }
-  h1 .marca-laranja::after {
-    content: "";
-    position: absolute;
-    left: 0; right: 0; bottom: 2px;
-    height: 8px;
-    background: rgba(255,122,26,0.3);
-    z-index: -1;
-  }
-
-  .hero-sub {
+  /* Botão principal — WhatsApp (destaque) */
+  .btn-whatsapp {
+    background: var(--whatsapp);
+    color: #fff;
+    border-color: var(--ink);
     font-size: 17px;
-    line-height: 1.45;
-    opacity: 0.9;
-    margin-bottom: 28px;
-    max-width: 480px;
+    padding: 22px 18px;
   }
-
-  /* Indicadores rápidos */
-  .quick-stats {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-bottom: 28px;
+  .btn-whatsapp .btn-icon {
+    background: #fff;
+    color: var(--whatsapp-dark);
   }
-  .quick-stat {
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.15);
-    padding: 10px 14px;
-    border-radius: 12px;
-    font-size: 13px;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    backdrop-filter: blur(8px);
+  .btn-whatsapp .btn-text small {
+    color: rgba(255,255,255,.85);
   }
-  .quick-stat svg { width: 16px; height: 16px; flex-shrink: 0; }
-  .quick-stat b { color: var(--laranja); font-weight: 700; }
-
-  /* Botão WhatsApp */
-  .btn-zap {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    background: var(--verde-zap);
-    color: #fff;
-    text-decoration: none;
-    padding: 20px 22px;
-    border-radius: 16px;
-    font-size: 17px;
-    font-weight: 700;
-    box-shadow: 0 6px 0 var(--verde-zap-dark), 0 16px 32px rgba(18,140,126,0.35);
-    transition: transform 0.15s, box-shadow 0.15s;
-    letter-spacing: 0.01em;
-  }
-  .btn-zap:hover { background: #1FB955; }
-  .btn-zap:active {
-    transform: translateY(4px);
-    box-shadow: 0 2px 0 var(--verde-zap-dark), 0 6px 16px rgba(18,140,126,0.35);
-  }
-  .btn-zap svg { width: 22px; height: 22px; }
-
-  .btn-sub {
-    text-align: center;
-    font-size: 12.5px;
-    margin-top: 12px;
-    opacity: 0.85;
-  }
-  .btn-sub span { white-space: nowrap; }
-  .btn-sub .tick { color: var(--laranja); font-weight: 700; }
-
-  /* ========== SEÇÕES ========== */
-  section { padding: 56px 0; position: relative; }
-
-  .section-eyebrow {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--laranja);
-    margin-bottom: 10px;
-    padding: 4px 10px;
-    background: var(--creme-2);
-    border-radius: 100px;
-  }
-
-  .section-title {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 32px;
-    line-height: 1.02;
-    letter-spacing: -0.03em;
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: var(--marinho);
-  }
-  .section-title em {
-    font-style: normal;
-    color: var(--laranja);
-  }
-  .section-sub {
-    font-size: 15.5px;
-    color: var(--cinza);
-    margin-bottom: 32px;
-    max-width: 440px;
-  }
-
-  /* ========== COMO FUNCIONA ========== */
-  .como {
-    background: var(--branco);
-  }
-  .steps { display: grid; gap: 14px; }
-  .step {
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-    padding: 20px;
-    background: var(--creme);
-    border-radius: 18px;
-    border: 1.5px solid transparent;
-    transition: border-color 0.25s, transform 0.25s;
-  }
-  .step:hover {
-    border-color: var(--laranja);
-    transform: translateY(-2px);
-  }
-  .step-icon {
-    flex-shrink: 0;
-    width: 48px; height: 48px;
-    background: var(--marinho);
-    color: #fff;
-    border-radius: 14px;
-    display: grid;
-    place-items: center;
-    position: relative;
-  }
-  .step-icon svg { width: 24px; height: 24px; stroke-width: 2; }
-  .step-icon::after {
-    content: attr(data-num);
+  .btn-whatsapp::before {
+    content: '';
     position: absolute;
-    top: -6px; right: -6px;
-    width: 22px; height: 22px;
-    background: var(--laranja);
-    color: #fff;
-    border-radius: 50%;
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    display: grid;
-    place-items: center;
-    border: 2px solid var(--branco);
-  }
-  .step h3 {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 17px;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    margin-bottom: 4px;
-    color: var(--marinho);
-  }
-  .step p {
-    font-size: 14.5px;
-    color: var(--cinza);
-    line-height: 1.5;
-  }
-
-  /* ========== OFERTAS REAIS ========== */
-  .ofertas {
-    background: var(--creme);
-    overflow: hidden;
-  }
-  .ofertas .section-title em { color: var(--marinho); background: var(--laranja); padding: 0 8px; border-radius: 6px; color: #fff; font-size: 0.9em; display: inline-block; transform: rotate(-1.5deg); }
-
-  .scroll-hint {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 12px;
-    color: var(--cinza);
-    margin-bottom: 16px;
-  }
-  .scroll-hint svg { width: 14px; height: 14px; }
-
-  .ofertas-scroller {
-    display: flex;
-    gap: 14px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding: 4px 20px 30px;
-    margin: 0 -20px;
-    -webkit-overflow-scrolling: touch;
-  }
-  .ofertas-scroller::-webkit-scrollbar { display: none; }
-  .ofertas-scroller { scrollbar-width: none; }
-
-  .oferta-card {
-    flex: 0 0 auto;
-    width: 260px;
-    scroll-snap-align: start;
-    background: var(--branco);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(10,56,150,0.08), 0 1px 3px rgba(0,0,0,0.04);
-    position: relative;
-    transition: transform 0.25s, box-shadow 0.25s;
-  }
-  .oferta-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 32px rgba(10,56,150,0.15);
-  }
-  .oferta-badge {
-    position: absolute;
-    top: 12px; right: 12px;
-    background: var(--laranja);
-    color: #fff;
-    padding: 6px 12px;
-    border-radius: 100px;
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    z-index: 2;
-    box-shadow: 0 4px 12px rgba(255,122,26,0.4);
-    letter-spacing: -0.01em;
-  }
-  .oferta-img {
-    width: 100%;
-    aspect-ratio: 0.75;
-    overflow: hidden;
-    background: #DCF8C6; /* tom de mensagem WhatsApp */
-  }
-  .oferta-img img {
-    width: 100%;
+    top: 0;
+    left: -30%;
+    width: 30%;
     height: 100%;
-    object-fit: cover;
-    object-position: top center;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
+    animation: shine 3s infinite;
+    pointer-events: none;
+  }
+  @keyframes shine {
+    0% { left: -30%; }
+    50%, 100% { left: 130%; }
+  }
+
+  /* Botão secundário — Instagram */
+  .btn-instagram .btn-icon {
+    background: linear-gradient(135deg, #FCAF45 0%, #F77737 25%, #FD1D1D 50%, #C13584 75%, #833AB4 100%);
+  }
+
+  /* Arrow icon */
+  .btn-arrow {
+    flex-shrink: 0;
+    font-size: 20px;
+    color: currentColor;
+    opacity: .7;
+  }
+
+  /* Footer minimalista */
+  .footer {
+    margin-top: auto;
+    padding-top: 32px;
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    line-height: 1.6;
+    animation: fadeIn 1s ease-out .5s backwards;
+  }
+  .footer span {
     display: block;
   }
-  .oferta-info {
-    padding: 14px 14px 16px;
-    background: var(--branco);
-    border-top: 1px solid rgba(10,56,150,0.08);
+  .footer .copy {
+    opacity: .7;
   }
-  .oferta-info .nome {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--preto);
-    line-height: 1.3;
-    margin-bottom: 8px;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  .oferta-info .precos {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    margin-bottom: 4px;
-  }
-  .oferta-info .de {
-    font-size: 12px;
-    color: var(--cinza);
-    text-decoration: line-through;
-  }
-  .oferta-info .por {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--marinho);
-    letter-spacing: -0.02em;
-  }
-  .oferta-info .economia {
-    font-size: 12px;
-    color: var(--laranja-dark);
-    font-weight: 600;
+  .footer .legal {
+    margin-top: 6px;
+    opacity: .55;
+    font-size: 9px;
   }
 
-  .ofertas-disclaimer {
-    margin-top: 8px;
-    font-size: 12.5px;
-    color: var(--cinza);
-    text-align: center;
-    padding: 0 10px;
-    line-height: 1.5;
+  /* Animações */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
   }
-  .ofertas-disclaimer b { color: var(--marinho); }
-
-  /* ========== POR QUE ENTRAR ========== */
-  .beneficios {
-    background: var(--marinho);
-    color: #fff;
-    position: relative;
-    overflow: hidden;
-  }
-  .beneficios::before {
-    content: "";
-    position: absolute; inset: 0;
-    background: radial-gradient(circle at 20% 30%, rgba(255,122,26,0.2) 0, transparent 45%);
-    pointer-events: none;
-  }
-  .beneficios .section-eyebrow {
-    background: rgba(255,122,26,0.2);
-    color: var(--laranja);
-  }
-  .beneficios .section-title { color: #fff; }
-  .beneficios .section-title em { color: var(--laranja); background: none; padding: 0; transform: none; display: inline; }
-  .beneficios .section-sub { color: rgba(255,255,255,0.75); }
-
-  .benef-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-  .benef-card {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
-    backdrop-filter: blur(10px);
-    padding: 20px;
-    border-radius: 16px;
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-  }
-  .benef-card .ico {
-    flex-shrink: 0;
-    width: 42px; height: 42px;
-    background: var(--laranja);
-    border-radius: 12px;
-    display: grid;
-    place-items: center;
-  }
-  .benef-card .ico svg { width: 22px; height: 22px; stroke: #fff; stroke-width: 2; fill: none; }
-  .benef-card h3 {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 4px;
-    letter-spacing: -0.01em;
-  }
-  .benef-card p {
-    font-size: 13.5px;
-    color: rgba(255,255,255,0.75);
-    line-height: 1.45;
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 
-  /* ========== FAQ ========== */
-  .faq { background: var(--branco); }
-  .faq-item {
-    border-top: 1.5px solid var(--creme-2);
-    padding: 20px 0;
-  }
-  .faq-item:first-of-type { border-top: none; padding-top: 8px; }
-  .faq-q {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--marinho);
-    margin-bottom: 6px;
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    letter-spacing: -0.01em;
-  }
-  .faq-q::before {
-    content: "?";
-    flex-shrink: 0;
-    width: 26px; height: 26px;
-    background: var(--laranja);
-    color: #fff;
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 16px;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    margin-top: 1px;
-  }
-  .faq-a {
-    font-size: 14.5px;
-    color: var(--cinza);
-    line-height: 1.55;
-    padding-left: 36px;
-  }
-
-  /* ========== CTA FINAL ========== */
-  .cta {
-    background: linear-gradient(135deg, var(--laranja) 0%, var(--laranja-dark) 100%);
-    color: #fff;
-    text-align: center;
-    padding: 64px 0 72px;
-    position: relative;
-    overflow: hidden;
-  }
-  .cta::before {
-    content: "";
-    position: absolute; inset: 0;
-    background: radial-gradient(circle at 80% 20%, rgba(255,255,255,0.2) 0, transparent 40%);
-    pointer-events: none;
-  }
-  .cta h2 {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 36px;
-    line-height: 1;
-    letter-spacing: -0.03em;
-    font-weight: 700;
-    margin-bottom: 14px;
-  }
-  .cta p {
-    font-size: 16px;
-    margin-bottom: 28px;
-    opacity: 0.95;
-  }
-  .cta .btn-zap {
-    background: var(--preto);
-    box-shadow: 0 6px 0 #000, 0 16px 32px rgba(0,0,0,0.3);
-  }
-  .cta .btn-zap:hover { background: #1a1f2e; }
-  .cta .btn-zap:active { box-shadow: 0 2px 0 #000, 0 6px 16px rgba(0,0,0,0.3); }
-
-  /* ========== BOTÃO FLUTUANTE ========== */
-  .float-btn {
-    position: fixed;
-    bottom: 16px;
-    left: 16px;
-    right: 16px;
-    max-width: 520px;
-    margin: 0 auto;
-    background: var(--verde-zap);
-    color: #fff;
-    text-decoration: none;
-    padding: 16px 20px;
-    border-radius: 14px;
-    font-weight: 700;
-    font-size: 15.5px;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
-    z-index: 100;
-  }
-  .float-btn.visible { display: flex; }
-  .float-btn svg { width: 20px; height: 20px; }
-
-  /* ========== FOOTER ========== */
-  footer {
-    background: var(--preto);
-    color: rgba(255,255,255,0.5);
-    text-align: center;
-    padding: 32px 20px 100px;
-    font-size: 12px;
-    line-height: 1.6;
-  }
-
-  /* ========== DESKTOP ========== */
-  @media (min-width: 768px) {
-    .container { max-width: 720px; }
-    h1 { font-size: 64px; letter-spacing: -0.04em; }
-    .section-title { font-size: 40px; }
-    .cta h2 { font-size: 52px; }
-    .benef-grid { grid-template-columns: 1fr 1fr; }
-    .oferta-card { width: 280px; }
-    .hero { padding: 40px 0 64px; }
+  /* Desktop polish */
+  @media (min-width: 520px) {
+    .brand-name { font-size: 38px; }
+    .logo { width: 140px; height: 140px; }
   }
 </style>
 </head>
 <body>
+<div class="container">
 
-<!-- TOPBAR -->
-<div class="topbar">
-  <span class="dot"></span>
-  <b>GRUPO ATIVO</b> · Ofertas do Mercado Livre sendo postadas agora
+  <!-- Status pill -->
+  <div class="status-bar">
+    <span class="pulse-dot"></span>
+    <span>Grupo ativo · ofertas agora</span>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="logo-wrap">
+      <img class="logo" src="imgs/logo.jpg" alt="Tudo no Precinho" loading="eager">
+    </div>
+    <h1 class="brand-name">Tudo no <em>Precinho</em></h1>
+    <div class="brand-tag">as melhores ofertas do dia</div>
+  </div>
+
+  <!-- Headline -->
+  <div class="headline">
+    <p>As <strong>melhores ofertas do dia</strong> direto no seu WhatsApp. Grátis, sem spam.</p>
+  </div>
+
+  <!-- Botões -->
+  <div class="btn-stack">
+
+    <!-- WhatsApp - principal -->
+    <a class="btn btn-whatsapp" href="https://chat.whatsapp.com/LZICZxMWrLIAHEdFze6mjO?mode=hqctswi" id="cta-whatsapp" target="_blank" rel="noopener">
+      <span class="btn-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+      </span>
+      <span class="btn-text">
+        Entrar no grupo grátis
+        <small>WhatsApp · sem spam · sai quando quiser</small>
+      </span>
+      <span class="btn-arrow">→</span>
+    </a>
+
+    <!-- Instagram -->
+    <a class="btn btn-instagram" href="https://www.instagram.com/tudotudonoprecinho/" id="cta-instagram" target="_blank" rel="noopener">
+      <span class="btn-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+      </span>
+      <span class="btn-text">
+        Seguir no Instagram
+        <small>@tudotudonoprecinho · ofertas e dicas</small>
+      </span>
+      <span class="btn-arrow">→</span>
+    </a>
+
+  </div>
+
+  <!-- Footer minimalista -->
+  <div class="footer">
+    <span class="copy">© 2026 Tudo no Precinho · Ofertas selecionadas</span>
+    <span class="legal">Podemos receber comissão de afiliado sem custo extra pra você.</span>
+  </div>
+
 </div>
 
-<!-- HERO -->
-<header class="hero">
-  <div class="container">
-    <div class="logo-bloco">
-      <img src="imgs/logo.jpg" alt="Logo Tudo no Precinho">
-      <div>
-        <div class="nome">Tudo no Precinho</div>
-        <div class="sub">Ofertas Imperdíveis · Economia Garantida</div>
-      </div>
-    </div>
-
-    <h1>
-      As melhores ofertas do <span class="marca-laranja">Mercado&nbsp;Livre</span> no seu WhatsApp.
-    </h1>
-
-    <p class="hero-sub">
-      Entra no grupo e recebe as promoções selecionadas a dedo, direto no seu celular. Grátis, sem spam, sem papo furado.
-    </p>
-
-    <div class="quick-stats">
-      <div class="quick-stat">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-        Curadoria <b>24h</b> ativa
-      </div>
-      <div class="quick-stat">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        <b>Zero</b> spam
-      </div>
-      <div class="quick-stat">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 100 4h4a2 2 0 110 4H8"/><path d="M12 6v2M12 16v2"/></svg>
-        <b>R$ 0</b> pra entrar
-      </div>
-    </div>
-
-    <a href="https://chat.whatsapp.com/LZICZxMWrLIAHEdFze6mjO?mode=hqctswi"
-       class="btn-zap"
-       onclick="trackWhatsAppClick('hero')">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-      Quero entrar no grupo
-    </a>
-    <p class="btn-sub">
-      <span><span class="tick">✓</span> grátis</span> &nbsp;·&nbsp;
-      <span><span class="tick">✓</span> 5 segundos</span> &nbsp;·&nbsp;
-      <span><span class="tick">✓</span> saia quando quiser</span>
-    </p>
-  </div>
-</header>
-
-<!-- COMO FUNCIONA -->
-<section class="como">
-  <div class="container">
-    <span class="section-eyebrow">Passo a passo</span>
-    <h2 class="section-title">Como <em>funciona</em></h2>
-    <p class="section-sub">Três passos simples, sem enrolação:</p>
-
-    <div class="steps">
-      <div class="step">
-        <div class="step-icon" data-num="1">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
-        </div>
-        <div>
-          <h3>Entra no grupo</h3>
-          <p>Clica no botão e toca em "Entrar no grupo" no WhatsApp. Leva literalmente 5 segundos.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-icon" data-num="2">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        </div>
-        <div>
-          <h3>Recebe as ofertas</h3>
-          <p>A gente garimpa o Mercado Livre o dia inteiro e posta só as promoções que valem a pena.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-icon" data-num="3">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11H5a2 2 0 00-2 2v7a2 2 0 002 2h14a2 2 0 002-2v-7a2 2 0 00-2-2h-4"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-        </div>
-        <div>
-          <h3>Compra se quiser</h3>
-          <p>Gostou? Clica no link e finaliza pelo próprio Mercado Livre. Sem compromisso, sem enrolação.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- OFERTAS REAIS -->
-<section class="ofertas">
-  <div class="container">
-    <span class="section-eyebrow">Direto do grupo</span>
-    <h2 class="section-title">Ofertas <em>reais</em> desta semana</h2>
-    <p class="section-sub">Prints autênticos do grupo, sem edição. Arrasta pra ver:</p>
-
-    <div class="scroll-hint">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><polyline points="15 19 12 22 9 19"/><polyline points="19 9 22 12 19 15"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg>
-      Deslize pra ver mais ofertas
-    </div>
-  </div>
-
-  <div class="ofertas-scroller">
-    <div class="oferta-card">
-      <div class="oferta-badge">-65%</div>
-      <div class="oferta-img">
-        <img src="imgs/oferta_fritadeira_crop.png" alt="Oferta real: Fritadeira Oster no grupo">
-      </div>
-      <div class="oferta-info">
-        <div class="nome">Fritadeira Digital Oster 5L Painel Touch</div>
-        <div class="precos">
-          <span class="de">R$ 749</span>
-          <span class="por">R$ 260</span>
-        </div>
-        <div class="economia">Economize R$ 489</div>
-      </div>
-    </div>
-
-    <div class="oferta-card">
-      <div class="oferta-badge">-46%</div>
-      <div class="oferta-img">
-        <img src="imgs/oferta_organizador_crop.png" alt="Oferta real: Organizador Facility no grupo">
-      </div>
-      <div class="oferta-info">
-        <div class="nome">Organizador de Porta/Parede c/ 8 Ganchos</div>
-        <div class="precos">
-          <span class="de">R$ 51,90</span>
-          <span class="por">R$ 28,13</span>
-        </div>
-        <div class="economia">Economize R$ 23</div>
-      </div>
-    </div>
-
-    <div class="oferta-card">
-      <div class="oferta-badge">-36%</div>
-      <div class="oferta-img">
-        <img src="imgs/oferta_cooktop_crop.png" alt="Oferta real: Cooktop Itatiaia no grupo">
-      </div>
-      <div class="oferta-info">
-        <div class="nome">Cooktop Itatiaia Essencial 4 Bocas Preto</div>
-        <div class="precos">
-          <span class="de">R$ 464</span>
-          <span class="por">R$ 295</span>
-        </div>
-        <div class="economia">Economize R$ 168</div>
-      </div>
-    </div>
-
-    <div class="oferta-card">
-      <div class="oferta-badge">-32%</div>
-      <div class="oferta-img">
-        <img src="imgs/oferta_cadeira_crop.png" alt="Oferta real: Cadeira ergonômica no grupo">
-      </div>
-      <div class="oferta-info">
-        <div class="nome">Cadeira Escritório Ergonômica B500 c/ Lombar</div>
-        <div class="precos">
-          <span class="de">R$ 526</span>
-          <span class="por">R$ 357</span>
-        </div>
-        <div class="economia">Economize R$ 168</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="container">
-    <p class="ofertas-disclaimer">
-      <b>Essas ofertas foram reais.</b> Preços e estoque do Mercado Livre mudam a qualquer momento — entra no grupo pra não perder as próximas.
-    </p>
-  </div>
-</section>
-
-<!-- BENEFÍCIOS -->
-<section class="beneficios">
-  <div class="container">
-    <span class="section-eyebrow">Por que entrar</span>
-    <h2 class="section-title">O grupo que a gente <em>queria</em> ter</h2>
-    <p class="section-sub">Criado pra quem gosta de economizar sem perder tempo:</p>
-
-    <div class="benef-grid">
-      <div class="benef-card">
-        <div class="ico">
-          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><polyline points="8 11 11 14 14 8"/></svg>
-        </div>
-        <div>
-          <h3>Seleção a dedo</h3>
-          <p>A gente vasculha o Mercado Livre todo dia e separa só o que vale a pena. Você só abre o WhatsApp e vê.</p>
-        </div>
-      </div>
-      <div class="benef-card">
-        <div class="ico">
-          <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-        </div>
-        <div>
-          <h3>Oferta fresca</h3>
-          <p>Postado em minutos depois do desconto aparecer. Chega antes de esgotar.</p>
-        </div>
-      </div>
-      <div class="benef-card">
-        <div class="ico">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
-        </div>
-        <div>
-          <h3>Zero papo furado</h3>
-          <p>Grupo travado: só a gente posta as ofertas. Ninguém te manda corrente nem bom-dia.</p>
-        </div>
-      </div>
-      <div class="benef-card">
-        <div class="ico">
-          <svg viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
-        </div>
-        <div>
-          <h3>100% grátis</h3>
-          <p>Sem taxa, sem pegadinha. A gente ganha comissão do ML se você comprar.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="faq">
-  <div class="container">
-    <span class="section-eyebrow">Dúvidas frequentes</span>
-    <h2 class="section-title">Antes de <em>entrar</em></h2>
-    <p class="section-sub">O que você deve estar se perguntando:</p>
-
-    <div>
-      <div class="faq-item">
-        <div class="faq-q">Preciso pagar alguma coisa?</div>
-        <div class="faq-a">Nada. O grupo é 100% gratuito e sempre vai ser. A gente ganha comissão do Mercado Livre se você comprar pelo link, e isso não muda o preço pra você em nada.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Vou receber spam ou mensagem privada?</div>
-        <div class="faq-a">Não. Só a gente posta as ofertas no grupo. Você nunca vai receber DM, nem corrente, nem "bom dia família".</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">As ofertas são de verdade?</div>
-        <div class="faq-a">Sim. As ofertas vêm direto do Mercado Livre. Os preços que aparecem são exatamente os do site — sem inflar o "de" pra simular desconto.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">E se eu não gostar?</div>
-        <div class="faq-a">Sai do grupo. Dois toques no WhatsApp e pronto, sem constrangimento. Também dá pra silenciar e conferir só quando quiser.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA FINAL -->
-<section class="cta">
-  <div class="container">
-    <h2>Bora economizar?</h2>
-    <p>Entra agora e já começa a receber oferta hoje.</p>
-
-    <a href="https://chat.whatsapp.com/LZICZxMWrLIAHEdFze6mjO?mode=hqctswi"
-       class="btn-zap"
-       onclick="trackWhatsAppClick('final')">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-      Entrar no grupo — grátis
-    </a>
-  </div>
-</section>
-
-<!-- BOTÃO FLUTUANTE -->
-<a href="https://chat.whatsapp.com/LZICZxMWrLIAHEdFze6mjO?mode=hqctswi"
-   class="float-btn"
-   id="floatBtn"
-   onclick="trackWhatsAppClick('flutuante')">
-  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-  Entrar no grupo agora
-</a>
-
-<footer>
-  © 2025 Tudo no Precinho · Ofertas selecionadas do Mercado Livre.<br>
-  Preços podem ser alterados a qualquer momento. Podemos receber comissão de afiliado sem custo adicional pra você.
-</footer>
-
 <script>
+  // Tracking detalhado dos cliques no pixel da Meta
   function trackWhatsAppClick(origem) {
     if (typeof fbq !== 'undefined') {
       fbq('track', 'Lead', {
@@ -911,10 +461,25 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
     }
     return true;
   }
-  const btn = document.getElementById('floatBtn');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 500) btn.classList.add('visible');
-    else btn.classList.remove('visible');
+
+  function trackInstagramClick(origem) {
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'ViewContent', {
+        content_name: 'Instagram Profile Click',
+        content_category: 'Social Profile',
+        source_button: origem
+      });
+    }
+    return true;
+  }
+
+  // Vincula os eventos aos botões
+  document.getElementById('cta-whatsapp').addEventListener('click', function() {
+    trackWhatsAppClick('bio_principal');
+  });
+
+  document.getElementById('cta-instagram').addEventListener('click', function() {
+    trackInstagramClick('bio_secundario');
   });
 </script>
 
