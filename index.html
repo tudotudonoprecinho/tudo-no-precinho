@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Grupo de WhatsApp com ofertas selecionadas do Mercado Livre. Entra grátis, recebe as melhores promoções direto no celular." />
-<title>Tudo no Precinho — Ofertas selecionadas do Mercado Livre no WhatsApp</title>
+<meta name="description" content="Grupo de WhatsApp com ofertas selecionadas do Mercado Livre e Amazon. Entra grátis, recebe as melhores promoções direto no celular." />
+<title>Tudo no Precinho — Ofertas do Mercado Livre e Amazon no WhatsApp</title>
 
 <!-- Meta Pixel Code -->
 <script>
@@ -370,12 +370,42 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
     gap: 14px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+    scroll-padding: 0 20px;
     padding: 4px 20px 30px;
     margin: 0 -20px;
     -webkit-overflow-scrolling: touch;
   }
   .ofertas-scroller::-webkit-scrollbar { display: none; }
   .ofertas-scroller { scrollbar-width: none; }
+
+  /* Página com 4 ofertas (2×2 no celular). Cada deslize = próximas 4. */
+  .oferta-page {
+    flex: 0 0 100%;
+    width: 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    align-content: start;
+  }
+  .oferta-page .oferta-card { width: auto; }
+
+  /* Bolinhas indicadoras de página */
+  .ofertas-dots {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    margin: -14px 0 6px;
+  }
+  .ofertas-dots button {
+    width: 8px; height: 8px; padding: 0;
+    border: none; border-radius: 50%;
+    background: rgba(10,56,150,0.22);
+    cursor: pointer;
+    transition: width 0.2s, background 0.2s;
+  }
+  .ofertas-dots button.active { background: var(--laranja); width: 22px; border-radius: 100px; }
 
   .oferta-card {
     flex: 0 0 auto;
@@ -468,6 +498,61 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
     line-height: 1.5;
   }
   .ofertas-disclaimer b { color: var(--marinho); }
+
+  /* Indicador "ao vivo" + contagem de lojas */
+  .ofertas-live {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    font-size: 12.5px;
+    color: var(--cinza);
+    margin-bottom: 4px;
+  }
+  .ofertas-live .live-dot {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 700;
+    color: var(--verde-zap-dark);
+  }
+  .ofertas-live .live-dot::before {
+    content: "";
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--verde-zap);
+    box-shadow: 0 0 0 0 rgba(37,211,102,0.5);
+    animation: livePulse 1.6s infinite;
+  }
+  @keyframes livePulse {
+    0%   { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
+    70%  { box-shadow: 0 0 0 7px rgba(37,211,102,0); }
+    100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+  }
+  .ofertas-live .lojas b { color: var(--marinho); }
+
+  /* Cards "ao vivo" (puxados do banco): foto de produto em fundo branco */
+  .oferta-card a.oferta-link { text-decoration: none; color: inherit; display: block; }
+  .oferta-card.live .oferta-img { background: #fff; aspect-ratio: 1; }
+  .oferta-card.live .oferta-img img { object-fit: contain; object-position: center; padding: 10px; }
+  .oferta-loja {
+    position: absolute;
+    top: 12px; left: 12px;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 9px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #fff;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.18);
+  }
+  .oferta-loja.ml     { background: #FFE600; color: #2D3277; }
+  .oferta-loja.amazon { background: #131A22; color: #fff; }
+  .oferta-loja .am-smile { color: #FF9900; }
 
   /* ========== POR QUE ENTRAR ========== */
   .beneficios {
@@ -648,6 +733,7 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
     .cta h2 { font-size: 52px; }
     .benef-grid { grid-template-columns: 1fr 1fr; }
     .oferta-card { width: 280px; }
+    .oferta-page { grid-template-columns: repeat(4, 1fr); gap: 16px; }
     .hero { padding: 40px 0 64px; }
   }
 </style>
@@ -762,8 +848,13 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
 <section class="ofertas">
   <div class="container">
     <span class="section-eyebrow">Direto do grupo</span>
-    <h2 class="section-title">Ofertas <em>reais</em> desta semana</h2>
-    <p class="section-sub">Prints autênticos do grupo, sem edição. Arrasta pra ver:</p>
+    <h2 class="section-title">Ofertas <em>de agora</em> no grupo</h2>
+    <p class="section-sub">As mesmas ofertas que estão saindo no WhatsApp neste momento — direto do nosso sistema:</p>
+
+    <div class="ofertas-live">
+      <span class="live-dot" id="ofertas-status">Ao vivo</span>
+      <span class="lojas" id="ofertas-lojas"><b>Mercado Livre</b> + <b>Amazon</b></span>
+    </div>
 
     <div class="scroll-hint">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><polyline points="15 19 12 22 9 19"/><polyline points="19 9 22 12 19 15"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg>
@@ -771,7 +862,7 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
     </div>
   </div>
 
-  <div class="ofertas-scroller">
+  <div class="ofertas-scroller" id="ofertas-scroller">
     <div class="oferta-card">
       <div class="oferta-badge">-65%</div>
       <div class="oferta-img">
@@ -834,8 +925,9 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
   </div>
 
   <div class="container">
+    <div class="ofertas-dots" id="ofertas-dots" style="display:none"></div>
     <p class="ofertas-disclaimer">
-      <b>Essas ofertas foram reais.</b> Preços e estoque mudam a qualquer momento — entra no grupo pra não perder as próximas.
+      <b>Ofertas ao vivo, direto do nosso sistema.</b> Preços e estoque mudam a qualquer momento — entra no grupo pra receber as próximas em primeira mão.
     </p>
   </div>
 </section>
@@ -955,6 +1047,133 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
     }
     return true;
   }
+
+  function trackOfferClick(loja) {
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'ViewContent', { content_category: 'Offer', content_type: loja || '' });
+    }
+    return true;
+  }
+
+  /* ── Vitrine ao vivo: puxa as ofertas do robô (Mercado Livre + Amazon) ── */
+  (function () {
+    var API = "https://bountiful-communication-production-a61e.up.railway.app/api/public/offers?limit=24";
+    var scroller = document.getElementById("ofertas-scroller");
+    var statusEl = document.getElementById("ofertas-status");
+    var lojasEl  = document.getElementById("ofertas-lojas");
+    var dotsEl   = document.getElementById("ofertas-dots");
+    if (!scroller) return;
+
+    function chunk(arr, n) {
+      var out = [];
+      for (var i = 0; i < arr.length; i += n) out.push(arr.slice(i, i + n));
+      return out;
+    }
+
+    function pageStep() {
+      // Distância real entre páginas (largura da página + gap), medida no layout.
+      var pages = scroller.children;
+      if (pages.length >= 2) return pages[1].offsetLeft - pages[0].offsetLeft;
+      return scroller.clientWidth;
+    }
+
+    function buildDots(n) {
+      if (!dotsEl) return;
+      dotsEl.innerHTML = "";
+      if (n <= 1) { dotsEl.style.display = "none"; return; }
+      dotsEl.style.display = "flex";
+      for (var i = 0; i < n; i++) {
+        (function (i) {
+          var b = document.createElement("button");
+          b.setAttribute("aria-label", "Página " + (i + 1));
+          if (i === 0) b.className = "active";
+          b.addEventListener("click", function () {
+            scroller.scrollTo({ left: i * pageStep(), behavior: "smooth" });
+          });
+          dotsEl.appendChild(b);
+        })(i);
+      }
+      scroller.addEventListener("scroll", function () {
+        var idx = Math.round(scroller.scrollLeft / pageStep());
+        var btns = dotsEl.children;
+        for (var j = 0; j < btns.length; j++) btns[j].className = (j === idx ? "active" : "");
+      }, { passive: true });
+    }
+
+    function brl(v) { // "R$ 1.299,90" -> 1299.90
+      if (!v) return NaN;
+      var s = String(v).replace(/[^\d,.-]/g, "").replace(/\./g, "").replace(",", ".");
+      var n = parseFloat(s);
+      return isNaN(n) ? NaN : n;
+    }
+    function fmtBRL(n) {
+      return "R$ " + n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+    function esc(s) {
+      return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+      });
+    }
+    var ML_LOGO  = '<span class="oferta-loja ml">Mercado Livre</span>';
+    var AMZ_LOGO = '<span class="oferta-loja amazon">Amazon</span>';
+
+    function buildCard(o) {
+      var por = brl(o.price), de = brl(o.old_price);
+      var temDesc = !isNaN(por) && !isNaN(de) && de > por;
+      var badge = "";
+      if (temDesc) {
+        badge = "-" + Math.round((1 - por / de) * 100) + "%";
+      } else if (o.discount) {
+        var m = String(o.discount).match(/(\d+)\s*%/);
+        if (m) badge = "-" + m[1] + "%";
+      }
+      var economia = temDesc ? ("Economize " + fmtBRL(de - por)) : "";
+      var precoDe  = temDesc ? '<span class="de">' + fmtBRL(de) + '</span>' : "";
+      var precoPor = o.price ? '<span class="por">' + esc(o.price) + '</span>' : "";
+      var loja = o.platform === "amazon" ? AMZ_LOGO : ML_LOGO;
+
+      var card = document.createElement("div");
+      card.className = "oferta-card live";
+      card.innerHTML =
+        loja +
+        (badge ? '<div class="oferta-badge">' + badge + '</div>' : "") +
+        '<a class="oferta-link" href="' + esc(o.url) + '" target="_blank" rel="nofollow sponsored noopener" onclick="trackOfferClick(\'' + esc(o.platform) + '\')">' +
+          '<div class="oferta-img"><img loading="lazy" src="' + esc(o.image) + '" alt="' + esc(o.title) + '"></div>' +
+          '<div class="oferta-info">' +
+            '<div class="nome">' + esc(o.title) + '</div>' +
+            '<div class="precos">' + precoDe + precoPor + '</div>' +
+            (economia ? '<div class="economia">' + economia + '</div>' : '') +
+          '</div>' +
+        '</a>';
+      return card;
+    }
+
+    fetch(API, { cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
+      .then(function (data) {
+        var items = (data && data.items) || [];
+        if (!items.length) return; // sem dados: mantém os cards de exemplo
+        scroller.innerHTML = "";
+        var pages = chunk(items, 4);
+        pages.forEach(function (group) {
+          var page = document.createElement("div");
+          page.className = "oferta-page";
+          group.forEach(function (o) { page.appendChild(buildCard(o)); });
+          scroller.appendChild(page);
+        });
+        buildDots(pages.length);
+
+        var c = (data && data.counts) || {};
+        if (lojasEl) {
+          var parts = [];
+          if (c.ml)     parts.push("<b>" + c.ml + "</b> no Mercado Livre");
+          if (c.amazon) parts.push("<b>" + c.amazon + "</b> na Amazon");
+          if (parts.length) lojasEl.innerHTML = parts.join(" · ");
+        }
+        if (statusEl) statusEl.textContent = (c.total || items.length) + " ofertas ao vivo";
+      })
+      .catch(function () { /* silencioso: cards de exemplo permanecem */ });
+  })();
 </script>
 
 </body>
