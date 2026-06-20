@@ -407,6 +407,17 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
   }
   .ofertas-dots button.active { background: var(--laranja); width: 22px; border-radius: 100px; }
 
+  /* Estado de carregando / vazio (nunca mais cai em cards falsos) */
+  .ofertas-msg {
+    flex: 0 0 100%;
+    text-align: center;
+    color: var(--cinza);
+    font-size: 14px;
+    padding: 40px 20px;
+    line-height: 1.5;
+  }
+  .ofertas-msg b { color: var(--marinho); }
+
   .oferta-card {
     flex: 0 0 auto;
     width: 260px;
@@ -863,65 +874,7 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
   </div>
 
   <div class="ofertas-scroller" id="ofertas-scroller">
-    <div class="oferta-card">
-      <div class="oferta-badge">-65%</div>
-      <div class="oferta-img">
-        <img src="imgs/oferta_fritadeira_crop.png" alt="Oferta real: Fritadeira Oster no grupo">
-      </div>
-      <div class="oferta-info">
-        <div class="nome">Fritadeira Digital Oster 5L Painel Touch</div>
-        <div class="precos">
-          <span class="de">R$ 749</span>
-          <span class="por">R$ 260</span>
-        </div>
-        <div class="economia">Economize R$ 489</div>
-      </div>
-    </div>
-
-    <div class="oferta-card">
-      <div class="oferta-badge">-46%</div>
-      <div class="oferta-img">
-        <img src="imgs/oferta_organizador_crop.png" alt="Oferta real: Organizador Facility no grupo">
-      </div>
-      <div class="oferta-info">
-        <div class="nome">Organizador de Porta/Parede c/ 8 Ganchos</div>
-        <div class="precos">
-          <span class="de">R$ 51,90</span>
-          <span class="por">R$ 28,13</span>
-        </div>
-        <div class="economia">Economize R$ 23</div>
-      </div>
-    </div>
-
-    <div class="oferta-card">
-      <div class="oferta-badge">-36%</div>
-      <div class="oferta-img">
-        <img src="imgs/oferta_cooktop_crop.png" alt="Oferta real: Cooktop Itatiaia no grupo">
-      </div>
-      <div class="oferta-info">
-        <div class="nome">Cooktop Itatiaia Essencial 4 Bocas Preto</div>
-        <div class="precos">
-          <span class="de">R$ 464</span>
-          <span class="por">R$ 295</span>
-        </div>
-        <div class="economia">Economize R$ 168</div>
-      </div>
-    </div>
-
-    <div class="oferta-card">
-      <div class="oferta-badge">-32%</div>
-      <div class="oferta-img">
-        <img src="imgs/oferta_cadeira_crop.png" alt="Oferta real: Cadeira ergonômica no grupo">
-      </div>
-      <div class="oferta-info">
-        <div class="nome">Cadeira Escritório Ergonômica B500 c/ Lombar</div>
-        <div class="precos">
-          <span class="de">R$ 526</span>
-          <span class="por">R$ 357</span>
-        </div>
-        <div class="economia">Economize R$ 168</div>
-      </div>
-    </div>
+    <div class="ofertas-msg" id="ofertas-msg">Carregando as ofertas de agora…</div>
   </div>
 
   <div class="container">
@@ -1148,11 +1101,20 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
       return card;
     }
 
+    function showMsg(html) {
+      if (dotsEl) dotsEl.style.display = "none";
+      scroller.innerHTML = '<div class="ofertas-msg">' + html + '</div>';
+    }
+
     fetch(API, { cache: "no-store" })
       .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
       .then(function (data) {
         var items = (data && data.items) || [];
-        if (!items.length) return; // sem dados: mantém os cards de exemplo
+        if (!items.length) {
+          showMsg("As ofertas estão sendo atualizadas. <br><b>Entra no grupo</b> pra receber as próximas em primeira mão 👇");
+          if (statusEl) statusEl.textContent = "Atualizando ofertas";
+          return;
+        }
         scroller.innerHTML = "";
         var pages = chunk(items, 4);
         pages.forEach(function (group) {
@@ -1163,16 +1125,21 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
         });
         buildDots(pages.length);
 
-        var c = (data && data.counts) || {};
+        // Cabeçalho coerente com o que está na tela.
+        var nMl  = items.filter(function (o) { return o.platform !== "amazon"; }).length;
+        var nAmz = items.length - nMl;
         if (lojasEl) {
           var parts = [];
-          if (c.ml)     parts.push("<b>" + c.ml + "</b> no Mercado Livre");
-          if (c.amazon) parts.push("<b>" + c.amazon + "</b> na Amazon");
-          if (parts.length) lojasEl.innerHTML = parts.join(" · ");
+          if (nMl)  parts.push("<b>" + nMl + "</b> no Mercado Livre");
+          if (nAmz) parts.push("<b>" + nAmz + "</b> na Amazon");
+          lojasEl.innerHTML = parts.length ? parts.join(" · ") : "<b>Mercado Livre</b> + <b>Amazon</b>";
         }
-        if (statusEl) statusEl.textContent = (c.total || items.length) + " ofertas ao vivo";
+        if (statusEl) statusEl.textContent = items.length + " ofertas ao vivo";
       })
-      .catch(function () { /* silencioso: cards de exemplo permanecem */ });
+      .catch(function () {
+        showMsg("Não consegui carregar as ofertas agora. Tenta recarregar a página, ou <b>entra no grupo</b> 👇");
+        if (statusEl) statusEl.textContent = "Ofertas no grupo";
+      });
   })();
 </script>
 
