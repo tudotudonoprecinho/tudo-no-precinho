@@ -418,6 +418,97 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
   }
   .ofertas-msg b { color: var(--marinho); }
 
+  /* ── CUPONS ─────────────────────────────────────────────────────────── */
+  .cupons {
+    background: linear-gradient(160deg, var(--marinho) 0%, var(--marinho-dark) 100%);
+  }
+  .cupons .section-eyebrow { background: rgba(255,255,255,0.12); color: var(--laranja); }
+  .cupons .section-title { color: #fff; }
+  .cupons .section-title em {
+    color: var(--marinho); background: var(--laranja);
+    padding: 0 8px; border-radius: 6px; font-size: 0.9em;
+    display: inline-block; transform: rotate(-1.5deg); color: #fff;
+  }
+  .cupons .section-sub { color: rgba(255,255,255,0.75); }
+
+  .cupons-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .cupom-card {
+    background: var(--branco);
+    border-radius: 18px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  }
+  .cupom-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .cupom-loja {
+    display: inline-flex; align-items: center;
+    padding: 4px 9px; border-radius: 100px;
+    font-size: 11px; font-weight: 700; letter-spacing: -0.01em;
+  }
+  .cupom-loja.ml     { background: #FFE600; color: #2D3277; }
+  .cupom-loja.amazon { background: #131A22; color: #fff; }
+  .cupom-desconto {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 22px; font-weight: 800;
+    color: var(--laranja-dark); letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .cupom-codigo {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    border: 2px dashed rgba(10,56,150,0.3);
+    border-radius: 12px;
+    padding: 10px 12px;
+    background: var(--creme);
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .cupom-codigo:hover { border-color: var(--laranja); background: var(--creme-2); }
+  .cupom-codigo .cod {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 17px; font-weight: 700;
+    color: var(--marinho); letter-spacing: 0.06em;
+    word-break: break-all;
+  }
+  .cupom-codigo .copiar {
+    font-size: 11px; font-weight: 700; color: var(--laranja-dark);
+    white-space: nowrap; text-transform: uppercase; letter-spacing: 0.03em;
+  }
+  .cupom-regras { font-size: 12.5px; color: var(--cinza); line-height: 1.45; }
+  .cupom-regras b { color: var(--preto); font-weight: 600; }
+  /* Sem esta linha ninguém entende que o cupom só vale nos produtos daquele
+     link — mesma explicação que vai na mensagem do WhatsApp. */
+  .cupom-onde {
+    font-size: 12.5px;
+    line-height: 1.45;
+    color: var(--marinho);
+    background: rgba(10,56,150,0.06);
+    border-radius: 10px;
+    padding: 8px 10px;
+    font-weight: 600;
+  }
+  .cupom-btn {
+    display: flex; align-items: center; justify-content: center; gap: 7px;
+    background: var(--laranja); color: #fff;
+    text-decoration: none;
+    padding: 12px 16px; border-radius: 100px;
+    font-weight: 700; font-size: 14px;
+    box-shadow: 0 4px 14px rgba(255,122,26,0.35);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .cupom-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(255,122,26,0.45); }
+  .cupons-disclaimer {
+    margin-top: 18px; font-size: 12.5px;
+    color: rgba(255,255,255,0.65);
+    text-align: center; line-height: 1.5;
+  }
+
   .oferta-card {
     flex: 0 0 auto;
     width: 260px;
@@ -745,6 +836,7 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
     .benef-grid { grid-template-columns: 1fr 1fr; }
     .oferta-card { width: 280px; }
     .oferta-page { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .cupons-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
     .hero { padding: 40px 0 64px; }
   }
 </style>
@@ -852,6 +944,19 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- CUPONS — some da página se não houver cupom ativo -->
+<section class="cupons" id="cupons-section" hidden>
+  <div class="container">
+    <span class="section-eyebrow">Códigos de desconto</span>
+    <h2 class="section-title">Cupons <em>ativos</em> agora</h2>
+    <p class="section-sub">Copia o código, abre as ofertas do link e usa na hora de fechar a compra. Esses cupons acabam rápido ⏳</p>
+    <div class="cupons-grid" id="cupons-grid"></div>
+    <p class="cupons-disclaimer">
+      Cupons têm quantidade limitada e podem acabar antes do previsto — os novos saem sempre primeiro no grupo.
+    </p>
   </div>
 </section>
 
@@ -1007,6 +1112,86 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
     }
     return true;
   }
+
+  /* ── Cupons ao vivo. A seção fica escondida por padrão e só aparece se
+        houver cupom ativo e recente — melhor nenhuma seção do que cupom morto. */
+  (function () {
+    var API_CUP = "https://bountiful-communication-production-a61e.up.railway.app/api/public/coupons?limit=8";
+    var sec  = document.getElementById("cupons-section");
+    var grid = document.getElementById("cupons-grid");
+    if (!sec || !grid) return;
+
+    function esc(s) {
+      return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+      });
+    }
+
+    function buildCupom(c) {
+      var el = document.createElement("div");
+      el.className = "cupom-card";
+
+      var regras = [];
+      if (c.min_purchase) regras.push("Compras acima de <b>" + esc(c.min_purchase) + "</b>");
+      if (c.limit_value)  regras.push("Desconto máximo de <b>" + esc(c.limit_value) + "</b>");
+      if (c.notes)        regras.push(esc(c.notes));
+
+      el.innerHTML =
+        '<div class="cupom-top">' +
+          '<span class="cupom-loja ' + (c.platform === "amazon" ? "amazon" : "ml") + '">' + esc(c.store) + '</span>' +
+          (c.discount ? '<span class="cupom-desconto">' + esc(c.discount) + '</span>' : '') +
+        '</div>' +
+        '<div class="cupom-codigo" role="button" tabindex="0" title="Toque para copiar">' +
+          '<span class="cod">' + esc(c.code) + '</span>' +
+          '<span class="copiar">copiar</span>' +
+        '</div>' +
+        (regras.length ? '<div class="cupom-regras">' + regras.join(" · ") + '</div>' : '') +
+        (c.url
+          ? '<div class="cupom-onde">Use nas ofertas do link abaixo 👇 — o cupom vale nos produtos de lá.</div>' +
+            '<a class="cupom-btn" href="' + esc(c.url) + '" target="_blank" rel="nofollow sponsored noopener">' +
+              'Ver ofertas e ativar' +
+            '</a>'
+          : '<div class="cupom-onde">Ative no app da loja e pesquise o produto.</div>');
+
+      var box = el.querySelector(".cupom-codigo");
+      var lbl = el.querySelector(".copiar");
+      function copiar() {
+        var txt = c.code || "";
+        var done = function () {
+          lbl.textContent = "copiado!";
+          setTimeout(function () { lbl.textContent = "copiar"; }, 1800);
+          if (typeof fbq !== "undefined") fbq("track", "ViewContent", { content_category: "Cupom", content_type: c.platform || "" });
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(txt).then(done).catch(function () { fallback(txt, done); });
+        } else { fallback(txt, done); }
+      }
+      function fallback(txt, done) {
+        try {
+          var t = document.createElement("textarea");
+          t.value = txt; t.style.position = "fixed"; t.style.opacity = "0";
+          document.body.appendChild(t); t.select(); document.execCommand("copy");
+          document.body.removeChild(t); done();
+        } catch (e) { /* silencioso: o código continua visível na tela */ }
+      }
+      box.addEventListener("click", copiar);
+      box.addEventListener("keydown", function (ev) {
+        if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); copiar(); }
+      });
+      return el;
+    }
+
+    fetch(API_CUP, { cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
+      .then(function (data) {
+        var cs = (data && data.coupons) || [];
+        if (!cs.length) return;              // sem cupom ativo: seção continua escondida
+        grid.innerHTML = "";
+        cs.forEach(function (c) { grid.appendChild(buildCupom(c)); });
+        sec.hidden = false;
+      })
+      .catch(function () { /* silencioso: seção permanece escondida */ });
+  })();
 
   /* ── Vitrine ao vivo: puxa as ofertas do robô (Mercado Livre + Amazon) ── */
   (function () {
