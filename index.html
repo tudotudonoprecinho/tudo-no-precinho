@@ -9,8 +9,8 @@
      de anúncios; o "Tudo no Precinho" está vazio e fica como reserva. -->
 <meta name="facebook-domain-verification" content="i1ugzljifzwq4ddfm9gdhni2enn4x5" />
 <meta name="facebook-domain-verification" content="zxucht0m7m094ag01d3s6zh49ufvv2" />
-<meta name="description" content="Grupo de WhatsApp com ofertas selecionadas do Mercado Livre e Amazon. Entra grátis, recebe as melhores promoções direto no celular." />
-<title>Tudo no Precinho — Ofertas do Mercado Livre e Amazon no WhatsApp</title>
+<meta name="description" content="Grupo de WhatsApp com ofertas selecionadas do Mercado Livre e Shopee. Entra grátis, recebe as melhores promoções direto no celular." />
+<title>Tudo no Precinho — Ofertas do Mercado Livre e Shopee no WhatsApp</title>
 
 <!-- Meta Pixel Code -->
 <script>
@@ -396,6 +396,12 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
     align-content: start;
   }
   .oferta-page .oferta-card { width: auto; }
+  /* Com 3 ofertas o celular mostra 2 + 1: a última fica centralizada. */
+  @media (max-width: 767px) {
+    .oferta-page > .oferta-card:last-child:nth-child(odd) {
+      grid-column: 1 / -1; justify-self: center; width: calc(50% - 6px);
+    }
+  }
 
   /* Bolinhas indicadoras de página */
   .ofertas-dots {
@@ -459,7 +465,7 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
     font-size: 11px; font-weight: 700; letter-spacing: -0.01em;
   }
   .cupom-loja.ml     { background: #FFE600; color: #2D3277; }
-  .cupom-loja.amazon { background: #131A22; color: #fff; }
+  .cupom-loja.shopee { background: #EE4D2D; color: #fff; }
   .cupom-desconto {
     font-family: 'Bricolage Grotesque', sans-serif;
     font-size: 22px; font-weight: 800;
@@ -573,16 +579,22 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+  /* Card estreito (2 por linha no celular): se os dois preços não couberem,
+     o riscado sobe para a linha de cima — nunca quebra no meio do valor
+     ("R$" numa linha e "189,90" na outra). */
   .oferta-info .precos {
     display: flex;
+    flex-wrap: wrap;
     align-items: baseline;
-    gap: 8px;
+    column-gap: 8px;
+    row-gap: 0;
     margin-bottom: 4px;
   }
   .oferta-info .de {
     font-size: 12px;
     color: var(--cinza);
     text-decoration: line-through;
+    white-space: nowrap;
   }
   .oferta-info .por {
     font-family: 'Bricolage Grotesque', sans-serif;
@@ -590,6 +602,7 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
     font-weight: 700;
     color: var(--marinho);
     letter-spacing: -0.02em;
+    white-space: nowrap;
   }
   .oferta-info .economia {
     font-size: 12px;
@@ -659,8 +672,7 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
     box-shadow: 0 3px 10px rgba(0,0,0,0.18);
   }
   .oferta-loja.ml     { background: #FFE600; color: #2D3277; }
-  .oferta-loja.amazon { background: #131A22; color: #fff; }
-  .oferta-loja .am-smile { color: #FF9900; }
+  .oferta-loja.shopee { background: #EE4D2D; color: #fff; }
 
   /* ========== POR QUE ENTRAR ========== */
   .beneficios {
@@ -841,7 +853,7 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
     .cta h2 { font-size: 52px; }
     .benef-grid { grid-template-columns: 1fr 1fr; }
     .oferta-card { width: 280px; }
-    .oferta-page { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .oferta-page { grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .cupons-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
     .hero { padding: 40px 0 64px; }
   }
@@ -975,12 +987,7 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
 
     <div class="ofertas-live">
       <span class="live-dot" id="ofertas-status">Ao vivo</span>
-      <span class="lojas" id="ofertas-lojas"><b>Mercado Livre</b> + <b>Amazon</b></span>
-    </div>
-
-    <div class="scroll-hint">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><polyline points="15 19 12 22 9 19"/><polyline points="19 9 22 12 19 15"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg>
-      Deslize pra ver mais ofertas
+      <span class="lojas" id="ofertas-lojas"><b>Mercado Livre</b> + <b>Shopee</b></span>
     </div>
   </div>
 
@@ -1122,7 +1129,7 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
   /* ── Cupons ao vivo. A seção fica escondida por padrão e só aparece se
         houver cupom ativo e recente — melhor nenhuma seção do que cupom morto. */
   (function () {
-    var API_CUP = "https://bountiful-communication-production-a61e.up.railway.app/api/public/coupons?limit=8";
+    var API_CUP = "https://bountiful-communication-production-a61e.up.railway.app/api/public/coupons?limit=3";
     var sec  = document.getElementById("cupons-section");
     var grid = document.getElementById("cupons-grid");
     if (!sec || !grid) return;
@@ -1144,7 +1151,7 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
 
       el.innerHTML =
         '<div class="cupom-top">' +
-          '<span class="cupom-loja ' + (c.platform === "amazon" ? "amazon" : "ml") + '">' + esc(c.store) + '</span>' +
+          '<span class="cupom-loja ' + (c.platform === "shopee" ? "shopee" : "ml") + '">' + esc(c.store) + '</span>' +
           (c.discount ? '<span class="cupom-desconto">' + esc(c.discount) + '</span>' : '') +
         '</div>' +
         '<div class="cupom-codigo" role="button" tabindex="0" title="Toque para copiar">' +
@@ -1190,7 +1197,9 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
     fetch(API_CUP, { cache: "no-store" })
       .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
       .then(function (data) {
-        var cs = (data && data.coupons) || [];
+        var cs = ((data && data.coupons) || [])
+          .filter(function (c) { return c.platform !== "amazon"; })
+          .slice(0, 3);
         if (!cs.length) return;              // sem cupom ativo: seção continua escondida
         grid.innerHTML = "";
         cs.forEach(function (c) { grid.appendChild(buildCupom(c)); });
@@ -1199,9 +1208,9 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
       .catch(function () { /* silencioso: seção permanece escondida */ });
   })();
 
-  /* ── Vitrine ao vivo: puxa as ofertas do robô (Mercado Livre + Amazon) ── */
+  /* ── Vitrine ao vivo: puxa as ofertas do robô (Mercado Livre + Shopee) ── */
   (function () {
-    var API = "https://bountiful-communication-production-a61e.up.railway.app/api/public/offers?limit=24";
+    var API = "https://bountiful-communication-production-a61e.up.railway.app/api/public/offers?limit=3";
     var scroller = document.getElementById("ofertas-scroller");
     var statusEl = document.getElementById("ofertas-status");
     var lojasEl  = document.getElementById("ofertas-lojas");
@@ -1259,7 +1268,7 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
       });
     }
     var ML_LOGO  = '<span class="oferta-loja ml">Mercado Livre</span>';
-    var AMZ_LOGO = '<span class="oferta-loja amazon">Amazon</span>';
+    var SHP_LOGO = '<span class="oferta-loja shopee">Shopee</span>';
 
     function buildCard(o) {
       var por = brl(o.price), de = brl(o.old_price);
@@ -1274,7 +1283,7 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
       var economia = temDesc ? ("Economize " + fmtBRL(de - por)) : "";
       var precoDe  = temDesc ? '<span class="de">' + fmtBRL(de) + '</span>' : "";
       var precoPor = o.price ? '<span class="por">' + esc(o.price) + '</span>' : "";
-      var loja = o.platform === "amazon" ? AMZ_LOGO : ML_LOGO;
+      var loja = o.platform === "shopee" ? SHP_LOGO : ML_LOGO;
 
       var card = document.createElement("div");
       card.className = "oferta-card live";
@@ -1300,7 +1309,9 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
     fetch(API, { cache: "no-store" })
       .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
       .then(function (data) {
-        var items = (data && data.items) || [];
+        var items = ((data && data.items) || [])
+          .filter(function (o) { return o.platform !== "amazon"; })
+          .slice(0, 3);
         if (!items.length) {
           showMsg("As ofertas estão sendo atualizadas. <br><b>Entra no grupo</b> pra receber as próximas em primeira mão 👇");
           if (statusEl) statusEl.textContent = "Atualizando ofertas";
@@ -1317,15 +1328,16 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
         buildDots(pages.length);
 
         // Cabeçalho coerente com o que está na tela.
-        var nMl  = items.filter(function (o) { return o.platform !== "amazon"; }).length;
-        var nAmz = items.length - nMl;
+        var nShp = items.filter(function (o) { return o.platform === "shopee"; }).length;
+        var nMl  = items.length - nShp;
         if (lojasEl) {
           var parts = [];
           if (nMl)  parts.push("<b>" + nMl + "</b> no Mercado Livre");
-          if (nAmz) parts.push("<b>" + nAmz + "</b> na Amazon");
-          lojasEl.innerHTML = parts.length ? parts.join(" · ") : "<b>Mercado Livre</b> + <b>Amazon</b>";
+          if (nShp) parts.push("<b>" + nShp + "</b> na Shopee");
+          lojasEl.innerHTML = parts.length ? parts.join(" · ") : "<b>Mercado Livre</b> + <b>Shopee</b>";
         }
-        if (statusEl) statusEl.textContent = items.length + " ofertas ao vivo";
+        if (statusEl) statusEl.textContent = items.length +
+          (items.length === 1 ? " oferta ao vivo" : " ofertas ao vivo");
       })
       .catch(function () {
         showMsg("Não consegui carregar as ofertas agora. Tenta recarregar a página, ou <b>entra no grupo</b> 👇");
