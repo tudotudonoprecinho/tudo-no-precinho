@@ -9,8 +9,8 @@
      de anúncios; o "Tudo no Precinho" está vazio e fica como reserva. -->
 <meta name="facebook-domain-verification" content="i1ugzljifzwq4ddfm9gdhni2enn4x5" />
 <meta name="facebook-domain-verification" content="zxucht0m7m094ag01d3s6zh49ufvv2" />
-<meta name="description" content="Grupo de WhatsApp com ofertas selecionadas do Mercado Livre e Shopee. Entra grátis, recebe as melhores promoções direto no celular." />
-<title>Tudo no Precinho — Ofertas do Mercado Livre e Shopee no WhatsApp</title>
+<meta name="description" content="Grupo de WhatsApp com ofertas selecionadas do Mercado Livre, Shopee e Amazon. Entra grátis, recebe as melhores promoções direto no celular." />
+<title>Tudo no Precinho — Ofertas do Mercado Livre, Shopee e Amazon no WhatsApp</title>
 
 <!-- Meta Pixel Code -->
 <script>
@@ -429,6 +429,50 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
     line-height: 1.5;
   }
   .ofertas-msg b { color: var(--marinho); }
+
+  /* ── ACHADOS DA AMAZON: sem preço (regra do Programa de Associados) ── */
+  .amz { background: var(--branco); }
+  .amz .section-title em {
+    color: #fff; background: #131A22;
+    padding: 0 8px; border-radius: 6px; font-size: 0.9em;
+    display: inline-block; transform: rotate(-1.5deg);
+  }
+  .amz-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .amz-card {
+    background: var(--branco);
+    border: 1px solid rgba(10,56,150,0.10);
+    border-radius: 18px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(10,56,150,0.06);
+  }
+  .amz-img { display: block; aspect-ratio: 1; background: #fff; }
+  .amz-img img { width: 100%; height: 100%; object-fit: contain; padding: 10px; display: block; }
+  .amz-info { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .amz-info .nome {
+    font-size: 13px; font-weight: 600; color: var(--preto); line-height: 1.3;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .amz-btn {
+    margin-top: auto;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--marinho); color: #fff; text-decoration: none;
+    padding: 10px 12px; border-radius: 100px;
+    font-weight: 700; font-size: 13px;
+  }
+  .amz-aviso { margin-top: 16px; font-size: 12px; color: var(--cinza); text-align: center; line-height: 1.5; }
+  /* 3 produtos no celular = 2 + 1: o último fica centralizado. */
+  @media (max-width: 767px) {
+    .amz-grid > .amz-card:last-child:nth-child(odd) {
+      grid-column: 1 / -1; justify-self: center; width: calc(50% - 6px);
+    }
+  }
 
   /* ── CUPONS ─────────────────────────────────────────────────────────── */
   .cupons {
@@ -855,6 +899,7 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
     .oferta-card { width: 280px; }
     .oferta-page { grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .cupons-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .amz-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .hero { padding: 40px 0 64px; }
   }
 </style>
@@ -1003,6 +1048,18 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
   </div>
 </section>
 
+<!-- ACHADOS DA AMAZON — sem preço, sem desconto e sem cupom (regras do Programa
+     de Associados da Amazon). Fica escondida se não houver produto. -->
+<section class="amz" id="amz-section" hidden>
+  <div class="container">
+    <span class="section-eyebrow">Amazon</span>
+    <h2 class="section-title">Achados da <em>Amazon</em></h2>
+    <p class="section-sub">Produtos da Amazon que passaram pelo grupo. Toca pra ver preço, frete e avaliações direto na Amazon:</p>
+    <div class="amz-grid" id="amz-grid"></div>
+    <p class="amz-aviso">Como participante do Programa de Associados da Amazon, sou remunerado pelas compras qualificadas efetuadas.</p>
+  </div>
+</section>
+
 <!-- BENEFÍCIOS -->
 <section class="beneficios">
   <div class="container">
@@ -1104,7 +1161,8 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
 
 <footer>
   © 2026 Tudo no Precinho · Ofertas selecionadas.<br>
-  Preços podem ser alterados a qualquer momento. Podemos receber comissão de afiliado sem custo adicional pra você.
+  Preços podem ser alterados a qualquer momento. Podemos receber comissão de afiliado sem custo adicional pra você.<br>
+  Como participante do Programa de Associados da Amazon, sou remunerado pelas compras qualificadas efetuadas.
 </footer>
 
 <script>
@@ -1203,6 +1261,44 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
         if (!cs.length) return;              // sem cupom ativo: seção continua escondida
         grid.innerHTML = "";
         cs.forEach(function (c) { grid.appendChild(buildCupom(c)); });
+        sec.hidden = false;
+      })
+      .catch(function () { /* silencioso: seção permanece escondida */ });
+  })();
+
+  /* ── Achados da Amazon: sem preço, sem desconto e sem cupom (regras do
+        Programa de Associados). A seção fica escondida se não houver produto. */
+  (function () {
+    var API_AMZ = "https://bountiful-communication-production-a61e.up.railway.app/api/public/amazon?limit=3";
+    var sec  = document.getElementById("amz-section");
+    var grid = document.getElementById("amz-grid");
+    if (!sec || !grid) return;
+
+    function esc(s) {
+      return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+      });
+    }
+
+    fetch(API_AMZ, { cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
+      .then(function (data) {
+        var its = ((data && data.items) || []).slice(0, 3);
+        if (!its.length) return;              // sem produto: seção continua escondida
+        grid.innerHTML = "";
+        its.forEach(function (p) {
+          var link = ' href="' + esc(p.url) + '" target="_blank" rel="nofollow sponsored noopener"' +
+                     ' onclick="trackOfferClick(\'amazon\')"';
+          var card = document.createElement("div");
+          card.className = "amz-card";
+          card.innerHTML =
+            (p.image ? '<a class="amz-img"' + link + '><img loading="lazy" src="' + esc(p.image) + '" alt="' + esc(p.title) + '"></a>' : '') +
+            '<div class="amz-info">' +
+              '<div class="nome">' + esc(p.title) + '</div>' +
+              '<a class="amz-btn"' + link + '>Ver na Amazon</a>' +
+            '</div>';
+          grid.appendChild(card);
+        });
         sec.hidden = false;
       })
       .catch(function () { /* silencioso: seção permanece escondida */ });
