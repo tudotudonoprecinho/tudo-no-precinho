@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Todos os produtos do Mercado Livre, Shopee e Amazon que passaram pelo grupo Tudo no Precinho nas últimas 24 horas." />
+<title>Achados de hoje — Tudo no Precinho</title>
+
+<!-- Meta Pixel Code (mesmo do index.html) -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1540738174070489');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+
+<!--
+  Achados de hoje: tudo que passou pelo grupo nas últimas 24h, das 3 lojas,
+  SEM preço e SEM % de desconto. A promoção pode acabar durante o dia, mas o
+  produto continua na loja — card sem preço não vira "oferta vencida", que foi
+  o motivo do 1º fechamento da conta Amazon. Dados: /api/public/achados.
+-->
+<style>
+  :root {
+    --marinho: #0A3896;
+    --marinho-dark: #061E5C;
+    --laranja: #FF7A1A;
+    --creme: #FFF7EB;
+    --verde-zap: #25D366;
+    --preto: #0B0F1A;
+    --cinza: #64748B;
+    --branco: #FFFFFF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: var(--creme);
+    color: var(--preto);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+
+  header {
+    background: var(--marinho-dark);
+    color: #fff;
+    padding: 14px 0;
+  }
+  header .container { display: flex; align-items: center; gap: 12px; }
+  header img { width: 40px; height: 40px; border-radius: 10px; }
+  header a { color: #fff; text-decoration: none; font-weight: 700; }
+  header .voltar { margin-left: auto; font-size: 14px; font-weight: 500; opacity: .85; }
+
+  .hero { padding: 28px 0 8px; }
+  .hero h1 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 800;
+    font-size: clamp(28px, 6vw, 40px);
+    line-height: 1.1;
+    color: var(--marinho-dark);
+  }
+  .hero h1 em { font-style: normal; color: var(--laranja); }
+  .hero p { color: var(--cinza); margin-top: 8px; max-width: 620px; }
+
+  .filtros { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 16px; }
+  .filtros button {
+    font: inherit; font-size: 14px; font-weight: 500;
+    border: 1px solid #d9dde6; background: var(--branco); color: var(--preto);
+    padding: 7px 14px; border-radius: 999px; cursor: pointer;
+  }
+  .filtros button[aria-pressed="true"] {
+    background: var(--marinho); border-color: var(--marinho); color: #fff;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+  }
+  .card {
+    background: var(--branco);
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    box-shadow: 0 1px 2px rgba(11,15,26,.06), 0 4px 14px rgba(11,15,26,.05);
+  }
+  .card .img { display: block; background: #fff; padding: 10px; }
+  /* Quadrada e contida: foto alta (garrafa) não estica o card. */
+  .card .img img { display: block; width: 100%; aspect-ratio: 1; object-fit: contain; }
+  .card .info { padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .loja {
+    align-self: flex-start;
+    font-size: 11px; font-weight: 700; letter-spacing: .02em;
+    padding: 3px 8px; border-radius: 6px;
+  }
+  .loja.ml     { background: #FFE600; color: #2D3277; }
+  .loja.shopee { background: #EE4D2D; color: #fff; }
+  .loja.amazon { background: #232F3E; color: #fff; }
+  .nome {
+    font-size: 14px; line-height: 1.35;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .btn {
+    margin-top: auto;
+    display: block; text-align: center; text-decoration: none;
+    background: var(--marinho); color: #fff;
+    font-size: 14px; font-weight: 700;
+    padding: 9px 10px; border-radius: 10px;
+  }
+  .btn:hover { background: var(--marinho-dark); }
+
+  .msg { text-align: center; color: var(--cinza); padding: 40px 0; }
+
+  .cta {
+    margin: 32px 0 0; padding: 28px 0;
+    background: var(--marinho-dark); color: #fff; text-align: center;
+  }
+  .cta h2 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; }
+  .cta p { opacity: .85; margin: 6px 0 16px; }
+  .btn-zap {
+    display: inline-block; text-decoration: none;
+    background: var(--verde-zap); color: #fff; font-weight: 700;
+    padding: 13px 26px; border-radius: 12px;
+  }
+
+  footer { padding: 24px 0 32px; color: var(--cinza); font-size: 13px; text-align: center; }
+  footer p + p { margin-top: 6px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <a href="/"><img src="logo.jpg" alt="Tudo no Precinho"></a>
+    <a href="/">Tudo no Precinho</a>
+    <a class="voltar" href="/">← Início</a>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <h1>Achados <em>de hoje</em></h1>
+    <p>Todos os produtos do Mercado Livre, da Shopee e da Amazon que passaram pelo grupo nas últimas 24 horas. Toque no produto para ver preço, frete e avaliações direto na loja — promoções mudam rápido.</p>
+  </section>
+
+  <div class="filtros" id="filtros" hidden>
+    <button type="button" data-loja="" aria-pressed="true">Todos</button>
+    <button type="button" data-loja="ml" aria-pressed="false">Mercado Livre</button>
+    <button type="button" data-loja="shopee" aria-pressed="false">Shopee</button>
+    <button type="button" data-loja="amazon" aria-pressed="false">Amazon</button>
+  </div>
+
+  <div class="grid" id="grid"></div>
+  <div class="msg" id="msg">Carregando os achados…</div>
+</main>
+
+<section class="cta">
+  <div class="container">
+    <h2>Quer receber na hora?</h2>
+    <p>As ofertas saem primeiro no grupo do WhatsApp. É grátis.</p>
+    <a class="btn-zap" href="https://chat.whatsapp.com/LZICZxMWrLIAHEdFze6mjO?mode=hqctswi"
+       target="_blank" rel="noopener"
+       onclick="if (typeof fbq !== 'undefined') fbq('track', 'Lead', { content_name: 'WhatsApp Group Join', source_button: 'achados' });">
+      Entrar no grupo
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>Preços e estoque podem mudar a qualquer momento. Podemos receber comissão de afiliado sem custo adicional para você.</p>
+    <p>Como participante do Programa de Associados da Amazon, sou remunerado pelas compras qualificadas efetuadas.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var API = "https://bountiful-communication-production-a61e.up.railway.app/api/public/achados";
+    var grid = document.getElementById("grid");
+    var msg = document.getElementById("msg");
+    var filtros = document.getElementById("filtros");
+    var VER = { ml: "Ver no Mercado Livre", shopee: "Ver na Shopee", amazon: "Ver na Amazon" };
+    var CLASSE = { ml: "ml", shopee: "shopee", amazon: "amazon" };
+    var todos = [];
+
+    function esc(s) {
+      return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+      });
+    }
+
+    function card(p) {
+      var link = ' href="' + esc(p.url) + '" target="_blank" rel="nofollow sponsored noopener"' +
+                 ' onclick="if (typeof fbq !== \'undefined\') fbq(\'track\', \'ViewContent\', { content_category: \'Achado\', content_type: \'' + esc(p.platform) + '\' });"';
+      var el = document.createElement("div");
+      el.className = "card";
+      el.innerHTML =
+        (p.image ? '<a class="img"' + link + '><img loading="lazy" src="' + esc(p.image) + '" alt="' + esc(p.title) + '"></a>' : '') +
+        '<div class="info">' +
+          '<span class="loja ' + (CLASSE[p.platform] || "ml") + '">' + esc(p.store) + '</span>' +
+          '<div class="nome">' + esc(p.title) + '</div>' +
+          '<a class="btn"' + link + '>' + (VER[p.platform] || "Ver na loja") + '</a>' +
+        '</div>';
+      return el;
+    }
+
+    function mostrar(loja) {
+      var lista = loja ? todos.filter(function (p) { return p.platform === loja; }) : todos;
+      grid.innerHTML = "";
+      lista.forEach(function (p) { grid.appendChild(card(p)); });
+      msg.hidden = lista.length > 0;
+      if (!lista.length) msg.textContent = "Nenhum achado desta loja nas últimas 24 horas.";
+    }
+
+    filtros.addEventListener("click", function (ev) {
+      var b = ev.target.closest("button");
+      if (!b) return;
+      [].forEach.call(filtros.querySelectorAll("button"), function (x) {
+        x.setAttribute("aria-pressed", x === b ? "true" : "false");
+      });
+      mostrar(b.getAttribute("data-loja"));
+    });
+
+    fetch(API, { cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
+      .then(function (data) {
+        todos = (data && data.items) || [];
+        if (!todos.length) {
+          msg.textContent = "Os achados de hoje estão sendo atualizados. Entra no grupo pra receber as ofertas na hora.";
+          return;
+        }
+        // Só mostra o filtro das lojas que têm produto.
+        var tem = {};
+        todos.forEach(function (p) { tem[p.platform] = true; });
+        [].forEach.call(filtros.querySelectorAll("button[data-loja]"), function (b) {
+          var l = b.getAttribute("data-loja");
+          if (l && !tem[l]) b.hidden = true;
+        });
+        filtros.hidden = false;
+        mostrar("");
+      })
+      .catch(function () {
+        msg.textContent = "Não consegui carregar os achados agora. Tenta recarregar a página.";
+      });
+  })();
+</script>
+</body>
+</html>
