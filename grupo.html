@@ -10,10 +10,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="theme-color" content="#0B0F1A" />
+<meta name="theme-color" content="#061E5C" />
 <meta name="facebook-domain-verification" content="i1ugzljifzwq4ddfm9gdhni2enn4x5" />
 <meta name="facebook-domain-verification" content="zxucht0m7m094ag01d3s6zh49ufvv2" />
-<meta name="description" content="A gente garimpa preço o dia inteiro no Mercado Livre e na Shopee e manda direto no seu WhatsApp. Grupo grátis do Tudo no Precinho." />
+<meta name="description" content="A gente garimpa preço o dia inteiro no Mercado Livre, na Shopee e na Amazon e manda direto no seu WhatsApp. Grupo grátis do Tudo no Precinho." />
 <title>Tudo no Precinho — A gente garimpa, você economiza</title>
 
 <!-- Meta Pixel Code -->
@@ -40,10 +40,10 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
 
 <style>
   :root {
-    --bg: #0B0F1A;
-    --bg-2: #121827;
-    --card: rgba(255,255,255,.04);
-    --borda: rgba(255,255,255,.08);
+    --bg: #051A4F;
+    --bg-2: #0A2766;
+    --card: rgba(255,255,255,.05);
+    --borda: rgba(255,255,255,.10);
     --laranja: #FF7A1A;
     --laranja-2: #FF9A4D;
     --laranja-glow: rgba(255,122,26,.45);
@@ -51,8 +51,8 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
     --verde-zap: #25D366;
     --verde-zap-dark: #128C7E;
     --texto: #F3F4F8;
-    --cinza: #9AA3B5;
-    --cinza-2: #6B7385;
+    --cinza: #A9B7D6;
+    --cinza-2: #7C8DB5;
     --display: 'Anton', Impact, sans-serif;
   }
 
@@ -72,13 +72,24 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
     position: fixed;
     inset: 0;
     background:
-      radial-gradient(ellipse 80% 40% at 50% 0%, rgba(255,122,26,.16) 0%, transparent 70%),
-      radial-gradient(ellipse 60% 40% at 100% 60%, rgba(10,56,150,.22) 0%, transparent 70%),
-      radial-gradient(ellipse 60% 40% at 0% 90%, rgba(255,122,26,.10) 0%, transparent 70%);
+      radial-gradient(ellipse 80% 40% at 50% 0%, rgba(255,122,26,.18) 0%, transparent 70%),
+      radial-gradient(ellipse 70% 45% at 100% 55%, rgba(30,90,220,.35) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 0% 90%, rgba(255,122,26,.12) 0%, transparent 70%),
+      linear-gradient(180deg, #061E5C 0%, #04143F 100%);
     pointer-events: none;
     z-index: 0;
   }
   main, footer { position: relative; z-index: 1; }
+
+  /* Bolhinhas subindo no fundo */
+  .bolhas { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .bolha {
+    position: absolute;
+    bottom: -12px;
+    border-radius: 50%;
+    opacity: 0;
+    animation: subir var(--dur) linear var(--delay) infinite;
+  }
 
   .wrap { max-width: 520px; margin: 0 auto; padding: 0 20px; }
 
@@ -92,6 +103,7 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
     overflow: hidden;
     background: #fff;
     box-shadow: 0 0 0 1px rgba(255,255,255,.1), 0 16px 48px var(--laranja-glow);
+    animation: logoPulse 3s ease-in-out infinite;
   }
   .logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .eyebrow {
@@ -297,7 +309,7 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
     top: calc(176px - 34px); right: 10px;
     padding: 3px 9px;
     border-radius: 100px;
-    background: rgba(11,15,26,.75);
+    background: rgba(6,30,92,.85);
     color: #fff;
     font-size: 11px;
     font-weight: 700;
@@ -400,7 +412,7 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
     left: 0; right: 0; bottom: 0;
     z-index: 10;
     padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
-    background: linear-gradient(180deg, rgba(11,15,26,0) 0%, rgba(11,15,26,.92) 35%);
+    background: linear-gradient(180deg, rgba(4,20,63,0) 0%, rgba(4,20,63,.94) 35%);
     transform: translateY(110%);
     transition: transform .3s ease;
   }
@@ -412,11 +424,22 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
   .rv.in { opacity: 1; transform: none; }
 
   @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+  @keyframes subir {
+    0%   { opacity: 0; transform: translate(0, 0) scale(1); }
+    10%  { opacity: .7; }
+    80%  { opacity: .2; }
+    100% { opacity: 0; transform: translate(var(--dx), -105vh) scale(.6); }
+  }
+  @keyframes logoPulse {
+    0%, 100% { box-shadow: 0 0 0 1px rgba(255,255,255,.1), 0 12px 32px rgba(255,122,26,.30); }
+    50%      { box-shadow: 0 0 0 1px rgba(255,255,255,.1), 0 12px 60px rgba(255,122,26,.65); }
+  }
   @keyframes shine { 0% { transform: translateX(-100%); } 50%, 100% { transform: translateX(100%); } }
   @keyframes rolar { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
   @media (prefers-reduced-motion: reduce) {
-    .trilho, .cta::before, .pill .dot { animation: none; }
+    .trilho, .cta::before, .pill .dot, .logo { animation: none; }
+    .bolhas { display: none; }
     .faixa { overflow-x: auto; }
     .rv { opacity: 1; transform: none; transition: none; }
   }
@@ -428,13 +451,15 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
+<div class="bolhas" id="bolhas" aria-hidden="true"></div>
+
 <main>
   <!-- HERO -->
   <section class="hero wrap">
     <div class="logo"><img src="imgs/logo.jpg" alt="Tudo no Precinho"></div>
     <div class="eyebrow">Tudo no Precinho · Ofertas no WhatsApp</div>
     <h1><span class="l1">A gente garimpa.</span><span class="l2">Você economiza.</span></h1>
-    <p class="lead">A gente passa o dia inteiro de olho no Mercado Livre e na Shopee. Quando aparece preço que vale, manda na hora — direto no seu WhatsApp, sem pagar nada.</p>
+    <p class="lead">A gente passa o dia inteiro de olho no Mercado Livre, na Shopee e na Amazon. Quando aparece preço que vale, manda na hora — direto no seu WhatsApp, sem pagar nada.</p>
     <div class="pill"><span class="dot"></span>Preço bom não espera.</div>
     <a class="cta js-grupo" data-origem="hero" id="cta-hero" href="https://chat.whatsapp.com/LZICZxMWrLIAHEdFze6mjO?mode=hqctswi">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.5h-.01a9.4 9.4 0 0 1-4.79-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.4 9.4 0 0 1-1.44-5.01c0-5.2 4.23-9.43 9.44-9.43 2.52 0 4.89.98 6.67 2.77a9.37 9.37 0 0 1 2.76 6.67c0 5.2-4.23 9.43-9.43 9.43m8.03-17.46A11.27 11.27 0 0 0 12.05.71C5.79.71.7 5.8.7 12.06c0 2 .52 3.95 1.52 5.67L.6 23.6l6.01-1.58a11.3 11.3 0 0 0 5.43 1.38h.01c6.25 0 11.35-5.09 11.35-11.35 0-3.03-1.18-5.88-3.32-8.02"/></svg>
@@ -521,6 +546,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <footer>
   Preço e estoque mudam a qualquer momento — confere no site da loja antes de fechar a compra.
   Os links enviados no grupo são de afiliado: você paga o mesmo preço e a gente recebe uma comissão da loja.
+  Como participante do Programa de Associados da Amazon, sou remunerado pelas compras qualificadas efetuadas.
   <div class="copy">© 2026 <b>Tudo no Precinho</b> · Todos os direitos reservados</div>
 </footer>
 
@@ -549,6 +575,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var a = e.target.closest('.js-grupo');
     if (a) trackWhatsAppClick(a.getAttribute('data-origem') || '');
   });
+
+  /* ── Bolhinhas do fundo: laranja e branco da marca, tamanhos e tempos aleatórios ── */
+  (function () {
+    var box = document.getElementById('bolhas');
+    var cores = ['#FF7A1A', '#FF7A1A', '#FF9A4D', '#FFFFFF', '#4F86FF'];
+    var n = window.innerWidth < 600 ? 22 : 36;
+    for (var i = 0; i < n; i++) {
+      var b = document.createElement('span');
+      var tam = 3 + Math.random() * 6;
+      var cor = cores[Math.floor(Math.random() * cores.length)];
+      b.className = 'bolha';
+      b.style.left = (Math.random() * 100) + '%';
+      b.style.width = b.style.height = tam + 'px';
+      b.style.background = cor;
+      b.style.boxShadow = '0 0 ' + (tam * 2) + 'px ' + cor;
+      b.style.setProperty('--dur', (7 + Math.random() * 8) + 's');
+      b.style.setProperty('--delay', (-Math.random() * 15) + 's');
+      b.style.setProperty('--dx', ((Math.random() - .5) * 80) + 'px');
+      box.appendChild(b);
+    }
+  })();
 
   /* ── Botão fixo: aparece quando o botão do topo sai da tela ── */
   (function () {
