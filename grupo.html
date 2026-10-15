@@ -264,18 +264,19 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
 
   /* Carrossel de achados */
   .faixa {
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
     padding: 6px 0;
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-            mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
   }
+  .faixa::-webkit-scrollbar { display: none; }
   .trilho {
     display: flex;
     gap: 14px;
     width: max-content;
-    animation: rolar 50s linear infinite;
   }
-  .faixa:hover .trilho { animation-play-state: paused; }
   .achado {
     flex: none;
     width: 176px;
@@ -435,12 +436,10 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
     50%      { box-shadow: 0 0 0 1px rgba(255,255,255,.1), 0 12px 60px rgba(255,122,26,.65); }
   }
   @keyframes shine { 0% { transform: translateX(-100%); } 50%, 100% { transform: translateX(100%); } }
-  @keyframes rolar { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
   @media (prefers-reduced-motion: reduce) {
-    .trilho, .cta::before, .pill .dot, .logo { animation: none; }
+    .cta::before, .pill .dot, .logo { animation: none; }
     .bolhas { display: none; }
-    .faixa { overflow-x: auto; }
     .rv { opacity: 1; transform: none; transition: none; }
   }
 </style>
@@ -510,7 +509,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h2>Alguns achados <em>de verdade</em></h2>
       <p class="sub">As ofertas que estão no grupo neste momento:</p>
     </div>
-    <div class="faixa rv"><div class="trilho" id="trilho"></div></div>
+    <div class="faixa" id="faixa"><div class="trilho" id="trilho"></div></div>
   </section>
 
   <div class="divisor"></div>
@@ -621,6 +620,54 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   })();
   document.querySelectorAll('.rv').forEach(revelar);
 
+  /* ── Carrossel: rolagem lateral de verdade. Anda sozinho, aceita arrastar
+        com o dedo e volta a andar ~2s depois de soltar. O conteúdo vem
+        duplicado, então ao passar da metade volta pro começo sem salto.
+        (Animação CSS com máscara congelava no Safari/WhatsApp do iPhone.) ── */
+  function rolarFaixa(faixa, vel, reverso) {
+    var trilho = faixa.firstElementChild;
+    var pos = 0, parado = false, retomar = null, ultimo = null;
+    function metade() { return trilho.scrollWidth / 2; }
+    function ajustar() {
+      var m = metade();
+      if (m <= 0) return;
+      while (pos >= m) pos -= m;
+      while (pos < 0) pos += m;
+    }
+    function pausar() { parado = true; clearTimeout(retomar); }
+    function soltar() {
+      clearTimeout(retomar);
+      retomar = setTimeout(function () { pos = faixa.scrollLeft; ajustar(); parado = false; }, 1800);
+    }
+    faixa.addEventListener('touchstart', pausar, { passive: true });
+    faixa.addEventListener('touchend', soltar, { passive: true });
+    // Só mouse de verdade: no iPhone um toque também dispara mouseenter e o
+    // mouseleave nunca vem, o que deixaria a faixa parada pra sempre.
+    faixa.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') pausar(); });
+    faixa.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') soltar(); });
+    faixa.addEventListener('wheel', function () { pausar(); soltar(); }, { passive: true });
+    // Loop infinito também quando a pessoa arrasta.
+    faixa.addEventListener('scroll', function () {
+      if (!parado) return;
+      var m = metade();
+      if (faixa.scrollLeft >= m) faixa.scrollLeft -= m;
+      else if (faixa.scrollLeft <= 0) faixa.scrollLeft += m;
+    }, { passive: true });
+
+    if (reverso) { pos = metade() / 2; faixa.scrollLeft = pos; }
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    function quadro(t) {
+      if (ultimo != null && !parado) {
+        pos += (reverso ? -1 : 1) * vel * Math.min(t - ultimo, 100) / 1000;
+        ajustar();
+        faixa.scrollLeft = pos;
+      }
+      ultimo = t;
+      requestAnimationFrame(quadro);
+    }
+    requestAnimationFrame(quadro);
+  }
+
   /* ── Dados ao vivo do robô ── */
   (function () {
     var RESERVA = [
@@ -699,6 +746,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       while (base.length < 8) base = base.concat(itens);
       var html = base.map(cardAchado).join("");
       document.getElementById("trilho").innerHTML = html + html;
+      rolarFaixa(document.getElementById("faixa"), 32, false);
     }
 
     function montarChat(itens, cupons) {

@@ -185,20 +185,20 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
   .vitrine-head p { color: var(--cinza); font-size: 14px; }
 
   .faixa {
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
     padding: 6px 0;
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-            mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
   }
+  .faixa::-webkit-scrollbar { display: none; }
   .faixa + .faixa { margin-top: 14px; }
   .trilho {
     display: flex;
     gap: 14px;
     width: max-content;
-    animation: rolar var(--dur, 45s) linear infinite;
   }
-  .faixa.reversa .trilho { animation-direction: reverse; }
-  .faixa:hover .trilho { animation-play-state: paused; }
 
   .card {
     flex: none;
@@ -269,7 +269,6 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
     color: var(--cinza);
   }
 
-  @keyframes rolar { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   @keyframes shine { 0% { transform: translateX(-100%); } 50%, 100% { transform: translateX(100%); } }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 
@@ -277,8 +276,7 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
     .card { width: 230px; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .trilho, .btn-zap::before { animation: none; }
-    .faixa { overflow-x: auto; }
+    .btn-zap::before { animation: none; }
   }
 </style>
 </head>
@@ -316,8 +314,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h2>Achados que nossos membros já aproveitaram</h2>
       <p>Ofertas reais compartilhadas no grupo</p>
     </div>
-    <div class="faixa" id="faixa-1"><div class="trilho" style="--dur:48s"></div></div>
-    <div class="faixa reversa" id="faixa-2"><div class="trilho" style="--dur:54s"></div></div>
+    <div class="faixa" id="faixa-1"><div class="trilho"></div></div>
+    <div class="faixa reversa" id="faixa-2"><div class="trilho"></div></div>
   </section>
 
   <section class="final">
@@ -352,6 +350,54 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var a = e.target.closest('.js-grupo');
     if (a) trackWhatsAppClick(a.getAttribute('data-origem') || '');
   });
+
+  /* ── Carrossel: rolagem lateral de verdade. Anda sozinho, aceita arrastar
+        com o dedo e volta a andar ~2s depois de soltar. O conteúdo vem
+        duplicado, então ao passar da metade volta pro começo sem salto.
+        (Animação CSS com máscara congelava no Safari/WhatsApp do iPhone.) ── */
+  function rolarFaixa(faixa, vel, reverso) {
+    var trilho = faixa.firstElementChild;
+    var pos = 0, parado = false, retomar = null, ultimo = null;
+    function metade() { return trilho.scrollWidth / 2; }
+    function ajustar() {
+      var m = metade();
+      if (m <= 0) return;
+      while (pos >= m) pos -= m;
+      while (pos < 0) pos += m;
+    }
+    function pausar() { parado = true; clearTimeout(retomar); }
+    function soltar() {
+      clearTimeout(retomar);
+      retomar = setTimeout(function () { pos = faixa.scrollLeft; ajustar(); parado = false; }, 1800);
+    }
+    faixa.addEventListener('touchstart', pausar, { passive: true });
+    faixa.addEventListener('touchend', soltar, { passive: true });
+    // Só mouse de verdade: no iPhone um toque também dispara mouseenter e o
+    // mouseleave nunca vem, o que deixaria a faixa parada pra sempre.
+    faixa.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') pausar(); });
+    faixa.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') soltar(); });
+    faixa.addEventListener('wheel', function () { pausar(); soltar(); }, { passive: true });
+    // Loop infinito também quando a pessoa arrasta.
+    faixa.addEventListener('scroll', function () {
+      if (!parado) return;
+      var m = metade();
+      if (faixa.scrollLeft >= m) faixa.scrollLeft -= m;
+      else if (faixa.scrollLeft <= 0) faixa.scrollLeft += m;
+    }, { passive: true });
+
+    if (reverso) { pos = metade() / 2; faixa.scrollLeft = pos; }
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    function quadro(t) {
+      if (ultimo != null && !parado) {
+        pos += (reverso ? -1 : 1) * vel * Math.min(t - ultimo, 100) / 1000;
+        ajustar();
+        faixa.scrollLeft = pos;
+      }
+      ultimo = t;
+      requestAnimationFrame(quadro);
+    }
+    requestAnimationFrame(quadro);
+  }
 
   /* ── Vitrine: puxa as ofertas do robô (Mercado Livre + Shopee) e os achados
         da Amazon. Mostra só foto, nome e % de desconto — o clique leva pro
@@ -394,7 +440,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
 
     // Repete os itens até a faixa ficar larga o bastante e duplica o conjunto
-    // pra animação de -50% emendar sem salto.
+    // pra rolagem emendar sem salto.
     function preencher(id, itens) {
       var trilho = document.querySelector("#" + id + " .trilho");
       var base = itens.slice();
@@ -409,6 +455,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var b = itens.length >= 8 ? itens.slice(meio) : itens.slice().reverse();
       preencher("faixa-1", a);
       preencher("faixa-2", b);
+      rolarFaixa(document.getElementById("faixa-1"), 30, false);
+      rolarFaixa(document.getElementById("faixa-2"), 26, true);
     }
 
     function pegar(url) {
