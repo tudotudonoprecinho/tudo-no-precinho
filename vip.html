@@ -12,7 +12,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="facebook-domain-verification" content="i1ugzljifzwq4ddfm9gdhni2enn4x5" />
 <meta name="facebook-domain-verification" content="zxucht0m7m094ag01d3s6zh49ufvv2" />
-<meta name="description" content="Ofertas reais do dia no seu WhatsApp: Mercado Livre e Shopee. Entre grátis no Grupo VIP do Tudo no Precinho." />
+<meta name="description" content="Ofertas reais do dia no seu WhatsApp: Mercado Livre, Shopee e Amazon. Entre grátis no Grupo VIP do Tudo no Precinho." />
 <title>Tudo no Precinho — Grupo VIP de Ofertas no WhatsApp</title>
 
 <!-- Meta Pixel Code -->
@@ -294,7 +294,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h1>Tudo no <span>Precinho</span></h1>
     <p class="lines">
       Ofertas reais do dia, no seu WhatsApp 📲<br>
-      Mercado Livre e Shopee 🛒<br>
+      Mercado Livre, Shopee e Amazon 🛒<br>
       Economia de verdade, todo dia ⚡
     </p>
 
@@ -329,7 +329,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <footer>
   © 2026 Tudo no Precinho · Ofertas selecionadas.<br>
-  Preços podem mudar a qualquer momento. Podemos receber comissão de afiliado sem custo adicional pra você.
+  Preços podem mudar a qualquer momento. Podemos receber comissão de afiliado sem custo adicional pra você.<br>
+  Como participante do Programa de Associados da Amazon, sou remunerado pelas compras qualificadas efetuadas.
 </footer>
 
 <script>
@@ -352,11 +353,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if (a) trackWhatsAppClick(a.getAttribute('data-origem') || '');
   });
 
-  /* ── Vitrine: puxa as ofertas do robô (Mercado Livre + Shopee). Mostra só
-        foto, nome e % de desconto — o clique leva pro grupo, não pro produto.
+  /* ── Vitrine: puxa as ofertas do robô (Mercado Livre + Shopee) e os achados
+        da Amazon. Mostra só foto, nome e % de desconto — o clique leva pro
+        grupo, não pro produto. Amazon vai sem selo de desconto (regra do
+        Programa de Associados).
         Se a API falhar, usa os produtos fixos abaixo. ── */
   (function () {
     var API = "https://bountiful-communication-production-a61e.up.railway.app/api/public/offers?limit=12";
+    var API_AMZ = "https://bountiful-communication-production-a61e.up.railway.app/api/public/amazon?limit=6";
     var RESERVA = [
       { title: "Fritadeira Elétrica", image: "imgs/oferta_fritadeira_crop.png", badge: "-65%" },
       { title: "Organizador de Cozinha", image: "imgs/oferta_organizador_crop.png", badge: "-46%" },
@@ -407,15 +411,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       preencher("faixa-2", b);
     }
 
-    fetch(API, { cache: "no-store" })
-      .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
-      .then(function (data) {
-        var itens = ((data && data.items) || [])
-          .filter(function (o) { return o.platform !== "amazon" && o.image; })
-          .map(function (o) { return { title: o.title, image: o.image, badge: badgeDe(o) }; });
-        montar(itens.length >= 4 ? itens : RESERVA);
-      })
-      .catch(function () { montar(RESERVA); });
+    function pegar(url) {
+      return fetch(url, { cache: "no-store" })
+        .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
+        .then(function (d) { return (d && d.items) || []; })
+        .catch(function () { return []; });
+    }
+
+    Promise.all([pegar(API), pegar(API_AMZ)]).then(function (res) {
+      var ofertas = res[0]
+        .filter(function (o) { return o.platform !== "amazon" && o.image; })
+        .map(function (o) { return { title: o.title, image: o.image, badge: badgeDe(o) }; });
+      var amz = res[1]
+        .filter(function (p) { return p.image; })
+        .map(function (p) { return { title: p.title, image: p.image, badge: "" }; });
+      // Intercala a Amazon no meio das ofertas pra aparecer nas duas faixas.
+      var itens = [], passo = amz.length ? Math.max(1, Math.floor(ofertas.length / amz.length)) : 0;
+      ofertas.forEach(function (o, i) {
+        itens.push(o);
+        if (passo && (i + 1) % passo === 0 && amz.length) itens.push(amz.shift());
+      });
+      itens = itens.concat(amz);
+      montar(itens.length >= 4 ? itens : RESERVA);
+    });
   })();
 </script>
 
