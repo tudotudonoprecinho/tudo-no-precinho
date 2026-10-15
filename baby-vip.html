@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MZDCFRSG');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#DCEBFB" />
+<meta name="facebook-domain-verification" content="i1ugzljifzwq4ddfm9gdhni2enn4x5" />
+<meta name="facebook-domain-verification" content="zxucht0m7m094ag01d3s6zh49ufvv2" />
+<meta name="description" content="Fraldas, enxoval, mamadeiras e brinquedos com desconto de verdade, direto no seu WhatsApp. Entre grátis no grupo Tudo no Precinho Baby." />
+<title>Tudo no Precinho Baby — Ofertas para bebês no WhatsApp</title>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1540738174070489');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    /* Cores puxadas da logo do Tudo no Precinho Baby */
+    --azul: #1E5BC6;
+    --azul-escuro: #123C8C;
+    --azul-bebe: #A9CFF5;
+    --azul-ceu: #DCEBFB;
+    --laranja: #FF7A1A;
+    --laranja-escuro: #E55F00;
+    --rosa: #F9C9DA;
+    --creme: #FFFBF4;
+    --verde-zap: #25D366;
+    --verde-zap-dark: #128C7E;
+    --texto: #1B2B4F;
+    --cinza: #5A6B8C;
+    --branco: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Nunito', system-ui, sans-serif;
+    color: var(--texto);
+    background: linear-gradient(180deg, var(--azul-ceu) 0%, #EEF5FD 45%, var(--creme) 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  main { position: relative; z-index: 1; }
+
+  /* ── Nuvens e bolhas de sabão no fundo ── */
+  .ceu { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .nuvem {
+    position: absolute;
+    width: 120px; height: 40px;
+    background: #fff;
+    border-radius: 40px;
+    opacity: .8;
+    animation: flutuar 9s ease-in-out infinite;
+  }
+  .nuvem::before, .nuvem::after {
+    content: ''; position: absolute; background: #fff; border-radius: 50%;
+  }
+  .nuvem::before { width: 56px; height: 56px; top: -28px; left: 16px; }
+  .nuvem::after  { width: 40px; height: 40px; top: -18px; left: 60px; }
+  .nuvem.n1 { top: 6%;  left: -30px; transform: scale(.9); }
+  .nuvem.n2 { top: 16%; right: -40px; transform: scale(.7); animation-delay: -3s; }
+  .nuvem.n3 { top: 62%; left: -50px; transform: scale(.6); animation-delay: -5s; opacity: .6; }
+  .bolha {
+    position: absolute;
+    bottom: -40px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,.95);
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.9) 0 12%, rgba(169,207,245,.25) 40%, rgba(249,201,218,.18) 100%);
+    box-shadow: inset 0 0 8px rgba(255,255,255,.6);
+    opacity: 0;
+    animation: subir var(--dur) linear var(--delay) infinite;
+  }
+
+  /* ── Topo estilo "link na bio" ── */
+  .hero {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 40px 20px 24px;
+    text-align: center;
+  }
+  .avatar {
+    width: 168px;
+    height: 168px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    padding: 6px;
+    background: conic-gradient(from 200deg, var(--laranja), var(--azul-bebe), var(--azul), var(--laranja));
+    box-shadow: 0 14px 34px rgba(30,91,198,.25);
+    animation: entra .5s ease-out both;
+  }
+  .avatar img {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #fff;
+    display: block;
+  }
+  h1 {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    font-size: clamp(30px, 8.5vw, 40px);
+    line-height: 1.05;
+    color: var(--azul-escuro);
+    margin-bottom: 4px;
+    animation: entra .55s ease-out .05s both;
+  }
+  h1 .laranja { color: var(--laranja); }
+  .selo-baby {
+    display: inline-block;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: .12em;
+    color: var(--azul);
+    background: #fff;
+    border: 2px solid var(--azul-bebe);
+    padding: 3px 16px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+    animation: entra .55s ease-out .08s both;
+  }
+  .lines {
+    color: var(--cinza);
+    font-size: 16px;
+    line-height: 1.75;
+    margin-bottom: 24px;
+    animation: entra .6s ease-out .1s both;
+  }
+  .lines b { color: var(--texto); }
+
+  .btns {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    animation: entra .65s ease-out .15s both;
+  }
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 17px 20px;
+    border-radius: 100px;
+    color: #fff;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition: transform .15s;
+  }
+  .btn[hidden] { display: none; }
+  .btn:active { transform: scale(.98); }
+  .btn svg { width: 22px; height: 22px; flex: none; }
+  .btn-zap {
+    background: linear-gradient(90deg, var(--verde-zap) 0%, var(--verde-zap-dark) 100%);
+    box-shadow: 0 10px 24px rgba(37,211,102,.35);
+  }
+  .btn-zap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.3) 50%, transparent 70%);
+    transform: translateX(-100%);
+    animation: shine 2.8s infinite;
+  }
+  .btn-sec {
+    background: #fff;
+    color: var(--azul);
+    border: 2px solid var(--azul-bebe);
+    box-shadow: 0 8px 20px rgba(30,91,198,.12);
+  }
+  .vagas { margin-top: 14px; font-size: 13px; color: var(--cinza); }
+  .vagas b { color: var(--texto); }
+
+  /* ── Vitrine (duas faixas em sentidos opostos) ── */
+  .vitrine { padding: 32px 0 8px; }
+  .vitrine-head { text-align: center; padding: 0 20px; margin-bottom: 20px; }
+  .vitrine-head h2 {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    font-size: clamp(22px, 6vw, 30px);
+    line-height: 1.15;
+    color: var(--azul-escuro);
+    margin-bottom: 6px;
+  }
+  .vitrine-head p { color: var(--cinza); font-size: 14px; }
+
+  .faixa {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 6px 0;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+  .faixa::-webkit-scrollbar { display: none; }
+  .faixa + .faixa { margin-top: 14px; }
+  .trilho { display: flex; gap: 14px; width: max-content; padding: 0 2px; }
+
+  .card {
+    flex: none;
+    width: 170px;
+    border-radius: 24px;
+    background: #fff;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--texto);
+    box-shadow: 0 6px 18px rgba(30,91,198,.10);
+    border: 2px solid #fff;
+    position: relative;
+  }
+  .card-img {
+    aspect-ratio: 1;
+    display: flex; align-items: center; justify-content: center;
+    padding: 14px;
+  }
+  .card-img img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }
+  .card:nth-child(4n+1) .card-img { background: #E6F1FD; }
+  .card:nth-child(4n+2) .card-img { background: #FDEBF2; }
+  .card:nth-child(4n+3) .card-img { background: #FFF1E3; }
+  .card:nth-child(4n+4) .card-img { background: #E8F7EF; }
+  .card-badge {
+    position: absolute;
+    top: 10px; left: 10px;
+    padding: 4px 10px;
+    border-radius: 100px;
+    background: var(--laranja);
+    color: #fff;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .card-nome {
+    margin: 12px 14px 14px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 2.6em;
+  }
+
+  .final { max-width: 480px; margin: 0 auto; padding: 28px 20px 16px; text-align: center; }
+
+  footer {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 16px 20px 36px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--cinza);
+    position: relative;
+    z-index: 1;
+  }
+
+  @keyframes shine { 0% { transform: translateX(-100%); } 50%, 100% { transform: translateX(100%); } }
+  @keyframes entra { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+  @keyframes flutuar { 0%, 100% { translate: 0 0; } 50% { translate: 18px -6px; } }
+  @keyframes subir {
+    0%   { opacity: 0; transform: translate(0, 0); }
+    10%  { opacity: .9; }
+    85%  { opacity: .6; }
+    100% { opacity: 0; transform: translate(var(--dx), -110vh); }
+  }
+
+  @media (min-width: 720px) { .card { width: 220px; } }
+  @media (prefers-reduced-motion: reduce) {
+    .btn-zap::before, .nuvem { animation: none; }
+    .bolha { display: none; }
+  }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZDCFRSG"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div class="ceu" id="ceu" aria-hidden="true">
+  <span class="nuvem n1"></span><span class="nuvem n2"></span><span class="nuvem n3"></span>
+</div>
+
+<main>
+  <section class="hero">
+    <div class="avatar"><img src="imgs/logo_baby.jpg" alt="Tudo no Precinho Baby"></div>
+    <h1>Tudo no <span class="laranja">Precinho</span></h1>
+    <div class="selo-baby">BABY</div>
+    <p class="lines">
+      Ofertas para o seu bebê, no seu WhatsApp 🍼<br>
+      <b>Fraldas, enxoval, mamadeiras e brinquedos</b><br>
+      Mercado Livre, Shopee e Amazon 🛒
+    </p>
+
+    <div class="btns">
+      <a class="btn btn-zap js-grupo" data-origem="hero" href="https://chat.whatsapp.com/EKteUb7132CIQnrksJHRWB">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.5h-.01a9.4 9.4 0 0 1-4.79-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.4 9.4 0 0 1-1.44-5.01c0-5.2 4.23-9.43 9.44-9.43 2.52 0 4.89.98 6.67 2.77a9.37 9.37 0 0 1 2.76 6.67c0 5.2-4.23 9.43-9.43 9.43m8.03-17.46A11.27 11.27 0 0 0 12.05.71C5.79.71.7 5.8.7 12.06c0 2 .52 3.95 1.52 5.67L.6 23.6l6.01-1.58a11.3 11.3 0 0 0 5.43 1.38h.01c6.25 0 11.35-5.09 11.35-11.35 0-3.03-1.18-5.88-3.32-8.02"/></svg>
+        <span>Entrar no Grupo Baby</span>
+      </a>
+      <a class="btn btn-sec" href="#vitrine" id="btn-vitrine" hidden>
+        <span>👶</span>
+        <span>Ver as ofertas de agora</span>
+      </a>
+    </div>
+    <p class="vagas">🔒 <b>Vagas limitadas</b> — entre antes que o grupo lote</p>
+  </section>
+
+  <section class="vitrine" id="vitrine" hidden>
+    <div class="vitrine-head">
+      <h2>Achadinhos que as mamães já aproveitaram</h2>
+      <p>Ofertas de bebê que estão saindo no grupo</p>
+    </div>
+    <div class="faixa" id="faixa-1"><div class="trilho"></div></div>
+    <div class="faixa" id="faixa-2"><div class="trilho"></div></div>
+  </section>
+
+  <section class="final">
+    <a class="btn btn-zap js-grupo" data-origem="final" href="https://chat.whatsapp.com/EKteUb7132CIQnrksJHRWB">
+      <span>Quero entrar no Grupo Baby →</span>
+    </a>
+  </section>
+</main>
+
+<footer>
+  © 2026 Tudo no Precinho Baby · Ofertas selecionadas.<br>
+  Preços podem mudar a qualquer momento. Podemos receber comissão de afiliado sem custo adicional pra você.<br>
+  Como participante do Programa de Associados da Amazon, sou remunerado pelas compras qualificadas efetuadas.
+</footer>
+
+<script>
+  var GRUPO_URL = "https://chat.whatsapp.com/EKteUb7132CIQnrksJHRWB";
+  var API_BASE  = "https://bountiful-communication-production-a61e.up.railway.app/api/public";
+  var FONTE     = "promocaozinha";  // monitor que alimenta o grupo de bebês
+
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('.js-grupo');
+    if (!a) return;
+    var origem = 'baby-' + (a.getAttribute('data-origem') || '');
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'Lead', {
+        content_name: 'WhatsApp Group Join',
+        content_category: 'Baby Offers Group',
+        source_button: origem
+      });
+    }
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'whatsapp_group_click', grupo: 'baby', source_button: origem });
+  });
+
+  /* ── Bolhas de sabão subindo ── */
+  (function () {
+    var ceu = document.getElementById('ceu');
+    var n = window.innerWidth < 600 ? 14 : 22;
+    for (var i = 0; i < n; i++) {
+      var b = document.createElement('span');
+      var tam = 10 + Math.random() * 26;
+      b.className = 'bolha';
+      b.style.left = (Math.random() * 100) + '%';
+      b.style.width = b.style.height = tam + 'px';
+      b.style.setProperty('--dur', (10 + Math.random() * 10) + 's');
+      b.style.setProperty('--delay', (-Math.random() * 20) + 's');
+      b.style.setProperty('--dx', ((Math.random() - .5) * 120) + 'px');
+      ceu.appendChild(b);
+    }
+  })();
+
+  /* ── Carrossel: rolagem lateral de verdade. Anda sozinho, aceita arrastar
+        com o dedo e volta a andar ~2s depois de soltar. O conteúdo vem
+        duplicado, então ao passar da metade volta pro começo sem salto. ── */
+  function rolarFaixa(faixa, vel, reverso) {
+    var trilho = faixa.firstElementChild;
+    var pos = 0, parado = false, retomar = null, ultimo = null;
+    function metade() { return trilho.scrollWidth / 2; }
+    function ajustar() {
+      var m = metade();
+      if (m <= 0) return;
+      while (pos >= m) pos -= m;
+      while (pos < 0) pos += m;
+    }
+    function pausar() { parado = true; clearTimeout(retomar); }
+    function soltar() {
+      clearTimeout(retomar);
+      retomar = setTimeout(function () { pos = faixa.scrollLeft; ajustar(); parado = false; }, 1800);
+    }
+    faixa.addEventListener('touchstart', pausar, { passive: true });
+    faixa.addEventListener('touchend', soltar, { passive: true });
+    faixa.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') pausar(); });
+    faixa.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') soltar(); });
+    faixa.addEventListener('wheel', function () { pausar(); soltar(); }, { passive: true });
+    faixa.addEventListener('scroll', function () {
+      if (!parado) return;
+      var m = metade();
+      if (faixa.scrollLeft >= m) faixa.scrollLeft -= m;
+      else if (faixa.scrollLeft <= 0) faixa.scrollLeft += m;
+    }, { passive: true });
+
+    if (reverso) { pos = metade() / 2; faixa.scrollLeft = pos; }
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    function quadro(t) {
+      if (ultimo != null && !parado) {
+        pos += (reverso ? -1 : 1) * vel * Math.min(t - ultimo, 100) / 1000;
+        ajustar();
+        faixa.scrollLeft = pos;
+      }
+      ultimo = t;
+      requestAnimationFrame(quadro);
+    }
+    requestAnimationFrame(quadro);
+  }
+
+  /* ── Vitrine: só ofertas do grupo de bebês (?grupo=promocaozinha). Foto, nome
+        e % de desconto; o clique leva pro grupo. Amazon sem selo de desconto
+        (regra do Programa de Associados). Sem oferta, a seção fica escondida. ── */
+  (function () {
+    function esc(s) {
+      return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+      });
+    }
+    function brl(v) {
+      if (!v) return NaN;
+      var n = parseFloat(String(v).replace(/[^\d,.-]/g, "").replace(/\./g, "").replace(",", "."));
+      return isNaN(n) ? NaN : n;
+    }
+    function badgeDe(o) {
+      var por = brl(o.price), de = brl(o.old_price);
+      if (!isNaN(por) && !isNaN(de) && de > por) return "-" + Math.round((1 - por / de) * 100) + "%";
+      var m = String(o.discount || "").match(/(\d+)\s*%/);
+      return m ? "-" + m[1] + "%" : "";
+    }
+    function card(p) {
+      return '<a class="card js-grupo" data-origem="vitrine" href="' + GRUPO_URL + '">' +
+        (p.badge ? '<span class="card-badge">' + esc(p.badge) + '</span>' : '') +
+        '<div class="card-img"><img loading="lazy" src="' + esc(p.image) + '" alt="' + esc(p.title) + '"></div>' +
+        '<div class="card-nome">' + esc(p.title) + '</div>' +
+      '</a>';
+    }
+    function preencher(id, itens) {
+      var trilho = document.querySelector("#" + id + " .trilho");
+      var base = itens.slice();
+      while (base.length < 8) base = base.concat(itens);
+      var html = base.map(card).join("");
+      trilho.innerHTML = html + html;
+    }
+    function pegar(url) {
+      return fetch(url, { cache: "no-store" })
+        .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
+        .then(function (d) { return (d && d.items) || []; })
+        .catch(function () { return []; });
+    }
+
+    Promise.all([
+      pegar(API_BASE + "/offers?limit=12&grupo=" + FONTE),
+      pegar(API_BASE + "/amazon?limit=3&grupo=" + FONTE)
+    ]).then(function (res) {
+      var itens = res[0]
+        .filter(function (o) { return o.platform !== "amazon" && o.image; })
+        .map(function (o) { return { title: o.title, image: o.image, badge: badgeDe(o) }; })
+        .concat(res[1]
+          .filter(function (p) { return p.image; })
+          .map(function (p) { return { title: p.title, image: p.image, badge: "" }; }));
+      if (!itens.length) return;   // sem oferta de bebê agora: seção continua escondida
+
+      var meio = Math.ceil(itens.length / 2);
+      var a = itens.length >= 8 ? itens.slice(0, meio) : itens;
+      var b = itens.length >= 8 ? itens.slice(meio) : itens.slice().reverse();
+      document.getElementById("vitrine").hidden = false;
+      document.getElementById("btn-vitrine").hidden = false;
+      preencher("faixa-1", a);
+      preencher("faixa-2", b);
+      rolarFaixa(document.getElementById("faixa-1"), 30, false);
+      rolarFaixa(document.getElementById("faixa-2"), 26, true);
+    });
+  })();
+</script>
+
+</body>
+</html>
