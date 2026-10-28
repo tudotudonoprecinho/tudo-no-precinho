@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Todos os produtos do Mercado Livre, Shopee e Amazon que passaram pelo grupo Tudo no Precinho nas últimas 24 horas." />
-<title>Achados de hoje — Tudo no Precinho</title>
+<meta name="description" content="Guias de compra do Tudo no Precinho para comprar melhor na Amazon: como avaliar uma oferta, como escolher fraldas, air fryer, fone Bluetooth e como economizar nas compras do mês." />
+<title>Guias de compra e achados da Amazon — Tudo no Precinho</title>
 
 <!-- Meta Pixel Code (mesmo do index.html) -->
 <script>
@@ -29,67 +29,146 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
 
 <!--
-  Achados de hoje: tudo que passou pelo grupo nas últimas 24h, das 3 lojas,
-  SEM preço e SEM % de desconto. A promoção pode acabar durante o dia, mas o
-  produto continua na loja — card sem preço não vira "oferta vencida", que foi
-  o motivo do 1º fechamento da conta Amazon. Dados: /api/public/achados.
+  Página ESPECÍFICA da Amazon (as outras páginas do site não mudam).
+
+  Histórico: a conta de Associados foi fechada duas vezes.
+    1º) oferta com preço vencido → aqui nunca aparece preço nem % de desconto.
+    2º) "conteúdo insuficiente" → a página era só uma grade de produtos das 3
+        lojas. Agora ela é conteúdo editorial próprio (guias de compra) e só
+        tem links da Amazon. A grade do dia continua, mas só com Amazon, e
+        some quando não houver produto.
+
+  Links de busca usam a tag de associado abaixo (AMAZON_TAG). Se a Amazon der
+  outra tag na nova inscrição, troque nos links (busque por "tag=").
 -->
 <style>
   :root {
     --marinho: #0A3896;
     --marinho-dark: #061E5C;
     --laranja: #FF7A1A;
+    --laranja-dark: #C2550A;
     --creme: #FFF7EB;
+    --creme-2: #FBEEDA;
     --verde-zap: #25D366;
     --preto: #0B0F1A;
-    --cinza: #64748B;
+    --texto: #1F2633;
+    --cinza: #5B6577;
+    --borda: #E7E1D6;
     --branco: #FFFFFF;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     font-family: 'DM Sans', system-ui, sans-serif;
     background: var(--creme);
-    color: var(--preto);
-    line-height: 1.5;
+    color: var(--texto);
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
   }
   .container { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+  .leitura { max-width: 740px; margin: 0 auto; }
 
-  header {
-    background: var(--marinho-dark);
-    color: #fff;
-    padding: 14px 0;
-  }
+  header { background: var(--marinho-dark); color: #fff; padding: 14px 0; }
   header .container { display: flex; align-items: center; gap: 12px; }
   header img { width: 40px; height: 40px; border-radius: 10px; }
   header a { color: #fff; text-decoration: none; font-weight: 700; }
   header .voltar { margin-left: auto; font-size: 14px; font-weight: 500; opacity: .85; }
 
-  .hero { padding: 28px 0 8px; }
-  .hero h1 {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-weight: 800;
-    font-size: clamp(28px, 6vw, 40px);
-    line-height: 1.1;
-    color: var(--marinho-dark);
-  }
-  .hero h1 em { font-style: normal; color: var(--laranja); }
-  .hero p { color: var(--cinza); margin-top: 8px; max-width: 620px; }
+  h1, h2, h3 { font-family: 'Bricolage Grotesque', sans-serif; color: var(--marinho-dark); line-height: 1.15; }
+  h1 { font-weight: 800; font-size: clamp(30px, 6vw, 44px); }
+  h1 em, h2 em { font-style: normal; color: var(--laranja); }
+  h2 { font-weight: 800; font-size: clamp(24px, 4.6vw, 32px); margin-bottom: 12px; }
+  h3 { font-weight: 600; font-size: 19px; margin: 22px 0 8px; }
+  p { margin-bottom: 12px; }
+  a { color: var(--marinho); }
 
-  .filtros { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 16px; }
-  .filtros button {
-    font: inherit; font-size: 14px; font-weight: 500;
-    border: 1px solid #d9dde6; background: var(--branco); color: var(--preto);
-    padding: 7px 14px; border-radius: 999px; cursor: pointer;
+  .hero { padding: 32px 0 8px; }
+  .hero .meta { font-size: 13px; color: var(--cinza); margin: 10px 0 14px; }
+  .hero .lead { font-size: 18px; color: var(--texto); }
+
+  .aviso-topo {
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-left: 4px solid var(--laranja);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 14px;
+    color: var(--cinza);
+    margin: 18px 0 8px;
   }
-  .filtros button[aria-pressed="true"] {
-    background: var(--marinho); border-color: var(--marinho); color: #fff;
+
+  nav.indice {
+    background: var(--branco);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin: 22px 0 8px;
+    box-shadow: 0 1px 2px rgba(11,15,26,.06), 0 4px 14px rgba(11,15,26,.05);
   }
+  nav.indice b { display: block; font-family: 'Bricolage Grotesque', sans-serif; color: var(--marinho-dark); margin-bottom: 6px; }
+  nav.indice ol { padding-left: 20px; }
+  nav.indice li { margin: 4px 0; }
+
+  article.guia {
+    background: var(--branco);
+    border-radius: 18px;
+    padding: 26px 22px 22px;
+    margin: 22px 0;
+    box-shadow: 0 1px 2px rgba(11,15,26,.06), 0 4px 14px rgba(11,15,26,.05);
+    scroll-margin-top: 12px;
+  }
+  .guia .categoria {
+    display: inline-block;
+    font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--laranja-dark); background: #FFF0E3;
+    padding: 3px 10px; border-radius: 999px; margin-bottom: 10px;
+  }
+  .guia ul, .guia ol { padding-left: 22px; margin-bottom: 12px; }
+  .guia li { margin: 6px 0; }
+  .guia li b { color: var(--preto); }
+
+  table.tab {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    margin: 8px 0 14px;
+  }
+  .tab th, .tab td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--borda); vertical-align: top; }
+  .tab th { background: var(--creme-2); color: var(--marinho-dark); font-weight: 700; }
+
+  .dica {
+    background: #EEF4FF;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin: 16px 0 14px;
+    font-size: 15px;
+  }
+  .dica b { color: var(--marinho-dark); }
+  .erro {
+    background: #FFF4EC;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin: 16px 0 14px;
+    font-size: 15px;
+  }
+
+  .buscas { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .buscas span { width: 100%; font-size: 13px; color: var(--cinza); }
+  .btn-amz {
+    display: inline-flex; align-items: center; gap: 6px;
+    text-decoration: none;
+    background: #232F3E; color: #fff;
+    font-size: 14px; font-weight: 700;
+    padding: 9px 14px; border-radius: 10px;
+  }
+  .btn-amz:hover { background: #111821; }
+
+  section.bloco { padding: 26px 0 6px; }
 
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 12px;
+    margin-top: 14px;
   }
   .card {
     background: var(--branco);
@@ -99,37 +178,29 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
     box-shadow: 0 1px 2px rgba(11,15,26,.06), 0 4px 14px rgba(11,15,26,.05);
   }
   .card .img { display: block; background: #fff; padding: 10px; }
-  /* Quadrada e contida: foto alta (garrafa) não estica o card. */
   .card .img img { display: block; width: 100%; aspect-ratio: 1; object-fit: contain; }
   .card .info { padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
-  .loja {
-    align-self: flex-start;
-    font-size: 11px; font-weight: 700; letter-spacing: .02em;
-    padding: 3px 8px; border-radius: 6px;
-  }
-  .loja.ml     { background: #FFE600; color: #2D3277; }
-  .loja.shopee { background: #EE4D2D; color: #fff; }
-  .loja.amazon { background: #232F3E; color: #fff; }
-  .nome {
+  .card .nome {
     font-size: 14px; line-height: 1.35;
     display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
   }
-  .btn {
-    margin-top: auto;
-    display: block; text-align: center; text-decoration: none;
-    background: var(--marinho); color: #fff;
-    font-size: 14px; font-weight: 700;
-    padding: 9px 10px; border-radius: 10px;
-  }
-  .btn:hover { background: var(--marinho-dark); }
+  .card .btn-amz { margin-top: auto; justify-content: center; }
 
-  .msg { text-align: center; color: var(--cinza); padding: 40px 0; }
+  .faq details {
+    background: var(--branco);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin: 10px 0;
+    box-shadow: 0 1px 2px rgba(11,15,26,.06);
+  }
+  .faq summary { cursor: pointer; font-weight: 700; color: var(--marinho-dark); }
+  .faq details p { margin: 10px 0 0; }
 
   .cta {
-    margin: 32px 0 0; padding: 28px 0;
+    margin: 36px 0 0; padding: 28px 0;
     background: var(--marinho-dark); color: #fff; text-align: center;
   }
-  .cta h2 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; }
+  .cta h2 { color: #fff; font-size: 24px; margin-bottom: 4px; }
   .cta p { opacity: .85; margin: 6px 0 16px; }
   .btn-zap {
     display: inline-block; text-decoration: none;
@@ -137,8 +208,14 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
     padding: 13px 26px; border-radius: 12px;
   }
 
-  footer { padding: 24px 0 32px; color: var(--cinza); font-size: 13px; text-align: center; }
+  footer { padding: 24px 0 32px; color: var(--cinza); font-size: 13px; text-align: center; line-height: 1.6; }
   footer p + p { margin-top: 6px; }
+
+  @media (max-width: 520px) {
+    article.guia { padding: 22px 16px 18px; }
+    .tab { font-size: 14px; }
+    .tab th, .tab td { padding: 8px 6px; }
+  }
 </style>
 </head>
 <body>
@@ -152,26 +229,240 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
 </header>
 
 <main class="container">
+  <div class="leitura">
+
   <section class="hero">
-    <h1>Achados <em>de hoje</em></h1>
-    <p>Todos os produtos do Mercado Livre, da Shopee e da Amazon que passaram pelo grupo nas últimas 24 horas. Toque no produto para ver preço, frete e avaliações direto na loja — promoções mudam rápido.</p>
+    <h1>Como comprar melhor <em>na Amazon</em></h1>
+    <p class="meta">Guias de compra do Tudo no Precinho · Atualizado em outubro de 2026</p>
+    <p class="lead">Todo dia a gente olha centenas de produtos atrás de preço bom. No caminho, aprendemos o que separa uma oferta boa de uma oferta que só parece boa. Juntamos esse aprendizado aqui, em guias curtos para você decidir com mais segurança antes de comprar na Amazon.</p>
+    <div class="aviso-topo">
+      Aqui você não vai encontrar preço. Preço na Amazon muda várias vezes ao dia, e um número velho na tela só atrapalha.
+      Use os guias para saber <b>o que</b> procurar e confira o preço do momento direto na página do produto.
+    </div>
   </section>
 
-  <div class="filtros" id="filtros" hidden>
-    <button type="button" data-loja="" aria-pressed="true">Todos</button>
-    <button type="button" data-loja="ml" aria-pressed="false">Mercado Livre</button>
-    <button type="button" data-loja="shopee" aria-pressed="false">Shopee</button>
-    <button type="button" data-loja="amazon" aria-pressed="false">Amazon</button>
-  </div>
+  <nav class="indice" aria-label="Neste guia">
+    <b>Neste guia</b>
+    <ol>
+      <li><a href="#oferta">Como saber se uma oferta da Amazon vale a pena</a></li>
+      <li><a href="#fraldas">Fraldas descartáveis: como escolher e gastar menos</a></li>
+      <li><a href="#airfryer">Air fryer: tamanho, potência e formato certos</a></li>
+      <li><a href="#fone">Fone de ouvido Bluetooth: o que observar</a></li>
+      <li><a href="#mes">Compras do mês: preço por unidade e compra recorrente</a></li>
+      <li><a href="#como-escolhemos">Como escolhemos o que indicamos</a></li>
+      <li><a href="#duvidas">Dúvidas frequentes</a></li>
+    </ol>
+  </nav>
 
-  <div class="grid" id="grid"></div>
-  <div class="msg" id="msg">Carregando os achados…</div>
+  <!-- 1. OFERTA -->
+  <article class="guia" id="oferta">
+    <span class="categoria">Antes de qualquer compra</span>
+    <h2>Como saber se uma oferta <em>vale a pena</em></h2>
+    <p>Um selo de desconto grande não garante preço bom. Antes de clicar em "comprar", vale passar por este checklist rápido. Leva um minuto e evita a maior parte das frustrações.</p>
+
+    <h3>Checklist de 6 pontos</h3>
+    <ol>
+      <li><b>Compare o preço por unidade, não o preço do pacote.</b> Pacote maior nem sempre sai mais barato por item. Divida o preço pelo número de unidades, metros, litros ou gramas.</li>
+      <li><b>Veja quem vende e quem entrega.</b> Na página do produto aparece se é vendido pela Amazon ou por um vendedor parceiro, e quem faz a entrega. Isso muda prazo, política de troca e, às vezes, o preço final.</li>
+      <li><b>Leia primeiro as avaliações negativas.</b> As de 1 e 2 estrelas mostram defeitos que se repetem (tamanho errado, peça frágil, voltagem). Se várias reclamam da mesma coisa, desconfie.</li>
+      <li><b>Confira a variação certa.</b> Cor, tamanho, voltagem (110 V ou 220 V) e quantidade ficam em seletores. Muita gente compra a variação errada porque o preço anunciado era de outra.</li>
+      <li><b>Some o frete.</b> Um produto um pouco mais caro com frete grátis pode sair mais barato que outro com frete pago.</li>
+      <li><b>Veja a política de devolução.</b> Para roupa, calçado e eletrônico, saber como devolver é parte do preço.</li>
+    </ol>
+    <div class="erro"><b>Erro comum:</b> comparar o "preço de" riscado com o "preço por". O preço riscado é uma referência da loja e pode ser antigo. O que importa é comparar o preço de agora com o de outros vendedores e com o que você pagaria em outro lugar.</div>
+    <div class="dica"><b>Nossa dica:</b> se o produto é de uso contínuo (fralda, café, sabão, ração), anote o preço por unidade das últimas compras. Com essa referência, você reconhece uma oferta real na hora.</div>
+  </article>
+
+  <!-- 2. FRALDAS -->
+  <article class="guia" id="fraldas">
+    <span class="categoria">Bebê</span>
+    <h2>Fraldas descartáveis: <em>como escolher e gastar menos</em></h2>
+    <p>Fralda é o item que mais pesa no orçamento do bebê nos primeiros anos. Escolher o tamanho certo e comprar na hora certa faz mais diferença do que a marca.</p>
+
+    <h3>Tamanho é pelo peso, não pela idade</h3>
+    <p>Cada marca indica a faixa de peso na embalagem, e as faixas mudam de uma marca para outra. As faixas se sobrepõem de propósito. Quando o bebê está no limite de cima, a fralda começa a marcar a pele ou a vazar, e é hora de subir um tamanho.</p>
+    <table class="tab">
+      <thead><tr><th>Sinal</th><th>O que costuma significar</th></tr></thead>
+      <tbody>
+        <tr><td>Marca vermelha na cintura ou nas coxas</td><td>Fralda apertada: hora de subir de tamanho</td></tr>
+        <tr><td>Vazamento pelas laterais</td><td>Fralda folgada ou mal ajustada nas perninhas</td></tr>
+        <tr><td>Vazamento pela frente ou por trás</td><td>Fralda pequena para a quantidade de xixi, ou trocas espaçadas demais</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Quanto comprar de cada tamanho</h3>
+    <ul>
+      <li><b>RN e P:</b> o bebê sai desses tamanhos rápido. Compre pouco por vez, mesmo que o pacote grande pareça vantajoso.</li>
+      <li><b>M e G:</b> são os tamanhos usados por mais tempo. É aqui que vale estocar quando aparece um bom preço por unidade.</li>
+      <li><b>XG e XXG:</b> o consumo diário cai. Pacotes médios costumam bastar.</li>
+    </ul>
+
+    <h3>O que observar na embalagem</h3>
+    <ul>
+      <li><b>Preço por fralda:</b> divida o preço pela quantidade. É o único jeito justo de comparar pacotes de tamanhos diferentes.</li>
+      <li><b>Indicador de umidade:</b> a faixa que muda de cor ajuda nas trocas noturnas.</li>
+      <li><b>Pele sensível:</b> se houver assadura frequente, prefira linhas sem perfume e converse com o pediatra antes de trocar de marca várias vezes.</li>
+    </ul>
+    <div class="dica"><b>Nossa dica:</b> não abra todos os pacotes de uma vez. Se o bebê mudar de tamanho, um pacote fechado ainda pode ser trocado ou dado de presente.</div>
+
+    <div class="buscas">
+      <span>Ver opções na Amazon:</span>
+      <a class="btn-amz" href="https://www.amazon.com.br/s?k=fralda+descart%C3%A1vel+tamanho+m&tag=tudonopreci0f-20" target="_blank" rel="nofollow sponsored noopener">Fraldas tamanho M</a>
+      <a class="btn-amz" href="https://www.amazon.com.br/s?k=fralda+descart%C3%A1vel+tamanho+g&tag=tudonopreci0f-20" target="_blank" rel="nofollow sponsored noopener">Fraldas tamanho G</a>
+      <a class="btn-amz" href="https://www.amazon.com.br/s?k=len%C3%A7o+umedecido+beb%C3%AA&tag=tudonopreci0f-20" target="_blank" rel="nofollow sponsored noopener">Lenço umedecido</a>
+    </div>
+  </article>
+
+  <!-- 3. AIR FRYER -->
+  <article class="guia" id="airfryer">
+    <span class="categoria">Cozinha</span>
+    <h2>Air fryer: <em>tamanho, potência e formato certos</em></h2>
+    <p>A air fryer virou item básico de cozinha, mas é fácil errar no tamanho. Uma pequena demais obriga a fazer comida em várias levas. Uma grande demais ocupa a bancada e gasta mais energia do que precisa.</p>
+
+    <h3>Capacidade por número de pessoas</h3>
+    <table class="tab">
+      <thead><tr><th>Quem vai comer</th><th>Capacidade que costuma atender</th></tr></thead>
+      <tbody>
+        <tr><td>1 a 2 pessoas</td><td>até cerca de 4 litros</td></tr>
+        <tr><td>3 a 4 pessoas</td><td>de 4 a 5,5 litros</td></tr>
+        <tr><td>5 pessoas ou mais</td><td>acima de 5,5 litros, ou modelo com dois cestos</td></tr>
+      </tbody>
+    </table>
+    <p>A capacidade anunciada é o volume total do cesto. Para fritar sem óleo, o alimento precisa de espaço para o ar circular, então na prática você usa bem menos do que esse volume de uma vez.</p>
+
+    <h3>Cesto ou forno?</h3>
+    <ul>
+      <li><b>Cesto (gaveta):</b> mais compacta e mais simples de limpar. Boa para batata, frango e salgados.</li>
+      <li><b>Forno (porta frontal com grades):</b> permite assar em mais de um nível e ver o alimento pelo vidro. Ocupa mais espaço.</li>
+      <li><b>Dois cestos:</b> prepara dois alimentos ao mesmo tempo, com tempos e temperaturas diferentes.</li>
+    </ul>
+
+    <h3>Antes de fechar a compra</h3>
+    <ul>
+      <li><b>Voltagem:</b> confira se é 110 V ou 220 V. É o erro mais comum, e ligar na tomada errada pode queimar o aparelho.</li>
+      <li><b>Potência:</b> modelos maiores tendem a ter potência maior. Confira se a tomada e o circuito da cozinha aguentam.</li>
+      <li><b>Revestimento do cesto:</b> procure informação sobre o antiaderente e se o cesto pode ir à lava-louças.</li>
+      <li><b>Tamanho externo:</b> meça o espaço na bancada, incluindo a folga atrás para a saída de ar quente.</li>
+    </ul>
+    <div class="erro"><b>Erro comum:</b> comprar pela capacidade "da caixa" pensando em encher o cesto. Cesto lotado deixa a comida crua no meio e mole por fora.</div>
+
+    <div class="buscas">
+      <span>Ver opções na Amazon:</span>
+      <a class="btn-amz" href="https://www.amazon.com.br/s?k=air+fryer+4+litros&tag=tudonopreci0f-20" target="_blank" rel="nofollow sponsored noopener">Air fryer até 4 L</a>
+      <a class="btn-amz" href="https://www.amazon.com.br/s?k=air+fryer+5+litros&tag=tudonopreci0f-20" target="_blank" rel="nofollow sponsored noopener">Air fryer 5 L ou mais</a>
+      <a class="btn-amz" href="https://www.amazon.com.br/s?k=air+fryer+forno&tag=tudonopreci0f-20" target="_blank" rel="nofollow sponsored noopener">Air fryer forno</a>
+    </div>
+  </article>
+
+  <!-- 4. FONE -->
+  <article class="guia" id="fone">
+    <span class="categoria">Eletrônicos</span>
+    <h2>Fone de ouvido Bluetooth: <em>o que observar</em></h2>
+    <p>Existe fone Bluetooth de todo preço, e as fichas técnicas são parecidas. O que separa um fone bom para você de um que vai para a gaveta é o uso que você vai dar.</p>
+
+    <h3>Escolha pelo uso</h3>
+    <table class="tab">
+      <thead><tr><th>Uso principal</th><th>O que priorizar</th></tr></thead>
+      <tbody>
+        <tr><td>Transporte público, avião, escritório</td><td>Cancelamento ativo de ruído (ANC) e boa vedação</td></tr>
+        <tr><td>Academia e corrida</td><td>Encaixe firme e resistência a suor e respingos (IPX4 ou mais)</td></tr>
+        <tr><td>Reuniões e ligações</td><td>Microfone com redução de ruído e conexão estável</td></tr>
+        <tr><td>Uso longo em casa</td><td>Headphone (sobre a orelha) costuma ser mais confortável por horas</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Como ler a ficha técnica</h3>
+    <ul>
+      <li><b>Bateria:</b> o anúncio costuma somar a bateria do fone com a do estojo. Veja quanto o fone dura sozinho, sem voltar para o estojo.</li>
+      <li><b>Resistência à água:</b> a sigla IP mostra a proteção. IPX4 aguenta suor e respingos, mas não foi feito para mergulho.</li>
+      <li><b>Multiponto:</b> permite ficar conectado ao celular e ao computador ao mesmo tempo. Ajuda muito quem trabalha com os dois.</li>
+      <li><b>Codec:</b> quem usa iPhone tira mais proveito de fones com AAC. Em vários celulares Android, codecs como aptX ou LDAC podem melhorar a qualidade, desde que o celular também suporte.</li>
+    </ul>
+    <div class="dica"><b>Nossa dica:</b> nas avaliações, procure comentários de quem usa o mesmo celular que você. Problema de conexão costuma aparecer com uma marca de celular específica.</div>
+
+    <div class="buscas">
+      <span>Ver opções na Amazon:</span>
+      <a class="btn-amz" href="https://www.amazon.com.br/s?k=fone+bluetooth+cancelamento+de+ru%C3%ADdo&tag=tudonopreci0f-20" target="_blank" rel="nofollow sponsored noopener">Com cancelamento de ruído</a>
+      <a class="btn-amz" href="https://www.amazon.com.br/s?k=fone+bluetooth+esportivo+resistente+%C3%A1gua&tag=tudonopreci0f-20" target="_blank" rel="nofollow sponsored noopener">Para esporte</a>
+      <a class="btn-amz" href="https://www.amazon.com.br/s?k=headphone+bluetooth&tag=tudonopreci0f-20" target="_blank" rel="nofollow sponsored noopener">Headphone</a>
+    </div>
+  </article>
+
+  <!-- 5. COMPRAS DO MÊS -->
+  <article class="guia" id="mes">
+    <span class="categoria">Casa</span>
+    <h2>Compras do mês: <em>preço por unidade e compra recorrente</em></h2>
+    <p>Sabão, papel higiênico, café, ração e produtos de higiene são compras que se repetem todo mês. Por isso, uma economia pequena em cada uma vira uma economia grande no ano. Também são os itens em que o tamanho da embalagem mais confunde.</p>
+
+    <h3>Como comparar embalagens diferentes</h3>
+    <ul>
+      <li><b>Papel higiênico:</b> compare o preço por metro, não por rolo. Rolos de "folha dupla" e "rende mais" têm metragens bem diferentes.</li>
+      <li><b>Sabão líquido e amaciante:</b> compare pelo número de lavagens indicado na embalagem, já que a concentração muda de um produto para outro.</li>
+      <li><b>Café e alimentos:</b> compare o preço por quilo ou por grama.</li>
+      <li><b>Kits e combos:</b> veja se você realmente usa todos os itens do kit antes de achar que ele é vantajoso.</li>
+    </ul>
+
+    <h3>Compra recorrente</h3>
+    <p>A Amazon tem uma opção de compra programada, o <b>Programe e Poupe</b>, disponível em parte dos produtos de uso contínuo. Você escolhe de quanto em quanto tempo quer receber, e o pedido se repete sozinho. As condições e os descontos variam por produto e aparecem na própria página, quando a opção existe.</p>
+    <div class="erro"><b>Erro comum:</b> assinar e esquecer. Revise a frequência de vez em quando. Se o produto está acumulando em casa, espace as entregas ou pause.</div>
+    <div class="dica"><b>Nossa dica:</b> para o que você usa todo mês, guarde uma lista com o preço por unidade que você considera bom. Quando um produto aparecer abaixo dele, é a hora de estocar.</div>
+
+    <div class="buscas">
+      <span>Ver opções na Amazon:</span>
+      <a class="btn-amz" href="https://www.amazon.com.br/s?k=papel+higi%C3%AAnico+folha+dupla&tag=tudonopreci0f-20" target="_blank" rel="nofollow sponsored noopener">Papel higiênico</a>
+      <a class="btn-amz" href="https://www.amazon.com.br/s?k=sab%C3%A3o+l%C3%ADquido+para+roupas&tag=tudonopreci0f-20" target="_blank" rel="nofollow sponsored noopener">Sabão líquido</a>
+      <a class="btn-amz" href="https://www.amazon.com.br/s?k=caf%C3%A9+em+gr%C3%A3os&tag=tudonopreci0f-20" target="_blank" rel="nofollow sponsored noopener">Café</a>
+    </div>
+  </article>
+
+  <!-- ACHADOS DO DIA (só Amazon; some se não houver) -->
+  <section class="bloco" id="achados-amz" hidden>
+    <h2>Achados de hoje <em>na Amazon</em></h2>
+    <p>Produtos da Amazon que passaram pelo nosso grupo nas últimas 24 horas. Sem preço aqui: toque para ver o preço, o frete e as avaliações de agora direto na Amazon.</p>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <!-- COMO ESCOLHEMOS -->
+  <article class="guia" id="como-escolhemos">
+    <span class="categoria">Transparência</span>
+    <h2>Como escolhemos <em>o que indicamos</em></h2>
+    <p>O Tudo no Precinho é um grupo de ofertas no WhatsApp. Nosso trabalho é filtrar: entre tudo o que entra em promoção, a gente separa o que tem preço realmente bom e produto bem avaliado.</p>
+    <ul>
+      <li><b>Avaliação antes do preço:</b> produto mal avaliado não entra, mesmo barato.</li>
+      <li><b>Preço por unidade:</b> em itens de uso contínuo, comparamos sempre o preço por unidade.</li>
+      <li><b>Sem preço velho:</b> não publicamos preço aqui no site, porque ele muda rápido. O preço que vale é o da página do produto na hora da compra.</li>
+      <li><b>Links de afiliado:</b> alguns links desta página são de afiliado. Se você comprar por eles, recebemos uma comissão da loja, e você paga o mesmo preço.</li>
+    </ul>
+  </article>
+
+  <!-- FAQ -->
+  <section class="bloco faq" id="duvidas">
+    <h2>Dúvidas <em>frequentes</em></h2>
+    <details>
+      <summary>Por que não aparece o preço dos produtos?</summary>
+      <p>Porque o preço na Amazon muda várias vezes ao dia. Mostrar um preço que já mudou seria enganoso. Você vê o preço atualizado ao abrir a página do produto.</p>
+    </details>
+    <details>
+      <summary>Comprar pelos links daqui custa mais caro?</summary>
+      <p>Não. O preço é exatamente o mesmo. A comissão que recebemos é paga pela loja, e não sai do seu bolso.</p>
+    </details>
+    <details>
+      <summary>Vocês vendem os produtos?</summary>
+      <p>Não. A compra, a entrega, a troca e o atendimento são feitos pela Amazon ou pelo vendedor indicado na página do produto.</p>
+    </details>
+    <details>
+      <summary>Como recebo as ofertas mais rápido?</summary>
+      <p>Entrando no nosso grupo gratuito do WhatsApp. As ofertas saem lá primeiro, e você pode sair quando quiser.</p>
+    </details>
+  </section>
+
+  </div>
 </main>
 
 <section class="cta">
   <div class="container">
-    <h2>Quer receber na hora?</h2>
-    <p>As ofertas saem primeiro no grupo do WhatsApp. É grátis.</p>
+    <h2>Quer receber as ofertas na hora?</h2>
+    <p>Elas saem primeiro no nosso grupo do WhatsApp. É grátis.</p>
     <a class="btn-zap" href="https://chat.whatsapp.com/LZICZxMWrLIAHEdFze6mjO?mode=hqctswi"
        target="_blank" rel="noopener"
        onclick="if (typeof fbq !== 'undefined') fbq('track', 'Lead', { content_name: 'WhatsApp Group Join', source_button: 'achados' });">
@@ -182,20 +473,20 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
 
 <footer>
   <div class="container">
-    <p>Preços e estoque podem mudar a qualquer momento. Podemos receber comissão de afiliado sem custo adicional para você.</p>
     <p>Como participante do Programa de Associados da Amazon, sou remunerado pelas compras qualificadas efetuadas.</p>
+    <p>Preços, estoque e condições são definidos pela Amazon e podem mudar a qualquer momento. Confira sempre na página do produto antes de comprar.</p>
+    <p>© 2026 Tudo no Precinho</p>
   </div>
 </footer>
 
 <script>
+  /* Achados do dia: só produtos da Amazon, sem preço nem desconto (regra do
+     Programa de Associados). Sem produto da Amazon, a seção fica escondida e a
+     página continua com os guias. Dados: /api/public/achados. */
   (function () {
     var API = "https://bountiful-communication-production-a61e.up.railway.app/api/public/achados";
+    var sec = document.getElementById("achados-amz");
     var grid = document.getElementById("grid");
-    var msg = document.getElementById("msg");
-    var filtros = document.getElementById("filtros");
-    var VER = { ml: "Ver no Mercado Livre", shopee: "Ver na Shopee", amazon: "Ver na Amazon" };
-    var CLASSE = { ml: "ml", shopee: "shopee", amazon: "amazon" };
-    var todos = [];
 
     function esc(s) {
       return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
@@ -205,57 +496,27 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
 
     function card(p) {
       var link = ' href="' + esc(p.url) + '" target="_blank" rel="nofollow sponsored noopener"' +
-                 ' onclick="if (typeof fbq !== \'undefined\') fbq(\'track\', \'ViewContent\', { content_category: \'Achado\', content_type: \'' + esc(p.platform) + '\' });"';
+                 ' onclick="if (typeof fbq !== \'undefined\') fbq(\'track\', \'ViewContent\', { content_category: \'Achado\', content_type: \'amazon\' });"';
       var el = document.createElement("div");
       el.className = "card";
       el.innerHTML =
         (p.image ? '<a class="img"' + link + '><img loading="lazy" src="' + esc(p.image) + '" alt="' + esc(p.title) + '"></a>' : '') +
         '<div class="info">' +
-          '<span class="loja ' + (CLASSE[p.platform] || "ml") + '">' + esc(p.store) + '</span>' +
           '<div class="nome">' + esc(p.title) + '</div>' +
-          '<a class="btn"' + link + '>' + (VER[p.platform] || "Ver na loja") + '</a>' +
+          '<a class="btn-amz"' + link + '>Ver na Amazon</a>' +
         '</div>';
       return el;
     }
 
-    function mostrar(loja) {
-      var lista = loja ? todos.filter(function (p) { return p.platform === loja; }) : todos;
-      grid.innerHTML = "";
-      lista.forEach(function (p) { grid.appendChild(card(p)); });
-      msg.hidden = lista.length > 0;
-      if (!lista.length) msg.textContent = "Nenhum achado desta loja nas últimas 24 horas.";
-    }
-
-    filtros.addEventListener("click", function (ev) {
-      var b = ev.target.closest("button");
-      if (!b) return;
-      [].forEach.call(filtros.querySelectorAll("button"), function (x) {
-        x.setAttribute("aria-pressed", x === b ? "true" : "false");
-      });
-      mostrar(b.getAttribute("data-loja"));
-    });
-
     fetch(API, { cache: "no-store" })
       .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
       .then(function (data) {
-        todos = (data && data.items) || [];
-        if (!todos.length) {
-          msg.textContent = "Os achados de hoje estão sendo atualizados. Entra no grupo pra receber as ofertas na hora.";
-          return;
-        }
-        // Só mostra o filtro das lojas que têm produto.
-        var tem = {};
-        todos.forEach(function (p) { tem[p.platform] = true; });
-        [].forEach.call(filtros.querySelectorAll("button[data-loja]"), function (b) {
-          var l = b.getAttribute("data-loja");
-          if (l && !tem[l]) b.hidden = true;
-        });
-        filtros.hidden = false;
-        mostrar("");
+        var amz = ((data && data.items) || []).filter(function (p) { return p.platform === "amazon"; });
+        if (!amz.length) return;
+        amz.forEach(function (p) { grid.appendChild(card(p)); });
+        sec.hidden = false;
       })
-      .catch(function () {
-        msg.textContent = "Não consegui carregar os achados agora. Tenta recarregar a página.";
-      });
+      .catch(function () { /* silencioso: a página segue com os guias */ });
   })();
 </script>
 </body>
