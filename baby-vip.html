@@ -483,7 +483,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     Promise.all([
       pegar(API_BASE + "/offers?limit=12&grupo=" + FONTE),
-      pegar(API_BASE + "/amazon?limit=3&grupo=" + FONTE)
+      Promise.resolve([])  // sem fotos de produto da Amazon (regra do Programa de Associados)
     ]).then(function (res) {
       var itens = res[0]
         .filter(function (o) { return o.platform !== "amazon" && o.image; })

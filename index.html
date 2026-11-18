@@ -1061,22 +1061,10 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
 <!-- ACHADOS DE HOJE — página com tudo das últimas 24h (achados.html). -->
 <div class="achados-link">
   <div class="container">
-    <a href="achados.html">Ver todos os achados de hoje →</a>
-    <p>Tudo que passou pelo grupo nas últimas 24h: Mercado Livre, Shopee e Amazon.</p>
+    <a href="achados.html">Guias de compra →</a>
+    <p>Como avaliar uma oferta e escolher fralda, air fryer, fone e compras do mês.</p>
   </div>
 </div>
-
-<!-- ACHADOS DA AMAZON — sem preço, sem desconto e sem cupom (regras do Programa
-     de Associados da Amazon). Fica escondida se não houver produto. -->
-<section class="amz" id="amz-section" hidden>
-  <div class="container">
-    <span class="section-eyebrow">Amazon</span>
-    <h2 class="section-title">Achados da <em>Amazon</em></h2>
-    <p class="section-sub">Produtos da Amazon que passaram pelo grupo. Toca pra ver preço, frete e avaliações direto na Amazon:</p>
-    <div class="amz-grid" id="amz-grid"></div>
-    <p class="amz-aviso">Como participante do Programa de Associados da Amazon, sou remunerado pelas compras qualificadas efetuadas.</p>
-  </div>
-</section>
 
 <!-- BENEFÍCIOS -->
 <section class="beneficios">
@@ -1279,44 +1267,6 @@ src="https://www.facebook.com/tr?id=1540738174070489&ev=PageView&noscript=1"
         if (!cs.length) return;              // sem cupom ativo: seção continua escondida
         grid.innerHTML = "";
         cs.forEach(function (c) { grid.appendChild(buildCupom(c)); });
-        sec.hidden = false;
-      })
-      .catch(function () { /* silencioso: seção permanece escondida */ });
-  })();
-
-  /* ── Achados da Amazon: sem preço, sem desconto e sem cupom (regras do
-        Programa de Associados). A seção fica escondida se não houver produto. */
-  (function () {
-    var API_AMZ = "https://bountiful-communication-production-a61e.up.railway.app/api/public/amazon?limit=3";
-    var sec  = document.getElementById("amz-section");
-    var grid = document.getElementById("amz-grid");
-    if (!sec || !grid) return;
-
-    function esc(s) {
-      return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
-        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
-      });
-    }
-
-    fetch(API_AMZ, { cache: "no-store" })
-      .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
-      .then(function (data) {
-        var its = ((data && data.items) || []).slice(0, 3);
-        if (!its.length) return;              // sem produto: seção continua escondida
-        grid.innerHTML = "";
-        its.forEach(function (p) {
-          var link = ' href="' + esc(p.url) + '" target="_blank" rel="nofollow sponsored noopener"' +
-                     ' onclick="trackOfferClick(\'amazon\')"';
-          var card = document.createElement("div");
-          card.className = "amz-card";
-          card.innerHTML =
-            (p.image ? '<a class="amz-img"' + link + '><img loading="lazy" src="' + esc(p.image) + '" alt="' + esc(p.title) + '"></a>' : '') +
-            '<div class="amz-info">' +
-              '<div class="nome">' + esc(p.title) + '</div>' +
-              '<a class="amz-btn"' + link + '>Ver na Amazon</a>' +
-            '</div>';
-          grid.appendChild(card);
-        });
         sec.hidden = false;
       })
       .catch(function () { /* silencioso: seção permanece escondida */ });

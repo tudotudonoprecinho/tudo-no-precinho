@@ -466,7 +466,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         .catch(function () { return []; });
     }
 
-    Promise.all([pegar(API), pegar(API_AMZ)]).then(function (res) {
+    // sem fotos de produto da Amazon (regra do Programa de Associados)
+    Promise.all([pegar(API), Promise.resolve([])]).then(function (res) {
       var ofertas = res[0]
         .filter(function (o) { return o.platform !== "amazon" && o.image; })
         .map(function (o) { return { title: o.title, image: o.image, badge: badgeDe(o) }; });
